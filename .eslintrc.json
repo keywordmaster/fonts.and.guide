@@ -8,5 +8,9 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-  "extends": ["next/core-web-vitals", "prettier", "plugin:eslint-plugin-next-on-pages/recommended"]
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:eslint-plugin-next-on-pages/recommended"
+  ]
 }
