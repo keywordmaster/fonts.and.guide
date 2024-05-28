@@ -1,0 +1,8 @@
+schema: graphql.schema.json
+documents: ./app/**/*.{graphql,js,ts,jsx,tsx}
+extensions:
+  endpoints:
+    default:
+      url: ${WORDPRESS_ENDPOINT} # Your GraphQL endpoint
+      headers:
+        Authorization: ${BASIC_AUTH} # Your Basic Auth

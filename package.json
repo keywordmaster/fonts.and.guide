@@ -4,21 +4,41 @@
   "private": true,
   "dependencies": {
     "@urql/core": "^5.0.3",
+    "@urql/exchange-persisted": "^4.3.0",
     "@urql/next": "^1.1.1",
-    "graphql": "^16.6.0",
-    "next": "13.4.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "dotenv": "^16.4.5",
+    "graphql": "^16.8.1",
+    "next": "14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "urql": "^4.1.0"
   },
   "scripts": {
     "dev": "next dev",
+    "dev:watch": "concurrently \"next dev\" \"npm run codegen:watch\"",
     "start": "next",
-    "build": "next build"
+    "build": "next build",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "npx prettier . --write",
+    "codegen": "graphql-codegen --require dotenv/config",
+    "codegen:watch": "graphql-codegen -w --require dotenv/config"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "^4.2.6",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@parcel/watcher": "^2.4.1",
     "@types/node": "20.12.12",
-    "@types/react": "18.2.6",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "graphql-config": "^5.0.3",
+    "prettier": "3.2.5",
     "typescript": "5.4.5"
   }
 }

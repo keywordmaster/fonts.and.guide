@@ -1,40 +1,32 @@
-# With Next.js
+# Headless CMS 프로젝트 - WordPress, GraphQL, Next.js
 
-<p>
-  <a href="https://stackblitz.com/github/urql-graphql/urql/tree/main/examples/with-next">
-    <img
-      alt="Open in StackBlitz"
-      src="https://img.shields.io/badge/open_in_stackblitz-1269D3?logo=stackblitz&style=for-the-badge"
-    />
-  </a>
-  <a href="https://codesandbox.io/p/sandbox/github/urql-graphql/urql/tree/main/examples/with-next">
-    <img
-      alt="Open in CodeSandbox"
-      src="https://img.shields.io/badge/open_in_codesandbox-151515?logo=codesandbox&style=for-the-badge"
-    />
-  </a>
-</p>
+## 개요
 
-This example shows `next-urql` and `urql` in use with Next.js as explained [in the "Next.js" section
-on the "Server-side Rendering" docs
-page](https://formidable.com/open-source/urql/docs/advanced/server-side-rendering/#nextjs).
+- Next.js App Router
+- urql GraphQL 클라이언트
+- Cloudflare Pages
+- WP GraphQL (워드프레스 서버)
 
-To run this example install dependencies and run the `start` script:
+## 시작하기
 
-```sh
-yarn install
-yarn run start
-# or
-npm install
-npm run start
-```
-
----
-
-## Step by step
-
-[tiged](https://github.com/tiged/tiged)를 활용한 예제 저장소 복사
+`.env`파일 생성 후 npm run dev:watch로 next 개발 서버 실행
 
 ```shell
-npx tiged urql-graphql/urql/examples/with-next next-urql-tutorial
+cp .env.sample .env
+npm run dev:watch
 ```
+
+### `.env` 환경변수 값
+
+- WORDPRESS_ENDPOINT
+  - wp.fonts.and.guide/graphql
+- BASIC_AUTH
+  - [WP-API/Basic-Auth](https://github.com/WP-API/Basic-Auth) 플러그인 활용하여 워드프레스 계정의 username, password로 반영
+
+### Local WP 등 로컬 워드프레스 서버와 연동이 필요한 경우
+
+`.env` 파일의 WORDPRESS_ENDPOINT를 로컬 주소로 변경 후 dev:watch 스크립트 실행
+
+## 배포하기
+
+<!-- TODO: 클라우드플레어 연동 확인중 -->

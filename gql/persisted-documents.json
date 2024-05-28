@@ -1,0 +1,6 @@
+{
+  "f78b1451cd9c530fb3b485e428eec0e4b3f458b5": "query GetContentNode($id: ID!) { __typename contentNode(id: $id, idType: URI) { __typename contentTypeName date ... on NodeWithContentEditor { __typename content } ... on NodeWithTitle { __typename title } } }",
+  "ac8cf90ea1979eb1668b61cdb6a9820f6955806f": "query GetCategories { __typename categories { __typename edges { __typename cursor node { __typename id name slug } } } }",
+  "9994072cba892456c634ea5bd24d70950204e1a7": "query GetRootLayout { __typename generalSettings { __typename description title } primaryMenuItems: menuItems(where: {location: PRIMARY}) { __typename nodes { __typename id label uri } } footerMenuItems: menuItems(where: {location: FOOTER}) { __typename nodes { __typename id label uri } } }",
+  "6c52af152c92c447fac7642d6edfe228a434a9f4": "query GetPosts { __typename posts(first: 100) { __typename nodes { __typename author { __typename node { __typename name } } id slug title uri } } }"
+}

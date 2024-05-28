@@ -1,40 +1,44 @@
-import Link from 'next/link';
-import { cacheExchange, createClient, fetchExchange, gql } from '@urql/core';
-import { registerUrql } from '@urql/next/rsc';
+import { gql } from "@urql/core";
+import Link from "next/link";
 
-const makeClient = () => {
-  return createClient({
-    url: 'https://graphql-pokeapi.graphcdn.app/',
-    exchanges: [cacheExchange, fetchExchange],
-  });
-};
+import { GetPostsQuery } from "../gql/graphql";
+import { getClient } from "../lib/urql/client";
 
-const { getClient } = registerUrql(makeClient);
-
-const PokemonsQuery = gql`
-  query {
-    pokemons(limit: 10) {
-      results {
+const postsQuery = gql`
+  query GetPosts {
+    posts(first: 100) {
+      nodes {
         id
-        name
+        title
+        uri
+        author {
+          node {
+            name
+          }
+        }
+        slug
       }
     }
   }
 `;
 
 export default async function Home() {
-  const result = await getClient().query(PokemonsQuery, {});
+  const { data, error } = await getClient().query<GetPostsQuery>(
+    postsQuery,
+    {},
+  );
   return (
     <main>
       <h1>This is rendered as part of an RSC</h1>
       <ul>
-        {result.data
-          ? result.data.pokemons.results.map((x: any) => (
-              <li key={x.id}>{x.name}</li>
-            ))
-          : JSON.stringify(result.error)}
+        {data
+          ? data.posts.nodes.map((node) => (
+            <Link key={node.id} href={node.uri}>
+              <li key={node.id}>{node.title}</li>
+            </Link>
+          ))
+          : JSON.stringify(error)}
       </ul>
-      <Link href="/non-rsc">Non RSC</Link>
     </main>
   );
 }
