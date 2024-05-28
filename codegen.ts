@@ -1,7 +1,7 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
-import { addTypenameSelectionDocumentTransform } from '@graphql-codegen/client-preset'
+import { addTypenameSelectionDocumentTransform } from "@graphql-codegen/client-preset";
 
-console.log("  - CURRENT ENDPOINT:", process.env.WORDPRESS_ENDPOINT, '\n');
+console.log("  - CURRENT ENDPOINT:", process.env.WORDPRESS_ENDPOINT, "\n");
 
 const config: CodegenConfig = {
   schema: [
@@ -20,13 +20,13 @@ const config: CodegenConfig = {
       preset: "client",
       plugins: [],
       presetConfig: {
-        persistedDocuments: true
+        persistedDocuments: true,
       },
-      documentTransforms: [addTypenameSelectionDocumentTransform]
+      documentTransforms: [addTypenameSelectionDocumentTransform],
     },
     "./graphql.schema.json": {
-      plugins: ["introspection"]
-    }
+      plugins: ["introspection"],
+    },
   },
 };
 

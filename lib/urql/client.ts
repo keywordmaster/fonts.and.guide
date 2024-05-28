@@ -11,8 +11,9 @@ const makeClient = () => {
       persistedExchange({
         enforcePersistedQueries: true,
         enableForMutation: true,
-        generateHash: (_, document) => Promise.resolve(document['__meta__']['hash'])
-      })
+        generateHash: (_, document) =>
+          Promise.resolve(document["__meta__"]["hash"]),
+      }),
     ],
     fetchOptions: {
       headers: {
