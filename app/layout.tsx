@@ -1,3 +1,5 @@
+import "./globals.css";
+
 import Link from "next/link";
 import { gql } from "urql/core";
 
