@@ -36,13 +36,14 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data } = await getClient().query<GetRootLayoutQuery>(
+  const { data, error } = await getClient().query<GetRootLayoutQuery>(
     RootLayoutQuery,
     {},
   );
 
   return (
     <html lang="ko">
+      {data ? (<>
       <head>
         <title>{data?.generalSettings?.title}</title>
         <meta name="description" content={data?.generalSettings?.description} />
@@ -67,6 +68,7 @@ export default async function RootLayout({
         </header>
         {children}
       </body>
+      </>) : JSON.stringify(error)}
     </html>
   );
 }
