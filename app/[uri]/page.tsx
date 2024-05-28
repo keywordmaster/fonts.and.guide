@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { gql } from "@urql/core";
 import { notFound } from "next/navigation";
 

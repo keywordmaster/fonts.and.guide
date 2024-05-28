@@ -29,4 +29,4 @@ npm run dev:watch
 
 ## 배포하기
 
-<!-- TODO: 클라우드플레어 연동 확인중 -->
+해당 저장소의 main 브랜치에 커밋이 푸시되면 Cloudflare Pages로 배포 자동화

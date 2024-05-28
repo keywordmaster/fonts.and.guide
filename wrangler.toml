@@ -1,0 +1,7 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "fonts-and-guide"                         # The name of your Cloudflare Workers project
+compatibility_date = "2024-05-24"                # Wrangler will use this date to determine compatibility with new features
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+# Wrangler CLI로 프로젝트 배포시 필요한 설정
