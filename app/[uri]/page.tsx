@@ -1,4 +1,5 @@
 import { gql } from "@urql/core";
+import { notFound } from "next/navigation";
 
 import { GetContentNodeQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
@@ -31,12 +32,12 @@ export default async function Page({
   );
 
   if (!data?.contentNode) {
-    return <div>404</div>;
+    notFound();
   }
 
   return (
     <main>
-      <h2>{data?.contentNode?.title}</h2>
+      <h1>{data?.contentNode?.title}</h1>
       <article dangerouslySetInnerHTML={{ __html: getContent(data) }} />
     </main>
   );

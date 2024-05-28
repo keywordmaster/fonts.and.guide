@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
     "@urql/core": "^5.0.3",
     "@urql/exchange-persisted": "^4.3.0",
     "@urql/next": "^1.1.1",
