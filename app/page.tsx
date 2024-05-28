@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { gql } from "@urql/core";
 import Link from "next/link";
 
@@ -33,10 +35,10 @@ export default async function Home() {
       <ul>
         {data
           ? data.posts.nodes.map((node) => (
-              <Link key={node.id} href={node.uri}>
-                <li key={node.id}>{node.title}</li>
-              </Link>
-            ))
+            <Link key={node.id} href={node.uri}>
+              <li key={node.id}>{node.title}</li>
+            </Link>
+          ))
           : JSON.stringify(error)}
       </ul>
     </main>
