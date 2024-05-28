@@ -1,8 +1,8 @@
 import { gql } from "@urql/core";
 import Link from "next/link";
 
-import { GetPostsQuery } from "../gql/graphql";
-import { getClient } from "../lib/urql/client";
+import { GetPostsQuery } from "@/gql/graphql";
+import { getClient } from "@/lib/urql/client";
 
 const postsQuery = gql`
   query GetPosts {
