@@ -9,10 +9,11 @@
 
 ## 시작하기
 
-`.env`파일 생성 후 npm run dev:watch로 next 개발 서버 실행
+`.env`파일 및 `.graphqlrc` 생성 후 npm run dev:watch로 next 개발 서버 실행
 
 ```shell
 cp .env.sample .env
+cp .graphqlrc.sample .graphqlrc
 npm run dev:watch
 ```
 
