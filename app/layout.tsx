@@ -2,69 +2,76 @@ export const runtime = "edge";
 
 import "./globals.css";
 
-import Link from "next/link";
+import { Metadata, ResolvingMetadata } from "next";
 import { gql } from "urql/core";
 
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const rootLayoutQuery = gql`
+const rootLayoutQuery = gql`
     query GetRootLayout {
       generalSettings {
         title
         description
       }
-      primaryMenuItems: menuItems(where: { location: PRIMARY }) {
-        nodes {
-          id
-          label
-          uri
-        }
-      }
-      footerMenuItems: menuItems(where: { location: FOOTER }) {
-        nodes {
-          id
-          label
-          uri
-        }
-      }
+      # primaryMenuItems: menuItems(where: { location: PRIMARY }) {
+      #   nodes {
+      #     id
+      #     label
+      #     uri
+      #   }
+      # }
+      # footerMenuItems: menuItems(where: { location: FOOTER }) {
+      #   nodes {
+      #     id
+      #     label
+      #     uri
+      #   }
+      # }
     }
   `;
 
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  // const id = params.id
+
+  // fetch data
+  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
   const { data, error } = await getClient().query<GetRootLayoutQuery>(
     rootLayoutQuery,
     {},
   );
 
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: data?.generalSettings.title,
+    description: data?.generalSettings.description,
+    openGraph: {
+      // images: ['/some-specific-page-image.jpg', ...previousImages],
+    },
+  }
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko">
       <head>
-        <title>{data?.generalSettings?.title}</title>
-        <meta name="description" content={data?.generalSettings?.description} />
       </head>
       <body>
-        <header>
-          <div>
-            <h1>
-              <Link href="/">{data?.generalSettings?.title}</Link>
-            </h1>
-
-            <h5>{data?.generalSettings?.description}</h5>
-          </div>
-
-          <ul>
-            {data?.primaryMenuItems?.nodes.map((node) => (
-              <li key={node.id}>
-                <Link href={node.uri}>{node.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </header>
         {children}
       </body>
     </html>
