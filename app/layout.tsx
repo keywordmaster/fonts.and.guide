@@ -36,46 +36,37 @@ export default async function RootLayout({
     }
   `;
 
-  const { data, error } = await getClient().query<GetRootLayoutQuery>(
-    RootLayoutQuery,
-    {},
-  );
+  // const { data, error } = await getClient().query<GetRootLayoutQuery>(
+  //   RootLayoutQuery,
+  //   {},
+  // );
 
   return (
     <html lang="ko">
-      {data ? (
-        <>
-          <head>
-            <title>{data?.generalSettings?.title}</title>
-            <meta
-              name="description"
-              content={data?.generalSettings?.description}
-            />
-          </head>
-          <body>
-            <header>
-              <div>
-                <h1>
-                  <Link href="/">{data?.generalSettings?.title}</Link>
-                </h1>
+      <head>
+        {/* <title>{data?.generalSettings?.title}</title>
+        <meta name="description" content={data?.generalSettings?.description} /> */}
+      </head>
+      <body>
+        <header>
+          <div>
+            <h1>
+              {/* <Link href="/">{data?.generalSettings?.title}</Link> */}
+            </h1>
 
-                <h5>{data?.generalSettings?.description}</h5>
-              </div>
+            {/* <h5>{data?.generalSettings?.description}</h5> */}
+          </div>
 
-              <ul>
-                {data?.primaryMenuItems?.nodes.map((node) => (
-                  <li key={node.id}>
-                    <Link href={node.uri}>{node.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </header>
-            {children}
-          </body>
-        </>
-      ) : (
-        JSON.stringify(error)
-      )}
+          <ul>
+            {/* {data?.primaryMenuItems?.nodes.map((node) => (
+              <li key={node.id}>
+                <Link href={node.uri}>{node.label}</Link>
+              </li>
+            ))} */}
+          </ul>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
