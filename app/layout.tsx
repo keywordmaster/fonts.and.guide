@@ -46,6 +46,7 @@ export default async function RootLayout({
       <head>
         <title>{data?.generalSettings?.title}</title>
         <meta name="description" content={data?.generalSettings?.description} />
+        <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
         <header>
