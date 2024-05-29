@@ -13,7 +13,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const RootLayoutQuery = gql`
+  const rootLayoutQuery = gql`
     query GetRootLayout {
       generalSettings {
         title
@@ -37,7 +37,7 @@ export default async function RootLayout({
   `;
 
   const { data, error } = await getClient().query<GetRootLayoutQuery>(
-    RootLayoutQuery,
+    rootLayoutQuery,
     {},
   );
 

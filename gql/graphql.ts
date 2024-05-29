@@ -11092,25 +11092,6 @@ export type GetContentNodeQuery = {
     | null;
 };
 
-export type GetCategoriesQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetCategoriesQuery = {
-  __typename: "RootQuery";
-  categories?: {
-    __typename: "RootQueryToCategoryConnection";
-    edges: Array<{
-      __typename: "RootQueryToCategoryConnectionEdge";
-      cursor?: string | null;
-      node: {
-        __typename: "Category";
-        id: string;
-        name?: string | null;
-        slug?: string | null;
-      };
-    }>;
-  } | null;
-};
-
 export type GetRootLayoutQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetRootLayoutQuery = {
@@ -11254,75 +11235,6 @@ export const GetContentNodeDocument = {
     },
   ],
 } as unknown as DocumentNode<GetContentNodeQuery, GetContentNodeQueryVariables>;
-export const GetCategoriesDocument = {
-  __meta__: { hash: "ac8cf90ea1979eb1668b61cdb6a9820f6955806f" },
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: { kind: "Name", value: "GetCategories" },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "Field", name: { kind: "Name", value: "__typename" } },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "categories" },
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "__typename" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "edges" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "__typename" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "cursor" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "node" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "__typename" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "id" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "name" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "slug" },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetCategoriesQuery, GetCategoriesQueryVariables>;
 export const GetRootLayoutDocument = {
   __meta__: { hash: "9994072cba892456c634ea5bd24d70950204e1a7" },
   kind: "Document",
