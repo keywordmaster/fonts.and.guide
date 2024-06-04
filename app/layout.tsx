@@ -6,7 +6,7 @@ import Link from "next/link";
 import { gql } from "urql/core";
 
 import { ModeToggle } from "@/components/mode-toggle";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
@@ -51,10 +51,12 @@ export default async function RootLayout({
         <meta name="robots" content="noindex, nofollow" />
       </head>
       <body>
-        <ThemeProvider attribute="class"
+        <ThemeProvider
+          attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange>
+          disableTransitionOnChange
+        >
           <header className="flex justify-between">
             <div>
               <h1>
