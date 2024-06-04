@@ -29,6 +29,6 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.mjs"
-  ],
+, "components/theme-provider.tss"  ],
   "exclude": ["node_modules"]
 }
