@@ -20,6 +20,7 @@ const makeClient = () => {
         Authorization: `Basic ${process.env.BASIC_AUTH}`,
       },
     },
+    preferGetMethod: "force"
   });
 };
 
