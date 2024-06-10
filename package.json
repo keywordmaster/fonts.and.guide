@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tooltip": "^1.0.7",
     "@urql/core": "^5.0.3",
     "@urql/exchange-persisted": "^4.3.0",
     "@urql/next": "^1.1.1",
@@ -19,7 +23,8 @@
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "urql": "^4.1.0"
+    "urql": "^4.1.0",
+    "vaul": "^0.9.1"
   },
   "scripts": {
     "dev": "next dev",

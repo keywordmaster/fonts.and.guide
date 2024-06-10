@@ -1,0 +1,59 @@
+export const runtime = "edge";
+
+import { gql } from "@urql/core";
+import { notFound } from "next/navigation";
+
+import { GetPostQuery } from "@/gql/graphql";
+import { getClient } from "@/lib/urql/client";
+import {
+  getBreadcrumbsByContentNode,
+  getContentByContentNode,
+} from "@/lib/utils";
+
+export default async function Page({
+  params: { uri },
+}: {
+  params: { uri: string[] };
+}) {
+  const { data } = await getClient().query<GetPostQuery>(
+    gql`
+      query GetPost($id: ID!) {
+        breadcrumbs: post(id: $id, idType: URI) {
+          categories {
+            nodes {
+              ancestors {
+                nodes {
+                  uri
+                  name
+                }
+              }
+            }
+          }
+        }
+        post(id: $id, idType: URI) {
+          __typename
+          title
+          content
+          date
+        }
+      }
+    `,
+    {
+      id: decodeURI(uri.reduce((acc, cur) => `${acc}/${cur}`)),
+    },
+  );
+
+  if (!data.post) {
+    notFound();
+  }
+
+  return (
+    <>
+      <h1>{data.post?.title}</h1>
+      <div className="overflow-x-scroll p-4 bg-muted/50">
+        <pre>{JSON.stringify(data.breadcrumbs)}</pre>
+      </div>
+      <article dangerouslySetInnerHTML={{ __html: data.post?.content }} />
+    </>
+  );
+}

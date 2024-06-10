@@ -3,21 +3,16 @@ export const runtime = "edge";
 import { gql } from "@urql/core";
 import Link from "next/link";
 
-import { GetPostsQuery } from "@/gql/graphql";
+import { GetFontfamiliesQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
 const postsQuery = gql`
-  query GetPosts {
-    posts(first: 100) {
+  query GetFontfamilies {
+    fontfamilies(first: 100) {
       nodes {
         id
         title
         uri
-        author {
-          node {
-            name
-          }
-        }
         slug
       }
     }
@@ -25,22 +20,19 @@ const postsQuery = gql`
 `;
 
 export default async function Home() {
-  const { data, error } = await getClient().query<GetPostsQuery>(
+  const { data, error } = await getClient().query<GetFontfamiliesQuery>(
     postsQuery,
     {},
   );
   return (
-    <main>
-      <h1>This is rendered as part of an RSC</h1>
-      <ul>
-        {data
-          ? data.posts.nodes.map((node) => (
+    <ul>
+      {data
+        ? data.fontfamilies.nodes.map((node) => (
             <Link key={node.id} href={node.uri} prefetch>
               <li key={node.id}>{node.title}</li>
             </Link>
           ))
-          : JSON.stringify(error)}
-      </ul>
-    </main>
+        : JSON.stringify(error)}
+    </ul>
   );
 }
