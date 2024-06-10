@@ -5,10 +5,6 @@ import { notFound } from "next/navigation";
 
 import { GetPageQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
-import {
-  getBreadcrumbsByContentNode,
-  getContentByContentNode,
-} from "@/lib/utils";
 
 export default async function Page({
   params: { uri },
