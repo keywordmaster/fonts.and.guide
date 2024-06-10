@@ -2,11 +2,12 @@ export const runtime = "edge";
 
 import "./globals.css";
 
-import Link from "next/link";
 import { gql } from "urql/core";
 
-import { ModeToggle } from "@/components/mode-toggle";
+import Header from "@/components/layout/header";
+import SideNav from "@/components/layout/side-nav";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
@@ -21,14 +22,15 @@ export default async function RootLayout({
         title
         description
       }
-      primaryMenuItems: menuItems(where: { location: PRIMARY }) {
+      primaryMenus: menuItems(where: { location: PRIMARY }) {
         nodes {
           id
           label
           uri
+          title # for Lucide Icon name
         }
       }
-      footerMenuItems: menuItems(where: { location: FOOTER }) {
+      footerMenus: menuItems(where: { location: FOOTER }) {
         nodes {
           id
           label
@@ -50,31 +52,31 @@ export default async function RootLayout({
         <meta name="description" content={data?.generalSettings?.description} />
         <meta name="robots" content="noindex, nofollow" />
       </head>
-      <body>
+      <body className="">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <header className="flex justify-between">
-            <div>
-              <h1>
-                <Link href="/">{data?.generalSettings?.title}</Link>
-              </h1>
-
-              <h5>{data?.generalSettings?.description}</h5>
+          <TooltipProvider>
+            <div className="grid h-screen w-full pl-[56px]">
+              <SideNav menus={data?.primaryMenus?.nodes} />
+              <div className="flex flex-col">
+                <Header title={data?.generalSettings?.title} />
+                <main className="max-w-[calc(100vw-56px)] p-4 flex-1">
+                  {children}
+                </main>
+                <footer className="flex border-t min-h-[56px] p-4">
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: `${data?.generalSettings?.title} © ${new Date().getFullYear()}`,
+                    }}
+                  ></p>
+                </footer>
+              </div>
             </div>
-            <ul className="flex items-center">
-              {data?.primaryMenuItems?.nodes.map((node) => (
-                <li key={node.id}>
-                  <Link href={node.uri}>{node.label}</Link>
-                </li>
-              ))}
-              <ModeToggle />
-            </ul>
-          </header>
-          {children}
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
