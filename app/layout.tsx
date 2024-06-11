@@ -49,7 +49,7 @@ export default async function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        <title>{data?.generalSettings?.title}</title>
+        <title dangerouslySetInnerHTML={{ __html: data?.generalSettings?.title }}></title>
         <meta name="description" content={data?.generalSettings?.description} />
         <meta name="robots" content="noindex, nofollow" />
         <Script
