@@ -15,6 +15,7 @@ export default async function Page({
     gql`
       query GetFontFamily($id: ID!) {
         breadcrumbs: fontfamily(id: $id, idType: URI) {
+          id
           __typename
         }
         fontfamily(id: $id, idType: URI) {

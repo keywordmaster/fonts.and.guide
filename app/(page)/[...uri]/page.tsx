@@ -16,6 +16,7 @@ export default async function Page({
     gql`
       query GetPage($id: ID!) {
         breadcrumbs: page(id: $id, idType: URI) {
+          id
           ancestors {
             nodes {
               id
