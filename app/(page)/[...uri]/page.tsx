@@ -18,6 +18,7 @@ export default async function Page({
         breadcrumbs: page(id: $id, idType: URI) {
           ancestors {
             nodes {
+              id
               uri
               ... on NodeWithTitle {
                 title
@@ -26,6 +27,7 @@ export default async function Page({
           }
         }
         page(id: $id, idType: URI) {
+          id
           title
           content
           date

@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { gql } from "@urql/core";
 import Link from "next/link";
 
@@ -17,6 +15,7 @@ export default async function Home() {
             uri
             author {
               node {
+                id
                 name
               }
             }

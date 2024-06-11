@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import "./globals.css";
 
 import Script from "next/script";
@@ -7,7 +5,7 @@ import { gql } from "urql/core";
 
 import Header from "@/components/layout/header";
 import SideNav from "@/components/layout/side-nav";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
@@ -20,6 +18,7 @@ export default async function RootLayout({
   const RootLayoutQuery = gql`
     query GetRootLayout {
       generalSettings {
+        id: __typename
         title
         description
       }
@@ -49,7 +48,9 @@ export default async function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        <title dangerouslySetInnerHTML={{ __html: data?.generalSettings?.title }}></title>
+        <title
+          dangerouslySetInnerHTML={{ __html: data?.generalSettings?.title }}
+        ></title>
         <meta name="description" content={data?.generalSettings?.description} />
         <meta name="robots" content="noindex, nofollow" />
         <Script

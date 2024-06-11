@@ -21,6 +21,7 @@ export default async function Page({
             nodes {
               ancestors {
                 nodes {
+                  id
                   uri
                   name
                 }
@@ -30,6 +31,7 @@ export default async function Page({
         }
         post(id: $id, idType: URI) {
           __typename
+          id
           title
           content
           date

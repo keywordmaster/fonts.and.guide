@@ -33,10 +33,10 @@ export default async function Page({ params: { uri } }) {
     <ul>
       {data
         ? data.posts.nodes.map((node) => (
-            <Link key={node.id} href={`/blog${node.uri}`} prefetch>
-              <li key={node.id}>{node.title}</li>
-            </Link>
-          ))
+          <Link key={node.id} href={`/blog${node.uri}`} prefetch>
+            <li key={node.id}>{node.title}</li>
+          </Link>
+        ))
         : JSON.stringify(error)}
     </ul>
   );

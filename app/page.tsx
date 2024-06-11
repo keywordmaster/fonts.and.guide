@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { gql } from "@urql/core";
 import Link from "next/link";
 

@@ -10,6 +10,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@urql/core": "^5.0.3",
+    "@urql/exchange-graphcache": "^7.1.1",
     "@urql/exchange-persisted": "^4.3.0",
     "@urql/next": "^1.1.1",
     "class-variance-authority": "^0.7.0",
