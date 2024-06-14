@@ -6,8 +6,11 @@ import { getClient } from "@/lib/urql/client";
 
 const postsQuery = gql`
   query GetFontfamilies {
+    __typename
     fontfamilies(first: 100) {
+      __typename
       nodes {
+        __typename
         id
         title
         uri
@@ -26,10 +29,10 @@ export default async function Home() {
     <ul>
       {data
         ? data.fontfamilies.nodes.map((node) => (
-            <Link key={node.id} href={node.uri} prefetch>
-              <li key={node.id}>{node.title}</li>
-            </Link>
-          ))
+          <Link key={node.id} href={node.uri} prefetch>
+            <li key={node.id}>{node.title}</li>
+          </Link>
+        ))
         : JSON.stringify(error)}
     </ul>
   );

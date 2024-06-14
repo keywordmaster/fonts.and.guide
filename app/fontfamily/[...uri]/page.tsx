@@ -14,6 +14,7 @@ export default async function Page({
   const { data } = await getClient().query<GetFontFamilyQuery>(
     gql`
       query GetFontFamily($id: ID!) {
+        __typename
         breadcrumbs: fontfamily(id: $id, idType: URI) {
           id
           __typename

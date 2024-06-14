@@ -5,8 +5,7 @@ import { gql } from "urql/core";
 
 import Header from "@/components/layout/header";
 import SideNav from "@/components/layout/side-nav";
-import { ThemeProvider } from "@/components/provider/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { ClientProvider } from "@/components/provider";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
@@ -80,31 +79,24 @@ export default async function RootLayout({
         />
       </head>
       <body className="">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TooltipProvider>
-            <div className="grid h-screen w-full pl-[56px]">
-              <SideNav menus={data?.primaryMenus?.nodes} />
-              <div className="flex flex-col">
-                <Header title={data?.generalSettings?.title} />
-                <main className="max-w-[calc(100vw-56px)] p-4 flex-1">
-                  {children}
-                </main>
-                <footer className="flex border-t min-h-[56px] p-4">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: `${data?.generalSettings?.title} © ${new Date().getFullYear()}`,
-                    }}
-                  ></p>
-                </footer>
-              </div>
+        <ClientProvider>
+          <div className="grid h-screen w-full pl-[56px]">
+            <SideNav menus={data?.primaryMenus?.nodes} />
+            <div className="flex flex-col">
+              <Header title={data?.generalSettings?.title} />
+              <main className="max-w-[calc(100vw-56px)] p-4 flex-1">
+                {children}
+              </main>
+              <footer className="flex border-t min-h-[56px] p-4">
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `${data?.generalSettings?.title} © ${new Date().getFullYear()}`,
+                  }}
+                ></p>
+              </footer>
             </div>
-          </TooltipProvider>
-        </ThemeProvider>
+          </div>
+        </ClientProvider>
       </body>
     </html>
   );
