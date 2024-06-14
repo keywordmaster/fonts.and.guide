@@ -12,6 +12,7 @@ const makeClient = () => {
         keys: {
           Post: (data) => data.id as string,
           Fontfamily: (data) => data.id as string,
+          RootQueryToFontfamilyConnectionEdge: (data) => data.__typename,
           RootQueryToFontfamilyConnection: () => null,
           pageInfo: () => null, // or your own keying function
         },
