@@ -26,6 +26,7 @@ export default async function Page({
           uri
           content
           date
+          modified
         }
       }
     `,
@@ -42,7 +43,7 @@ export default async function Page({
     <>
       <h1>{data.fontfamily?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/10">
-        <pre>{JSON.stringify(data.breadcrumbs)}</pre>
+        <pre>{JSON.stringify(data.fontfamily.modified)}</pre>
       </div>
       <article dangerouslySetInnerHTML={{ __html: data.fontfamily.content }} />
     </>
