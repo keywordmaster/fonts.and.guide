@@ -3,11 +3,11 @@ export const runtime = "edge";
 import { gql } from "@urql/core";
 import Link from "next/link";
 
-import { GetPostsQuery } from "@/gql/graphql";
+import { GetPostsByCategoryQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
 export default async function Page({ params: { uri } }) {
-  const { data, error } = await getClient().query<GetPostsQuery>(
+  const { data, error } = await getClient().query<GetPostsByCategoryQuery>(
     gql`
       query GetPostsByCategory($category: String!) {
         posts(first: 100, where: { categoryName: $category }) {
@@ -33,10 +33,10 @@ export default async function Page({ params: { uri } }) {
     <ul>
       {data
         ? data.posts.nodes.map((node) => (
-          <Link key={node.id} href={`/blog${node.uri}`} prefetch>
-            <li key={node.id}>{node.title}</li>
-          </Link>
-        ))
+            <Link key={node.id} href={`/blog${node.uri}`} prefetch>
+              <li key={node.id}>{node.title}</li>
+            </Link>
+          ))
         : JSON.stringify(error)}
     </ul>
   );

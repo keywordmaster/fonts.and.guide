@@ -9,6 +9,8 @@ import { ClientProvider } from "@/components/provider";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
+import AnalyticsScripts from "./_components/analytics-script";
+
 export default async function RootLayout({
   children,
 }: {
@@ -52,31 +54,7 @@ export default async function RootLayout({
         ></title>
         <meta name="description" content={data?.generalSettings?.description} />
         <meta name="robots" content="noindex, nofollow" />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-K2NEKBNEHP"
-        />
-        <Script id="ga" strategy="lazyOnload">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-K2NEKBNEHP');
-            `}
-        </Script>
-        <Script
-          id="msc"
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "mrco71ybro");
-          `,
-          }}
-        />
+        <AnalyticsScripts />
       </head>
       <body className="">
         <ClientProvider>

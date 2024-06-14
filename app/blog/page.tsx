@@ -4,32 +4,47 @@ import Link from "next/link";
 import { GetPostsQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
-export default async function Home() {
+export default async function Home({
+  params: { uri },
+}: {
+  params: { uri: string[] };
+}) {
   const { data, error } = await getClient().query<GetPostsQuery>(
     gql`
-      query GetPosts {
-        posts(first: 100) {
-          nodes {
-            id
-            title
-            uri
-            author {
-              node {
-                id
-                name
+      query GetPosts($first: Int!, $after: String) {
+        posts(first: $first, after: $after) {
+          edges {
+            node {
+              id
+              title
+              uri
+              author {
+                node {
+                  id
+                  name
+                }
               }
+              slug
             }
-            slug
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
           }
         }
       }
     `,
-    {},
+    {
+      first: 2,
+      after: null,
+    },
   );
   return (
     <ul>
       {data
-        ? data.posts.nodes.map((node) => (
+        ? data.posts.edges.map(({ node }) => (
             <Link key={node.id} href={`/blog${node.uri}`} prefetch>
               <li key={node.id}>{node.title}</li>
             </Link>

@@ -4,16 +4,14 @@ import { relayPagination } from "@urql/exchange-graphcache/extras";
 import { persistedExchange } from "@urql/exchange-persisted";
 import { registerUrql } from "@urql/next/rsc";
 
+import * as AllType from "@/gql/graphql";
+
 const makeClient = () => {
   return createClient({
     url: process.env.WORDPRESS_ENDPOINT,
     exchanges: [
       cacheExchange({
-        keys: {
-          Post: (data) => data.id as string,
-          Fontfamily: (data) => data.id as string + data.modefied as string,
-          pageInfo: () => null, // or your own keying function
-        },
+        ...AllType,
         resolvers: {
           Query: {
             GetFontfamilies: relayPagination(),
