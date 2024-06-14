@@ -10,11 +10,6 @@ const makeClient = () => {
     exchanges: [
       cacheExchange({
         keys: {
-          Post: (data) => data.id as string,
-          Fontfamily: (data) => data.id as string,
-          // @ts-ignore
-          RootQueryToFontfamilyConnectionEdge: (data) => data.__typename + ":" + data.node.id,
-          RootQueryToFontfamilyConnection: () => null,
           pageInfo: () => null, // or your own keying function
         },
         resolvers: {
