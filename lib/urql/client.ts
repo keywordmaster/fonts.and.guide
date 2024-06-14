@@ -11,7 +11,7 @@ const makeClient = () => {
       cacheExchange({
         keys: {
           Post: (data) => data.id as string,
-          Fontfamily: (data) => data.id as string,
+          Fontfamily: (data) => data.id as string + data.date,
           pageInfo: () => null, // or your own keying function
         },
         resolvers: {
