@@ -20,6 +20,7 @@ export default async function Page({
           id
           categories {
             nodes {
+              id
               ancestors {
                 nodes {
                   id
