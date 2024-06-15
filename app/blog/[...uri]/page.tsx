@@ -1,3 +1,5 @@
+import BreadcrumbsWithSchema from "@/components/layout/breadcrumbs-with-schema";
+
 export const runtime = "edge";
 
 import { gql } from "@urql/core";
@@ -23,6 +25,7 @@ export default async function Page({
                   name
                 }
               }
+              slug
             }
           }
         }
@@ -45,6 +48,13 @@ export default async function Page({
 
   return (
     <>
+      <BreadcrumbsWithSchema
+        pathMetaData={[
+          ["/", "Home"],
+          ["/부모페이지", "부모페이지"],
+          ["/child", "CHILD"],
+        ]}
+      />
       <h1>{data.post?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/50">
         <pre>{JSON.stringify(data.breadcrumbs)}</pre>
