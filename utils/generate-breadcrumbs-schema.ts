@@ -2,7 +2,7 @@ import { BreadcrumbItem } from "react-breadcrumbs-jsonld";
 
 const GenerateBreadcrumbsSchema = (
   pathMetaData: [string, string][],
-  baseURL = process.env.PRODUCT_URL,
+  baseURL = "https://example.com",
 ): BreadcrumbItem[] => {
   return pathMetaData.map(([path, name]) => ({
     url: `${baseURL}${path}`,
