@@ -30,4 +30,5 @@ const AnalyticsScripts: React.FC = () =>
       />
     </>
   );
+
 export default AnalyticsScripts;

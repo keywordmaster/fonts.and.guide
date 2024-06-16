@@ -37,7 +37,7 @@ export default async function Home({
       }
     `,
     {
-      first: 2,
+      first: 20,
       after: null,
     },
   );
@@ -45,9 +45,11 @@ export default async function Home({
     <ul>
       {data
         ? data.posts.edges.map(({ node }) => (
-            <Link key={node.id} href={`/blog${node.uri}`} prefetch>
-              <li key={node.id}>{node.title}</li>
-            </Link>
+            <li key={node.id}>
+              <Link key={node.id} href={`/blog${node.uri}`} prefetch>
+                {node.title}
+              </Link>
+            </li>
           ))
         : JSON.stringify(error)}
     </ul>

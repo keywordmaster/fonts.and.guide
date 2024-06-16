@@ -1,15 +1,13 @@
 import "./globals.css";
 
-import Script from "next/script";
 import { gql } from "urql/core";
 
+import AnalyticsScripts from "@/components/analytics-script";
 import Header from "@/components/layout/header";
 import SideNav from "@/components/layout/side-nav";
 import { ClientProvider } from "@/components/provider";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
-
-import AnalyticsScripts from "./_components/analytics-script";
 
 export default async function RootLayout({
   children,

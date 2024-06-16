@@ -248,6 +248,7 @@ export type CategoryConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -300,6 +301,7 @@ export type CategoryToAncestorsCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the Category type and the category type */
@@ -337,6 +339,7 @@ export type CategoryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CategoryToCategoryConnection connection */
@@ -421,6 +424,7 @@ export type CategoryToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the CategoryToContentNodeConnection connection */
@@ -510,6 +514,7 @@ export type CategoryToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CategoryToPostConnection connection */
@@ -733,6 +738,7 @@ export type CommentConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single comment node. Default is "ID". To be used along with the "id" field. */
@@ -790,6 +796,7 @@ export type CommentToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CommentToCommentConnection connection */
@@ -1245,6 +1252,7 @@ export type ContentNodeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -1328,6 +1336,7 @@ export type ContentNodeToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the ContentNode type and the EnqueuedStylesheet type */
@@ -1366,6 +1375,7 @@ export type ContentNodeToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** The template assigned to a node of content */
@@ -1494,6 +1504,7 @@ export type ContentTypeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Allowed Content Types */
@@ -1554,6 +1565,7 @@ export type ContentTypeToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the ContentTypeToContentNodeConnection connection */
@@ -1632,6 +1644,7 @@ export type ContentTypeToTaxonomyConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Allowed Content Types of the Category taxonomy. */
@@ -8056,6 +8069,7 @@ export type EnqueuedScriptConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Stylesheet enqueued by the CMS */
@@ -8130,6 +8144,7 @@ export type EnqueuedStylesheetConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The fontCategory type */
@@ -8284,6 +8299,7 @@ export type FontCategoryConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -8336,6 +8352,7 @@ export type FontCategoryToAncestorsFontCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the FontCategory type and the ContentNode type */
@@ -8375,6 +8392,7 @@ export type FontCategoryToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the FontCategoryToContentNodeConnection connection */
@@ -8454,6 +8472,7 @@ export type FontCategoryToFontCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the FontCategoryToFontCategoryConnection connection */
@@ -8538,6 +8557,7 @@ export type FontCategoryToFontfamilyConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the FontCategoryToFontfamilyConnection connection */
@@ -8843,6 +8863,7 @@ export type FontfamilyConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Fontfamily Block Type */
@@ -8934,6 +8955,7 @@ export type FontfamilyToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the FontfamilyToCommentConnection connection */
@@ -9034,6 +9056,7 @@ export type FontfamilyToFontCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the FontfamilyToFontCategoryConnection connection */
@@ -9129,6 +9152,7 @@ export type FontfamilyToRevisionConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the FontfamilyToRevisionConnection connection */
@@ -9205,6 +9229,7 @@ export type FontfamilyToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the FontfamilyToTermNodeConnection connection */
@@ -9483,6 +9508,7 @@ export type GraphqlDocumentConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Set relationships between the graphqlDocument to graphqlDocumentGroups */
@@ -9629,6 +9655,7 @@ export type GraphqlDocumentGroupConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -9682,6 +9709,7 @@ export type GraphqlDocumentGroupToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentGroupToContentNodeConnection connection */
@@ -9763,6 +9791,7 @@ export type GraphqlDocumentGroupToGraphqlDocumentConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentGroupToGraphqlDocumentConnection connection */
@@ -9863,6 +9892,7 @@ export type GraphqlDocumentToGraphqlDocumentGroupConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentToGraphqlDocumentGroupConnection connection */
@@ -9960,6 +9990,7 @@ export type GraphqlDocumentToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the GraphqlDocumentToTermNodeConnection connection */
@@ -10157,6 +10188,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeAncestorsConnection connection */
@@ -10238,6 +10270,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeChildrenConnection connection */
@@ -10627,6 +10660,7 @@ export type MediaItemConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -10735,6 +10769,7 @@ export type MediaItemToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MediaItemToCommentConnection connection */
@@ -10882,6 +10917,7 @@ export type MenuConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Navigation menu items are the individual items assigned to a menu. These are rendered as the links in a navigation menu. */
@@ -10975,6 +11011,7 @@ export type MenuItemConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Nodes that can be linked to as Menu Items */
@@ -11071,6 +11108,7 @@ export type MenuItemToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MenuItemToMenuItemConnection connection */
@@ -11153,6 +11191,7 @@ export type MenuToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MenuToMenuItemConnection connection */
@@ -11799,6 +11838,7 @@ export type PageConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Page Block Type */
@@ -11880,6 +11920,7 @@ export type PageToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PageToCommentConnection connection */
@@ -11990,6 +12031,7 @@ export type PageToRevisionConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PageToRevisionConnection connection */
@@ -12090,6 +12132,7 @@ export type PluginConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The status of the WordPress plugin. */
@@ -12389,6 +12432,7 @@ export type PostConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Post Block Type */
@@ -12535,6 +12579,7 @@ export type PostFormatConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -12587,6 +12632,7 @@ export type PostFormatToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the PostFormatToContentNodeConnection connection */
@@ -12665,6 +12711,7 @@ export type PostFormatToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostFormatToPostConnection connection */
@@ -12910,6 +12957,7 @@ export type PostToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToCategoryConnection connection */
@@ -12993,6 +13041,7 @@ export type PostToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToCommentConnection connection */
@@ -13092,6 +13141,7 @@ export type PostToPostFormatConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToPostFormatConnection connection */
@@ -13186,6 +13236,7 @@ export type PostToRevisionConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToRevisionConnection connection */
@@ -13290,6 +13341,7 @@ export type PostToTagConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToTagConnection connection */
@@ -13373,6 +13425,7 @@ export type PostToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToTermNodeConnection connection */
@@ -14470,6 +14523,7 @@ export type RootQueryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToCategoryConnection connection */
@@ -14553,6 +14607,7 @@ export type RootQueryToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToCommentConnection connection */
@@ -14653,6 +14708,7 @@ export type RootQueryToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToContentNodeConnection connection */
@@ -14732,6 +14788,7 @@ export type RootQueryToContentTypeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the RootQuery type and the EnqueuedScript type */
@@ -14770,6 +14827,7 @@ export type RootQueryToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the RootQuery type and the EnqueuedStylesheet type */
@@ -14808,6 +14866,7 @@ export type RootQueryToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the RootQuery type and the fontCategory type */
@@ -14846,6 +14905,7 @@ export type RootQueryToFontCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToFontCategoryConnection connection */
@@ -14930,6 +14990,7 @@ export type RootQueryToFontfamilyConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToFontfamilyConnection connection */
@@ -15007,6 +15068,7 @@ export type RootQueryToGraphqlDocumentConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToGraphqlDocumentConnection connection */
@@ -15084,6 +15146,7 @@ export type RootQueryToGraphqlDocumentGroupConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToGraphqlDocumentGroupConnection connection */
@@ -15168,6 +15231,7 @@ export type RootQueryToMediaItemConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToMediaItemConnection connection */
@@ -15252,6 +15316,7 @@ export type RootQueryToMenuConnectionPageInfo = MenuConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToMenuConnection connection */
@@ -15299,6 +15364,7 @@ export type RootQueryToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToMenuItemConnection connection */
@@ -15348,6 +15414,7 @@ export type RootQueryToPageConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPageConnection connection */
@@ -15432,6 +15499,7 @@ export type RootQueryToPluginConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPluginConnection connection */
@@ -15479,6 +15547,7 @@ export type RootQueryToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPostConnection connection */
@@ -15583,6 +15652,7 @@ export type RootQueryToPostFormatConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPostFormatConnection connection */
@@ -15667,6 +15737,7 @@ export type RootQueryToRevisionsConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToRevisionsConnection connection */
@@ -15745,6 +15816,7 @@ export type RootQueryToTagConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToTagConnection connection */
@@ -15828,6 +15900,7 @@ export type RootQueryToTaxonomyConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Connection between the RootQuery type and the TermNode type */
@@ -15865,6 +15938,7 @@ export type RootQueryToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToTermNodeConnection connection */
@@ -15950,6 +16024,7 @@ export type RootQueryToThemeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Connection between the RootQuery type and the User type */
@@ -15987,6 +16062,7 @@ export type RootQueryToUserConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToUserConnection connection */
@@ -16060,6 +16136,7 @@ export type RootQueryToUserRoleConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** The strategy to use when loading the script */
@@ -16256,6 +16333,7 @@ export type TagConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -16307,6 +16385,7 @@ export type TagToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the TagToContentNodeConnection connection */
@@ -16385,6 +16464,7 @@ export type TagToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the TagToPostConnection connection */
@@ -16588,6 +16668,7 @@ export type TaxonomyConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Allowed taxonomies */
@@ -16648,6 +16729,7 @@ export type TaxonomyToContentTypeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the Taxonomy type and the TermNode type */
@@ -16685,6 +16767,7 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** The template assigned to the node */
@@ -16804,6 +16887,7 @@ export type TermNodeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is "ID". To be used along with the "id" field. */
@@ -16856,6 +16940,7 @@ export type TermNodeToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the TermNode type and the EnqueuedStylesheet type */
@@ -16894,6 +16979,7 @@ export type TermNodeToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Options for ordering the connection by */
@@ -16969,6 +17055,7 @@ export type ThemeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Any node that has a URI */
@@ -17676,6 +17763,7 @@ export type UserConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single User node. To be used along with the "id" field. Default is "ID". */
@@ -17737,6 +17825,7 @@ export type UserRoleConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Names of available user roles */
@@ -17788,6 +17877,7 @@ export type UserToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToCommentConnection connection */
@@ -17888,6 +17978,7 @@ export type UserToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the User type and the EnqueuedStylesheet type */
@@ -17926,6 +18017,7 @@ export type UserToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the User type and the mediaItem type */
@@ -17963,6 +18055,7 @@ export type UserToMediaItemConnectionPageInfo = MediaItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToMediaItemConnection connection */
@@ -18047,6 +18140,7 @@ export type UserToPageConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToPageConnection connection */
@@ -18131,6 +18225,7 @@ export type UserToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToPostConnection connection */
@@ -18235,6 +18330,7 @@ export type UserToRevisionsConnectionPageInfo = ContentNodeConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToRevisionsConnection connection */
@@ -18313,6 +18409,7 @@ export type UserToUserRoleConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Field to order the connection by */
@@ -18367,6 +18464,7 @@ export type WpPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The writing setting type */
@@ -18543,6 +18641,13 @@ export type GetPostsQuery = {
         } | null;
       };
     }>;
+    pageInfo: {
+      __typename: "RootQueryToPostConnectionPageInfo";
+      endCursor?: string | null;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+    };
   } | null;
 };
 
@@ -19144,7 +19249,7 @@ export const GetPostsByCategoryDocument = {
   GetPostsByCategoryQueryVariables
 >;
 export const GetPostsDocument = {
-  __meta__: { hash: "6739f90f47248b13a250609c9d00e9a39245b77c" },
+  __meta__: { hash: "1e251e2dfda455a0aea2b26c9ea4540ba781c809" },
   kind: "Document",
   definitions: [
     {
@@ -19276,6 +19381,35 @@ export const GetPostsDocument = {
                             },
                           ],
                         },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "endCursor" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasNextPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasPreviousPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "startCursor" },
                       },
                     ],
                   },
