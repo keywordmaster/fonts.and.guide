@@ -2,68 +2,169 @@
 
 import { gql, useQuery } from "@urql/next";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import { GetFontfamiliesClientQuery } from "@/gql/graphql";
+import { Button } from "@/components/ui/button";
+import {
+  GetFontfamiliesClientQuery,
+  OrderEnum,
+  PostObjectsConnectionOrderbyEnum,
+  TaxonomyEnum,
+  TaxQueryField,
+} from "@/gql/graphql";
 
-const FontfamilyList: React.FC = () => {
+import FontfamilyFilter from "./fontfamily-filter";
+import SortOrderSetter from "./sort-order";
+
+interface Props {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
+  const router = useRouter();
   const [after, setAfter] = useState<string>();
 
-  const [{ data, error, stale }] = useQuery<GetFontfamiliesClientQuery>({
+  // TODO: 텀 종류 추가될 때마다 추가
+  const isFiltered = ["font-category"].some((key) =>
+    Object.keys(searchParams).includes(key),
+  );
+
+  const sanitizeSearchParams = (validator, searchParams, key: string) => {
+    if (Object.values(validator).includes(searchParams[key])) {
+      return searchParams[key];
+    }
+
+    // TODO: canonical URL 확인, 리다이렉트? 서치파람 제거?
+    return null;
+  };
+
+  const field =
+    sanitizeSearchParams(
+      PostObjectsConnectionOrderbyEnum,
+      searchParams,
+      "field",
+    ) || PostObjectsConnectionOrderbyEnum.Title;
+  const order =
+    sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Asc;
+  // TODO: 텀 종류만큼 어레이 채우기
+  const filters = isFiltered
+    ? [
+        {
+          field: TaxQueryField.Slug,
+          // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
+          terms: (searchParams["font-category"] as string)?.split(","),
+          includeChildren: true,
+          taxonomy: TaxonomyEnum.Fontcategory,
+        },
+      ]
+    : [];
+
+  const [{ data, error }] = useQuery<GetFontfamiliesClientQuery>({
     query: gql`
-      query GetFontfamiliesClient($first: Int!, $after: String) {
-        __typename
-        fontfamilies(first: $first, after: $after) {
-          __typename
+      query GetFontfamiliesClient(
+        $field: PostObjectsConnectionOrderbyEnum!
+        $order: OrderEnum!
+        $filters: [TaxArray]
+      ) {
+        fontfamilies(
+          first: 1000
+          where: {
+            orderby: { field: $field, order: $order }
+            taxQuery: { taxArray: $filters }
+          }
+        ) {
           edges {
-            __typename
             node {
-              __typename
               id
               title
               uri
-              slug
+              content
+              modified
+              commentCount
+              featuredImage {
+                node {
+                  srcSet
+                }
+              }
             }
           }
           pageInfo {
+            total
             endCursor
             hasNextPage
             hasPreviousPage
             startCursor
           }
         }
+        total: fontfamilies {
+          pageInfo {
+            total
+          }
+        }
+        fontCategory: terms(where: { taxonomies: [FONTCATEGORY] }) {
+          nodes {
+            __typename
+            id
+            name
+            uri
+          }
+        }
+        fontVariants: terms(where: { taxonomies: [CATEGORY] }) {
+          nodes {
+            id
+            name
+            slug
+          }
+        }
       }
     `,
     variables: {
-      first: 2,
       after,
+      field,
+      order,
+      filters,
     },
     context: useMemo(() => ({ suspense: !after }), [after]),
   });
 
   return (
     <>
+      <div className="flex items-center justify-between gap-4">
+        <FontfamilyFilter
+          terms={{
+            [`${data.fontCategory.nodes[0].__typename}`]: data.fontCategory,
+          }}
+        />
+        <p className="text-sm text-zinc-700 border-y p-2 flex-1">
+          결과: {data.fontfamilies?.pageInfo.total} / 전체:{" "}
+          {data.total?.pageInfo.total}
+        </p>
+        <SortOrderSetter />
+      </div>
       <ul>
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
-              <Link key={node.id} href={node.uri} prefetch>
-                <li key={node.id}>{node.title}</li>
-              </Link>
+              <li key={node.id}>
+                <Link key={node.id} href={node.uri} prefetch>
+                  {node.title}
+                </Link>
+              </li>
             ))
           : JSON.stringify(error)}
       </ul>
-      <button
-        disabled={!data.fontfamilies?.pageInfo.hasNextPage}
+
+      <div className="overflow-scroll">
+        <pre>{JSON.stringify(data.fontCategory, null, 2)}</pre>
+      </div>
+
+      <Button
         onClick={() => {
-          if (!data.fontfamilies?.pageInfo.endCursor) {
-            throw new Error("Missing pagination cursor");
-          }
-          setAfter(data.fontfamilies.pageInfo.endCursor);
+          router.push("?font-category=serif,sans-serif");
         }}
-        className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-white disabled:focus-visible:ring disabled:focus-visible:ring-white disabled:focus-visible:ring-opacity-50"
       >
-        Load More
-      </button>
+        TEST Filter
+      </Button>
     </>
   );
 };

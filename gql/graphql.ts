@@ -18533,8 +18533,9 @@ export type GetPageQuery = {
 };
 
 export type GetFontfamiliesClientQueryVariables = Exact<{
-  first: Scalars["Int"]["input"];
-  after?: InputMaybe<Scalars["String"]["input"]>;
+  field: PostObjectsConnectionOrderbyEnum;
+  order: OrderEnum;
+  filters?: InputMaybe<Array<InputMaybe<TaxArray>> | InputMaybe<TaxArray>>;
 }>;
 
 export type GetFontfamiliesClientQuery = {
@@ -18548,16 +18549,100 @@ export type GetFontfamiliesClientQuery = {
         id: string;
         title?: string | null;
         uri?: string | null;
-        slug?: string | null;
+        content?: string | null;
+        modified?: string | null;
+        commentCount?: number | null;
+        featuredImage?: {
+          __typename: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+          node: { __typename: "MediaItem"; srcSet?: string | null };
+        } | null;
       };
     }>;
     pageInfo: {
       __typename: "RootQueryToFontfamilyConnectionPageInfo";
+      total?: number | null;
       endCursor?: string | null;
       hasNextPage: boolean;
       hasPreviousPage: boolean;
       startCursor?: string | null;
     };
+  } | null;
+  total?: {
+    __typename: "RootQueryToFontfamilyConnection";
+    pageInfo: {
+      __typename: "RootQueryToFontfamilyConnectionPageInfo";
+      total?: number | null;
+    };
+  } | null;
+  fontCategory?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+    >;
+  } | null;
+  fontVariants?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+    >;
   } | null;
 };
 
@@ -18838,7 +18923,7 @@ export const GetPageDocument = {
   ],
 } as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
 export const GetFontfamiliesClientDocument = {
-  __meta__: { hash: "39a23c12587bf8e6101e79d5bf38fc92d2b86613" },
+  __meta__: { hash: "ac9271cc3f5905f318cc738c82fc1e0423fb3ef1" },
   kind: "Document",
   definitions: [
     {
@@ -18850,20 +18935,43 @@ export const GetFontfamiliesClientDocument = {
           kind: "VariableDefinition",
           variable: {
             kind: "Variable",
-            name: { kind: "Name", value: "first" },
+            name: { kind: "Name", value: "field" },
           },
           type: {
             kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "Int" } },
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "PostObjectsConnectionOrderbyEnum" },
+            },
           },
         },
         {
           kind: "VariableDefinition",
           variable: {
             kind: "Variable",
-            name: { kind: "Name", value: "after" },
+            name: { kind: "Name", value: "order" },
           },
-          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "OrderEnum" },
+            },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "filters" },
+          },
+          type: {
+            kind: "ListType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "TaxArray" },
+            },
+          },
         },
       ],
       selectionSet: {
@@ -18877,17 +18985,57 @@ export const GetFontfamiliesClientDocument = {
               {
                 kind: "Argument",
                 name: { kind: "Name", value: "first" },
-                value: {
-                  kind: "Variable",
-                  name: { kind: "Name", value: "first" },
-                },
+                value: { kind: "IntValue", value: "1000" },
               },
               {
                 kind: "Argument",
-                name: { kind: "Name", value: "after" },
+                name: { kind: "Name", value: "where" },
                 value: {
-                  kind: "Variable",
-                  name: { kind: "Name", value: "after" },
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "field" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "field" },
+                            },
+                          },
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "order" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "order" },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxQuery" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "taxArray" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "filters" },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
                 },
               },
             ],
@@ -18929,7 +19077,51 @@ export const GetFontfamiliesClientDocument = {
                             },
                             {
                               kind: "Field",
-                              name: { kind: "Name", value: "slug" },
+                              name: { kind: "Name", value: "content" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "modified" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "commentCount" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "featuredImage" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "node" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "__typename",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "srcSet",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
                             },
                           ],
                         },
@@ -18947,6 +19139,7 @@ export const GetFontfamiliesClientDocument = {
                         kind: "Field",
                         name: { kind: "Name", value: "__typename" },
                       },
+                      { kind: "Field", name: { kind: "Name", value: "total" } },
                       {
                         kind: "Field",
                         name: { kind: "Name", value: "endCursor" },
@@ -18963,6 +19156,123 @@ export const GetFontfamiliesClientDocument = {
                         kind: "Field",
                         name: { kind: "Name", value: "startCursor" },
                       },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "total" },
+            name: { kind: "Name", value: "fontfamilies" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "total" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontCategory" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTCATEGORY" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontVariants" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "CATEGORY" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
                     ],
                   },
                 },
