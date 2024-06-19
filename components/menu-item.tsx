@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Icon } from "@/components/icon";
+import Icon, { isIconName } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -16,8 +16,10 @@ interface Props {
 }
 
 const MenuItem: React.FC<Props> = ({ menu, isCurrent }) => {
-  const iconName = menu.title?.charAt(0).toUpperCase() + menu.title?.slice(1);
-  const MenuIcon = Icon[iconName] || Icon.MessageCircleDashedIcon;
+  const iconName =
+    menu.title?.length > 0 && isIconName(menu.title)
+      ? menu.title
+      : "message-circle-dashed";
 
   return (
     <Tooltip>
@@ -32,7 +34,7 @@ const MenuItem: React.FC<Props> = ({ menu, isCurrent }) => {
             )}
             aria-label={menu.label || "레이블"}
           >
-            <MenuIcon className="size-6" />
+            <Icon name={`${iconName}`} className="size-6" />
           </Button>
         </Link>
       </TooltipTrigger>

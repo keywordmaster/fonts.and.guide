@@ -1,10 +1,9 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
-import { Icon } from "@/components/icon";
+import Icon from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -62,7 +61,10 @@ const SortOrderSetter: React.FC = () => {
                 (field) => field.value === searchParams.get("field"),
               )?.label // TODO: 기본값 가나다로 반영 필요
             : "Select..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <Icon
+            name="chevrons-up-down"
+            className="ml-2 h-4 w-4 shrink-0 opacity-50"
+          />
         </Button>
       </PopoverTrigger>
       <Button
@@ -84,9 +86,15 @@ const SortOrderSetter: React.FC = () => {
         {
           // TODO: 기본값 Asc로 반영 필요
           isAsc ? (
-            <Icon.SortAsc className="size-5" />
+            <Icon
+              name="arrow-up-narrow-wide"
+              className="size-5 transition-shadow"
+            />
           ) : (
-            <Icon.SortDesc className="size-5" />
+            <Icon
+              name="arrow-down-wide-narrow"
+              className="size-5 transition-all"
+            />
           )
         }
       </Button>
@@ -108,7 +116,7 @@ const SortOrderSetter: React.FC = () => {
             )}
           >
             {field.label}
-            {value === field.value && <Check className="size-4" />}
+            {value === field.value && <Icon name="check" className="size-4" />}
           </Button>
         ))}
       </PopoverContent>
