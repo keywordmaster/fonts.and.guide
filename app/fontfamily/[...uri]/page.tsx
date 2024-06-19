@@ -14,7 +14,9 @@ export default async function Page({
   const { data } = await getClient().query<GetFontFamilyQuery>(
     gql`
       query GetFontFamily($id: ID!) {
+        __typename
         breadcrumbs: fontfamily(id: $id, idType: URI) {
+          id
           __typename
         }
         fontfamily(id: $id, idType: URI) {
@@ -23,6 +25,8 @@ export default async function Page({
           title
           uri
           content
+          date
+          modified
         }
       }
     `,
@@ -39,7 +43,7 @@ export default async function Page({
     <>
       <h1>{data.fontfamily?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/10">
-        <pre>{JSON.stringify(data.breadcrumbs)}</pre>
+        <pre>{JSON.stringify(data.fontfamily.modified)}</pre>
       </div>
       <article dangerouslySetInnerHTML={{ __html: data.fontfamily.content }} />
     </>

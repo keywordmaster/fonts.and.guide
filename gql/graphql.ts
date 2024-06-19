@@ -248,6 +248,7 @@ export type CategoryConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -300,6 +301,7 @@ export type CategoryToAncestorsCategoryConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the Category type and the category type */
@@ -337,6 +339,7 @@ export type CategoryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CategoryToCategoryConnection connection */
@@ -421,6 +424,7 @@ export type CategoryToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the CategoryToContentNodeConnection connection */
@@ -459,6 +463,7 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -509,6 +514,7 @@ export type CategoryToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CategoryToPostConnection connection */
@@ -573,6 +579,7 @@ export type CategoryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -731,6 +738,7 @@ export type CommentConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single comment node. Default is "ID". To be used along with the "id" field. */
@@ -788,6 +796,7 @@ export type CommentToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the CommentToCommentConnection connection */
@@ -1243,6 +1252,7 @@ export type ContentNodeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -1326,6 +1336,7 @@ export type ContentNodeToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the ContentNode type and the EnqueuedStylesheet type */
@@ -1364,6 +1375,7 @@ export type ContentNodeToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** The template assigned to a node of content */
@@ -1492,6 +1504,7 @@ export type ContentTypeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Allowed Content Types */
@@ -1552,6 +1565,7 @@ export type ContentTypeToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the ContentTypeToContentNodeConnection connection */
@@ -1590,6 +1604,7 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -1629,12 +1644,19 @@ export type ContentTypeToTaxonomyConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Allowed Content Types of the Category taxonomy. */
 export enum ContentTypesOfCategoryEnum {
   /** The Type of Content object */
   Post = "POST",
+}
+
+/** Allowed Content Types of the FontCategory taxonomy. */
+export enum ContentTypesOfFontCategoryEnum {
+  /** The Type of Content object */
+  Fontfamily = "FONTFAMILY",
 }
 
 /** Allowed Content Types of the GraphqlDocumentGroup taxonomy. */
@@ -7269,6 +7291,31 @@ export type CreateCommentPayload = {
   success?: Maybe<Scalars["Boolean"]["output"]>;
 };
 
+/** Input for the createFontCategory mutation. */
+export type CreateFontCategoryInput = {
+  /** The slug that the font-category will be an alias of */
+  aliasOf?: InputMaybe<Scalars["String"]["input"]>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** The description of the font-category object */
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  /** The name of the font-category object to mutate */
+  name: Scalars["String"]["input"];
+  /** The ID of the font-category that should be set as the parent */
+  parentId?: InputMaybe<Scalars["ID"]["input"]>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the createFontCategory mutation. */
+export type CreateFontCategoryPayload = {
+  __typename?: "CreateFontCategoryPayload";
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** The created font-category */
+  fontCategory?: Maybe<FontCategory>;
+};
+
 /** Input for the createFontfamily mutation. */
 export type CreateFontfamilyInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -7281,6 +7328,8 @@ export type CreateFontfamilyInput = {
   date?: InputMaybe<Scalars["String"]["input"]>;
   /** The excerpt of the object */
   excerpt?: InputMaybe<Scalars["String"]["input"]>;
+  /** Set connections between the fontfamily and fontCategories */
+  fontCategories?: InputMaybe<FontfamilyFontCategoriesInput>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
   menuOrder?: InputMaybe<Scalars["Int"]["input"]>;
   /** The password used to protect the content of the object */
@@ -7677,6 +7726,25 @@ export type DeleteCommentPayload = {
   deletedId?: Maybe<Scalars["ID"]["output"]>;
 };
 
+/** Input for the deleteFontCategory mutation. */
+export type DeleteFontCategoryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** The ID of the fontCategory to delete */
+  id: Scalars["ID"]["input"];
+};
+
+/** The payload for the deleteFontCategory mutation. */
+export type DeleteFontCategoryPayload = {
+  __typename?: "DeleteFontCategoryPayload";
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars["ID"]["output"]>;
+  /** The deleted term object */
+  fontCategory?: Maybe<FontCategory>;
+};
+
 /** Input for the deleteFontfamily mutation. */
 export type DeleteFontfamilyInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -8001,6 +8069,7 @@ export type EnqueuedScriptConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Stylesheet enqueued by the CMS */
@@ -8075,7 +8144,482 @@ export type EnqueuedStylesheetConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
+
+/** The fontCategory type */
+export type FontCategory = DatabaseIdentifier &
+  HierarchicalNode &
+  HierarchicalTermNode &
+  MenuItemLinkable &
+  Node &
+  TermNode &
+  UniformResourceIdentifiable & {
+    __typename?: "FontCategory";
+    /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+    ancestors?: Maybe<FontCategoryToAncestorsFontCategoryConnection>;
+    /** Connection between the fontCategory type and its children fontCategories. */
+    children?: Maybe<FontCategoryToFontCategoryConnection>;
+    /** @deprecated Deprecated in favor of using Next.js pages */
+    conditionalTags?: Maybe<ConditionalTags>;
+    /** Connection between the FontCategory type and the ContentNode type */
+    contentNodes?: Maybe<FontCategoryToContentNodeConnection>;
+    /** The number of objects connected to the object */
+    count?: Maybe<Scalars["Int"]["output"]>;
+    /** The unique identifier stored in the database */
+    databaseId: Scalars["Int"]["output"];
+    /** The description of the object */
+    description?: Maybe<Scalars["String"]["output"]>;
+    /** Connection between the TermNode type and the EnqueuedScript type */
+    enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+    /** Connection between the TermNode type and the EnqueuedStylesheet type */
+    enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+    /**
+     * The id field matches the WP_Post-&gt;ID field.
+     * @deprecated Deprecated in favor of databaseId
+     */
+    fontCategoryId?: Maybe<Scalars["Int"]["output"]>;
+    /** Connection between the FontCategory type and the fontfamily type */
+    fontfamilies?: Maybe<FontCategoryToFontfamilyConnection>;
+    /** The globally unique ID for the object */
+    id: Scalars["ID"]["output"];
+    /** Whether the node is a Comment */
+    isComment: Scalars["Boolean"]["output"];
+    /** Whether the node is a Content Node */
+    isContentNode: Scalars["Boolean"]["output"];
+    /** Whether the node represents the front page. */
+    isFrontPage: Scalars["Boolean"]["output"];
+    /** Whether  the node represents the blog page. */
+    isPostsPage: Scalars["Boolean"]["output"];
+    /** Whether the object is restricted from the current viewer */
+    isRestricted?: Maybe<Scalars["Boolean"]["output"]>;
+    /** Whether the node is a Term */
+    isTermNode: Scalars["Boolean"]["output"];
+    /** The link to the term */
+    link?: Maybe<Scalars["String"]["output"]>;
+    /** The human friendly name of the object. */
+    name?: Maybe<Scalars["String"]["output"]>;
+    /** Connection between the fontCategory type and its parent fontCategory. */
+    parent?: Maybe<FontCategoryToParentFontCategoryConnectionEdge>;
+    /** Database id of the parent node */
+    parentDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+    /** The globally unique identifier of the parent node. */
+    parentId?: Maybe<Scalars["ID"]["output"]>;
+    /** An alphanumeric identifier for the object unique to its type. */
+    slug?: Maybe<Scalars["String"]["output"]>;
+    /** Connection between the FontCategory type and the Taxonomy type */
+    taxonomy?: Maybe<FontCategoryToTaxonomyConnectionEdge>;
+    /** The name of the taxonomy that the object is associated with */
+    taxonomyName?: Maybe<Scalars["String"]["output"]>;
+    templates?: Maybe<Array<Maybe<Scalars["String"]["output"]>>>;
+    /** The ID of the term group that this term object belongs to */
+    termGroupId?: Maybe<Scalars["Int"]["output"]>;
+    /** The taxonomy ID that the object is associated with */
+    termTaxonomyId?: Maybe<Scalars["Int"]["output"]>;
+    /** The unique resource identifier path */
+    uri?: Maybe<Scalars["String"]["output"]>;
+  };
+
+/** The fontCategory type */
+export type FontCategoryAncestorsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The fontCategory type */
+export type FontCategoryChildrenArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontCategoryToFontCategoryConnectionWhereArgs>;
+};
+
+/** The fontCategory type */
+export type FontCategoryContentNodesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontCategoryToContentNodeConnectionWhereArgs>;
+};
+
+/** The fontCategory type */
+export type FontCategoryEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The fontCategory type */
+export type FontCategoryEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The fontCategory type */
+export type FontCategoryFontfamiliesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontCategoryToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontCategory Nodes */
+export type FontCategoryConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontCategory Nodes */
+  edges: Array<FontCategoryConnectionEdge>;
+  /** A list of connected fontCategory Nodes */
+  nodes: Array<FontCategory>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontCategoryConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontCategory */
+export type FontCategoryConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars["String"]["output"]>;
+  /** The connected fontCategory Node */
+  node: FontCategory;
+};
+
+/** Page Info on the connected FontCategoryConnectionEdge */
+export type FontCategoryConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars["String"]["output"]>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars["Boolean"]["output"];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars["Boolean"]["output"];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontCategoryIdType {
+  /** The Database ID for the node */
+  DatabaseId = "DATABASE_ID",
+  /** The hashed Global ID */
+  Id = "ID",
+  /** The name of the node */
+  Name = "NAME",
+  /** Url friendly name of the node */
+  Slug = "SLUG",
+  /** The URI for the node */
+  Uri = "URI",
+}
+
+/** Connection between the FontCategory type and the fontCategory type */
+export type FontCategoryToAncestorsFontCategoryConnection = Connection &
+  FontCategoryConnection & {
+    __typename?: "FontCategoryToAncestorsFontCategoryConnection";
+    /** Edges for the FontCategoryToAncestorsFontCategoryConnection connection */
+    edges: Array<FontCategoryToAncestorsFontCategoryConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<FontCategory>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontCategoryToAncestorsFontCategoryConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontCategoryToAncestorsFontCategoryConnectionEdge = Edge &
+  FontCategoryConnectionEdge & {
+    __typename?: "FontCategoryToAncestorsFontCategoryConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: FontCategory;
+  };
+
+/** Page Info on the &quot;FontCategoryToAncestorsFontCategoryConnection&quot; */
+export type FontCategoryToAncestorsFontCategoryConnectionPageInfo =
+  FontCategoryConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontCategoryToAncestorsFontCategoryConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Connection between the FontCategory type and the ContentNode type */
+export type FontCategoryToContentNodeConnection = Connection &
+  ContentNodeConnection & {
+    __typename?: "FontCategoryToContentNodeConnection";
+    /** Edges for the FontCategoryToContentNodeConnection connection */
+    edges: Array<FontCategoryToContentNodeConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<ContentNode>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontCategoryToContentNodeConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontCategoryToContentNodeConnectionEdge =
+  ContentNodeConnectionEdge &
+    Edge & {
+      __typename?: "FontCategoryToContentNodeConnectionEdge";
+      /** A cursor for use in pagination */
+      cursor?: Maybe<Scalars["String"]["output"]>;
+      /** The item at the end of the edge */
+      node: ContentNode;
+    };
+
+/** Page Info on the &quot;FontCategoryToContentNodeConnection&quot; */
+export type FontCategoryToContentNodeConnectionPageInfo =
+  ContentNodeConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontCategoryToContentNodeConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the FontCategoryToContentNodeConnection connection */
+export type FontCategoryToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontCategoryEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]["input"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]["input"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the FontCategory type and the fontCategory type */
+export type FontCategoryToFontCategoryConnection = Connection &
+  FontCategoryConnection & {
+    __typename?: "FontCategoryToFontCategoryConnection";
+    /** Edges for the FontCategoryToFontCategoryConnection connection */
+    edges: Array<FontCategoryToFontCategoryConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<FontCategory>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontCategoryToFontCategoryConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontCategoryToFontCategoryConnectionEdge = Edge &
+  FontCategoryConnectionEdge & {
+    __typename?: "FontCategoryToFontCategoryConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: FontCategory;
+  };
+
+/** Page Info on the &quot;FontCategoryToFontCategoryConnection&quot; */
+export type FontCategoryToFontCategoryConnectionPageInfo =
+  FontCategoryConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontCategoryToFontCategoryConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the FontCategoryToFontCategoryConnection connection */
+export type FontCategoryToFontCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars["Int"]["input"]>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Connection between the FontCategory type and the fontfamily type */
+export type FontCategoryToFontfamilyConnection = Connection &
+  FontfamilyConnection & {
+    __typename?: "FontCategoryToFontfamilyConnection";
+    /** Edges for the FontCategoryToFontfamilyConnection connection */
+    edges: Array<FontCategoryToFontfamilyConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<Fontfamily>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontCategoryToFontfamilyConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontCategoryToFontfamilyConnectionEdge = Edge &
+  FontfamilyConnectionEdge & {
+    __typename?: "FontCategoryToFontfamilyConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: Fontfamily;
+  };
+
+/** Page Info on the &quot;FontCategoryToFontfamilyConnection&quot; */
+export type FontCategoryToFontfamilyConnectionPageInfo =
+  FontfamilyConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontCategoryToFontfamilyConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the FontCategoryToFontfamilyConnection connection */
+export type FontCategoryToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]["input"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]["input"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the FontCategory type and the fontCategory type */
+export type FontCategoryToParentFontCategoryConnectionEdge = Edge &
+  FontCategoryConnectionEdge &
+  OneToOneConnection & {
+    __typename?: "FontCategoryToParentFontCategoryConnectionEdge";
+    /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The node of the connection, without the edges */
+    node: FontCategory;
+  };
+
+/** Connection between the FontCategory type and the Taxonomy type */
+export type FontCategoryToTaxonomyConnectionEdge = Edge &
+  OneToOneConnection &
+  TaxonomyConnectionEdge & {
+    __typename?: "FontCategoryToTaxonomyConnectionEdge";
+    /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The node of the connection, without the edges */
+    node: Taxonomy;
+  };
 
 /** The &quot;FontSpecFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
 export type FontSpecFields = AcfFieldGroup &
@@ -8109,6 +8653,7 @@ export type Fontfamily = ContentNode &
   NodeWithExcerpt &
   NodeWithFeaturedImage &
   NodeWithFontfamilyEditorBlocks &
+  NodeWithRevisions &
   NodeWithTemplate &
   NodeWithTitle &
   Previewable &
@@ -8154,6 +8699,8 @@ export type Fontfamily = ContentNode &
     featuredImageDatabaseId?: Maybe<Scalars["Int"]["output"]>;
     /** Globally unique ID of the featured image assigned to the node */
     featuredImageId?: Maybe<Scalars["ID"]["output"]>;
+    /** Connection between the Fontfamily type and the fontCategory type */
+    fontCategories?: Maybe<FontfamilyToFontCategoryConnection>;
     /**
      * The id field matches the WP_Post-&gt;ID field.
      * @deprecated Deprecated in favor of the databaseId field
@@ -8177,6 +8724,8 @@ export type Fontfamily = ContentNode &
     isPreview?: Maybe<Scalars["Boolean"]["output"]>;
     /** Whether the object is restricted from the current viewer */
     isRestricted?: Maybe<Scalars["Boolean"]["output"]>;
+    /** True if the node is a revision of another node */
+    isRevision?: Maybe<Scalars["Boolean"]["output"]>;
     /** Whether the node is a Term */
     isTermNode: Scalars["Boolean"]["output"];
     /** The user that most recently edited the node */
@@ -8195,6 +8744,10 @@ export type Fontfamily = ContentNode &
     previewRevisionDatabaseId?: Maybe<Scalars["Int"]["output"]>;
     /** Whether the object is a node in the preview state */
     previewRevisionId?: Maybe<Scalars["ID"]["output"]>;
+    /** If the current node is a revision, this field exposes the node this is a revision of. Returns null if the node is not a revision of another node. */
+    revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
+    /** Connection between the Fontfamily type and the fontfamily type */
+    revisions?: Maybe<FontfamilyToRevisionConnection>;
     /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
     slug?: Maybe<Scalars["String"]["output"]>;
     /** The current status of the object */
@@ -8202,6 +8755,8 @@ export type Fontfamily = ContentNode &
     /** The template assigned to the node */
     template?: Maybe<ContentTemplate>;
     templates?: Maybe<Array<Maybe<Scalars["String"]["output"]>>>;
+    /** Connection between the Fontfamily type and the TermNode type */
+    terms?: Maybe<FontfamilyToTermNodeConnection>;
     /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
     title?: Maybe<Scalars["String"]["output"]>;
     /** The unique resource identifier path */
@@ -8249,6 +8804,33 @@ export type FontfamilyExcerptArgs = {
 };
 
 /** The fontfamily type */
+export type FontfamilyFontCategoriesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontfamilyToFontCategoryConnectionWhereArgs>;
+};
+
+/** The fontfamily type */
+export type FontfamilyRevisionsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontfamilyToRevisionConnectionWhereArgs>;
+};
+
+/** The fontfamily type */
+export type FontfamilyTermsArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<FontfamilyToTermNodeConnectionWhereArgs>;
+};
+
+/** The fontfamily type */
 export type FontfamilyTitleArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
 };
@@ -8281,6 +8863,7 @@ export type FontfamilyConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Fontfamily Block Type */
@@ -8303,6 +8886,26 @@ export type FontfamilyEditorBlock = {
   parentClientId?: Maybe<Scalars["String"]["output"]>;
   /** The rendered HTML for the block */
   renderedHtml?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** Set relationships between the fontfamily to fontCategories */
+export type FontfamilyFontCategoriesInput = {
+  /** If true, this will append the fontCategory to existing related fontCategories. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontCategoriesNodeInput>>>;
+};
+
+/** List of fontCategories to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontCategoriesNodeInput = {
+  /** The description of the fontCategory. This field is used to set a description of the fontCategory if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  /** The ID of the fontCategory. If present, this will be used to connect to the fontfamily. If no existing fontCategory exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  /** The name of the fontCategory. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** The slug of the fontCategory. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -8352,6 +8955,7 @@ export type FontfamilyToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the FontfamilyToCommentConnection connection */
@@ -8416,6 +9020,91 @@ export type FontfamilyToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars["ID"]["input"]>;
 };
 
+/** Connection between the Fontfamily type and the fontCategory type */
+export type FontfamilyToFontCategoryConnection = Connection &
+  FontCategoryConnection & {
+    __typename?: "FontfamilyToFontCategoryConnection";
+    /** Edges for the FontfamilyToFontCategoryConnection connection */
+    edges: Array<FontfamilyToFontCategoryConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<FontCategory>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontfamilyToFontCategoryConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontfamilyToFontCategoryConnectionEdge = Edge &
+  FontCategoryConnectionEdge & {
+    __typename?: "FontfamilyToFontCategoryConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: FontCategory;
+  };
+
+/** Page Info on the &quot;FontfamilyToFontCategoryConnection&quot; */
+export type FontfamilyToFontCategoryConnectionPageInfo =
+  FontCategoryConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontfamilyToFontCategoryConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the FontfamilyToFontCategoryConnection connection */
+export type FontfamilyToFontCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars["Int"]["input"]>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 /** Connection between the Fontfamily type and the fontfamily type */
 export type FontfamilyToPreviewConnectionEdge = Edge &
   FontfamilyConnectionEdge &
@@ -8426,6 +9115,170 @@ export type FontfamilyToPreviewConnectionEdge = Edge &
     /** The node of the connection, without the edges */
     node: Fontfamily;
   };
+
+/** Connection between the Fontfamily type and the fontfamily type */
+export type FontfamilyToRevisionConnection = Connection &
+  FontfamilyConnection & {
+    __typename?: "FontfamilyToRevisionConnection";
+    /** Edges for the FontfamilyToRevisionConnection connection */
+    edges: Array<FontfamilyToRevisionConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<Fontfamily>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontfamilyToRevisionConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontfamilyToRevisionConnectionEdge = Edge &
+  FontfamilyConnectionEdge & {
+    __typename?: "FontfamilyToRevisionConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: Fontfamily;
+  };
+
+/** Page Info on the &quot;FontfamilyToRevisionConnection&quot; */
+export type FontfamilyToRevisionConnectionPageInfo =
+  FontfamilyConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "FontfamilyToRevisionConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the FontfamilyToRevisionConnection connection */
+export type FontfamilyToRevisionConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]["input"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]["input"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the Fontfamily type and the TermNode type */
+export type FontfamilyToTermNodeConnection = Connection &
+  TermNodeConnection & {
+    __typename?: "FontfamilyToTermNodeConnection";
+    /** Edges for the FontfamilyToTermNodeConnection connection */
+    edges: Array<FontfamilyToTermNodeConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<TermNode>;
+    /** Information about pagination in a connection. */
+    pageInfo: FontfamilyToTermNodeConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type FontfamilyToTermNodeConnectionEdge = Edge &
+  TermNodeConnectionEdge & {
+    __typename?: "FontfamilyToTermNodeConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: TermNode;
+  };
+
+/** Page Info on the &quot;FontfamilyToTermNodeConnection&quot; */
+export type FontfamilyToTermNodeConnectionPageInfo = PageInfo &
+  TermNodeConnectionPageInfo &
+  WpPageInfo & {
+    __typename?: "FontfamilyToTermNodeConnectionPageInfo";
+    /** When paginating forwards, the cursor to continue. */
+    endCursor?: Maybe<Scalars["String"]["output"]>;
+    /** When paginating forwards, are there more items? */
+    hasNextPage: Scalars["Boolean"]["output"];
+    /** When paginating backwards, are there more items? */
+    hasPreviousPage: Scalars["Boolean"]["output"];
+    /** When paginating backwards, the cursor to continue. */
+    startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
+  };
+
+/** Arguments for filtering the FontfamilyToTermNodeConnection connection */
+export type FontfamilyToTermNodeConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars["Int"]["input"]>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** The Taxonomy to filter terms by */
+  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
 
 /** The general setting type */
 export type GeneralSettings = {
@@ -8655,6 +9508,7 @@ export type GraphqlDocumentConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Set relationships between the graphqlDocument to graphqlDocumentGroups */
@@ -8801,6 +9655,7 @@ export type GraphqlDocumentGroupConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -8854,6 +9709,7 @@ export type GraphqlDocumentGroupToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentGroupToContentNodeConnection connection */
@@ -8894,6 +9750,7 @@ export type GraphqlDocumentGroupToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -8934,6 +9791,7 @@ export type GraphqlDocumentGroupToGraphqlDocumentConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentGroupToGraphqlDocumentConnection connection */
@@ -8970,6 +9828,7 @@ export type GraphqlDocumentGroupToGraphqlDocumentConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -9033,6 +9892,7 @@ export type GraphqlDocumentToGraphqlDocumentGroupConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the GraphqlDocumentToGraphqlDocumentGroupConnection connection */
@@ -9130,6 +9990,7 @@ export type GraphqlDocumentToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the GraphqlDocumentToTermNodeConnection connection */
@@ -9327,6 +10188,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeAncestorsConnection connection */
@@ -9365,6 +10227,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -9407,6 +10270,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the HierarchicalContentNodeToContentNodeChildrenConnection connection */
@@ -9445,6 +10309,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -9795,6 +10660,7 @@ export type MediaItemConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -9903,6 +10769,7 @@ export type MediaItemToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MediaItemToCommentConnection connection */
@@ -10050,6 +10917,7 @@ export type MenuConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Navigation menu items are the individual items assigned to a menu. These are rendered as the links in a navigation menu. */
@@ -10143,6 +11011,7 @@ export type MenuItemConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Nodes that can be linked to as Menu Items */
@@ -10185,7 +11054,13 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | Fontfamily | Page | Post | Tag;
+export type MenuItemObjectUnion =
+  | Category
+  | FontCategory
+  | Fontfamily
+  | Page
+  | Post
+  | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge &
@@ -10233,6 +11108,7 @@ export type MenuItemToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MenuItemToMenuItemConnection connection */
@@ -10315,6 +11191,7 @@ export type MenuToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the MenuToMenuItemConnection connection */
@@ -10961,6 +11838,7 @@ export type PageConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Page Block Type */
@@ -11042,6 +11920,7 @@ export type PageToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PageToCommentConnection connection */
@@ -11152,6 +12031,7 @@ export type PageToRevisionConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PageToRevisionConnection connection */
@@ -11196,6 +12076,7 @@ export type PageToRevisionConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -11251,6 +12132,7 @@ export type PluginConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The status of the WordPress plugin. */
@@ -11550,6 +12432,7 @@ export type PostConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** EditorBlock Interface for Post Block Type */
@@ -11696,6 +12579,7 @@ export type PostFormatConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -11748,6 +12632,7 @@ export type PostFormatToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the PostFormatToContentNodeConnection connection */
@@ -11786,6 +12671,7 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -11825,6 +12711,7 @@ export type PostFormatToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostFormatToPostConnection connection */
@@ -11889,6 +12776,7 @@ export type PostFormatToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -12069,6 +12957,7 @@ export type PostToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToCategoryConnection connection */
@@ -12152,6 +13041,7 @@ export type PostToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToCommentConnection connection */
@@ -12251,6 +13141,7 @@ export type PostToPostFormatConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToPostFormatConnection connection */
@@ -12345,6 +13236,7 @@ export type PostToRevisionConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToRevisionConnection connection */
@@ -12409,6 +13301,7 @@ export type PostToRevisionConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -12448,6 +13341,7 @@ export type PostToTagConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToTagConnection connection */
@@ -12531,6 +13425,7 @@ export type PostToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the PostToTermNodeConnection connection */
@@ -12761,6 +13656,8 @@ export type RootMutation = {
   createCategory?: Maybe<CreateCategoryPayload>;
   /** The createComment mutation */
   createComment?: Maybe<CreateCommentPayload>;
+  /** The createFontCategory mutation */
+  createFontCategory?: Maybe<CreateFontCategoryPayload>;
   /** The createFontfamily mutation */
   createFontfamily?: Maybe<CreateFontfamilyPayload>;
   /** The createGraphqlDocument mutation */
@@ -12783,6 +13680,8 @@ export type RootMutation = {
   deleteCategory?: Maybe<DeleteCategoryPayload>;
   /** The deleteComment mutation */
   deleteComment?: Maybe<DeleteCommentPayload>;
+  /** The deleteFontCategory mutation */
+  deleteFontCategory?: Maybe<DeleteFontCategoryPayload>;
   /** The deleteFontfamily mutation */
   deleteFontfamily?: Maybe<DeleteFontfamilyPayload>;
   /** The deleteGraphqlDocument mutation */
@@ -12817,6 +13716,8 @@ export type RootMutation = {
   updateCategory?: Maybe<UpdateCategoryPayload>;
   /** The updateComment mutation */
   updateComment?: Maybe<UpdateCommentPayload>;
+  /** The updateFontCategory mutation */
+  updateFontCategory?: Maybe<UpdateFontCategoryPayload>;
   /** The updateFontfamily mutation */
   updateFontfamily?: Maybe<UpdateFontfamilyPayload>;
   /** The updateGraphqlDocument mutation */
@@ -12847,6 +13748,11 @@ export type RootMutationCreateCategoryArgs = {
 /** The root mutation */
 export type RootMutationCreateCommentArgs = {
   input: CreateCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationCreateFontCategoryArgs = {
+  input: CreateFontCategoryInput;
 };
 
 /** The root mutation */
@@ -12902,6 +13808,11 @@ export type RootMutationDeleteCategoryArgs = {
 /** The root mutation */
 export type RootMutationDeleteCommentArgs = {
   input: DeleteCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationDeleteFontCategoryArgs = {
+  input: DeleteFontCategoryInput;
 };
 
 /** The root mutation */
@@ -12990,6 +13901,11 @@ export type RootMutationUpdateCommentArgs = {
 };
 
 /** The root mutation */
+export type RootMutationUpdateFontCategoryArgs = {
+  input: UpdateFontCategoryInput;
+};
+
+/** The root mutation */
 export type RootMutationUpdateFontfamilyArgs = {
   input: UpdateFontfamilyInput;
 };
@@ -13062,6 +13978,10 @@ export type RootQuery = {
   contentTypes?: Maybe<RootQueryToContentTypeConnection>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
+  /** Connection between the RootQuery type and the fontCategory type */
+  fontCategories?: Maybe<RootQueryToFontCategoryConnection>;
+  /** A 0bject */
+  fontCategory?: Maybe<FontCategory>;
   /** Connection between the RootQuery type and the fontfamily type */
   fontfamilies?: Maybe<RootQueryToFontfamilyConnection>;
   /** An object of the fontfamily Type. List of fonts */
@@ -13232,6 +14152,21 @@ export type RootQueryContentTypesArgs = {
   before?: InputMaybe<Scalars["String"]["input"]>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryFontCategoriesArgs = {
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  before?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
+  last?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<RootQueryToFontCategoryConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryFontCategoryArgs = {
+  id: Scalars["ID"]["input"];
+  idType?: InputMaybe<FontCategoryIdType>;
 };
 
 /** The root entry point into the Graph */
@@ -13588,6 +14523,7 @@ export type RootQueryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToCategoryConnection connection */
@@ -13671,6 +14607,7 @@ export type RootQueryToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToCommentConnection connection */
@@ -13771,6 +14708,7 @@ export type RootQueryToContentNodeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToContentNodeConnection connection */
@@ -13809,6 +14747,7 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -13849,6 +14788,7 @@ export type RootQueryToContentTypeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the RootQuery type and the EnqueuedScript type */
@@ -13887,6 +14827,7 @@ export type RootQueryToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the RootQuery type and the EnqueuedStylesheet type */
@@ -13925,7 +14866,93 @@ export type RootQueryToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
+
+/** Connection between the RootQuery type and the fontCategory type */
+export type RootQueryToFontCategoryConnection = Connection &
+  FontCategoryConnection & {
+    __typename?: "RootQueryToFontCategoryConnection";
+    /** Edges for the RootQueryToFontCategoryConnection connection */
+    edges: Array<RootQueryToFontCategoryConnectionEdge>;
+    /** The nodes of the connection, without the edges */
+    nodes: Array<FontCategory>;
+    /** Information about pagination in a connection. */
+    pageInfo: RootQueryToFontCategoryConnectionPageInfo;
+  };
+
+/** An edge in a connection */
+export type RootQueryToFontCategoryConnectionEdge = Edge &
+  FontCategoryConnectionEdge & {
+    __typename?: "RootQueryToFontCategoryConnectionEdge";
+    /** A cursor for use in pagination */
+    cursor?: Maybe<Scalars["String"]["output"]>;
+    /** The item at the end of the edge */
+    node: FontCategory;
+  };
+
+/** Page Info on the &quot;RootQueryToFontCategoryConnection&quot; */
+export type RootQueryToFontCategoryConnectionPageInfo =
+  FontCategoryConnectionPageInfo &
+    PageInfo &
+    WpPageInfo & {
+      __typename?: "RootQueryToFontCategoryConnectionPageInfo";
+      /** When paginating forwards, the cursor to continue. */
+      endCursor?: Maybe<Scalars["String"]["output"]>;
+      /** When paginating forwards, are there more items? */
+      hasNextPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, are there more items? */
+      hasPreviousPage: Scalars["Boolean"]["output"];
+      /** When paginating backwards, the cursor to continue. */
+      startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
+    };
+
+/** Arguments for filtering the RootQueryToFontCategoryConnection connection */
+export type RootQueryToFontCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars["Int"]["input"]>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars["Int"]["input"]>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars["String"]["input"]>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
 
 /** Connection between the RootQuery type and the fontfamily type */
 export type RootQueryToFontfamilyConnection = Connection &
@@ -13963,6 +14990,7 @@ export type RootQueryToFontfamilyConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToFontfamilyConnection connection */
@@ -13999,6 +15027,7 @@ export type RootQueryToFontfamilyConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14039,6 +15068,7 @@ export type RootQueryToGraphqlDocumentConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToGraphqlDocumentConnection connection */
@@ -14075,6 +15105,7 @@ export type RootQueryToGraphqlDocumentConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14115,6 +15146,7 @@ export type RootQueryToGraphqlDocumentGroupConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToGraphqlDocumentGroupConnection connection */
@@ -14199,6 +15231,7 @@ export type RootQueryToMediaItemConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToMediaItemConnection connection */
@@ -14243,6 +15276,7 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14282,6 +15316,7 @@ export type RootQueryToMenuConnectionPageInfo = MenuConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToMenuConnection connection */
@@ -14329,6 +15364,7 @@ export type RootQueryToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToMenuItemConnection connection */
@@ -14378,6 +15414,7 @@ export type RootQueryToPageConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPageConnection connection */
@@ -14422,6 +15459,7 @@ export type RootQueryToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14461,6 +15499,7 @@ export type RootQueryToPluginConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPluginConnection connection */
@@ -14508,6 +15547,7 @@ export type RootQueryToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPostConnection connection */
@@ -14572,6 +15612,7 @@ export type RootQueryToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14611,6 +15652,7 @@ export type RootQueryToPostFormatConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToPostFormatConnection connection */
@@ -14695,6 +15737,7 @@ export type RootQueryToRevisionsConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Arguments for filtering the RootQueryToRevisionsConnection connection */
@@ -14733,6 +15776,7 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -14772,6 +15816,7 @@ export type RootQueryToTagConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToTagConnection connection */
@@ -14855,6 +15900,7 @@ export type RootQueryToTaxonomyConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Connection between the RootQuery type and the TermNode type */
@@ -14892,6 +15938,7 @@ export type RootQueryToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToTermNodeConnection connection */
@@ -14977,6 +16024,7 @@ export type RootQueryToThemeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Connection between the RootQuery type and the User type */
@@ -15014,6 +16062,7 @@ export type RootQueryToUserConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the RootQueryToUserConnection connection */
@@ -15087,6 +16136,7 @@ export type RootQueryToUserRoleConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** The strategy to use when loading the script */
@@ -15283,6 +16333,7 @@ export type TagConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -15334,6 +16385,7 @@ export type TagToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the TagToContentNodeConnection connection */
@@ -15372,6 +16424,7 @@ export type TagToContentNodeConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -15411,6 +16464,7 @@ export type TagToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the TagToPostConnection connection */
@@ -15475,6 +16529,7 @@ export type TagToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -15489,6 +16544,38 @@ export type TagToTaxonomyConnectionEdge = Edge &
     /** The node of the connection, without the edges */
     node: Taxonomy;
   };
+
+export type TaxArray = {
+  field?: InputMaybe<TaxQueryField>;
+  /** Whether or not to include children for hierarchical taxonomies. Defaults to false to improve performance (note that this is opposite of the default for WP_Query). */
+  includeChildren?: InputMaybe<Scalars["Boolean"]["input"]>;
+  operator?: InputMaybe<TaxQueryOperator>;
+  taxonomy?: InputMaybe<TaxonomyEnum>;
+  /** A list of term slugs */
+  terms?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+};
+
+/** Query objects based on taxonomy parameters */
+export type TaxQuery = {
+  relation?: InputMaybe<RelationEnum>;
+  taxArray?: InputMaybe<Array<InputMaybe<TaxArray>>>;
+};
+
+/** Which field to select taxonomy term by. Default value is "term_id" */
+export enum TaxQueryField {
+  Id = "ID",
+  Name = "NAME",
+  Slug = "SLUG",
+  TaxonomyId = "TAXONOMY_ID",
+}
+
+export enum TaxQueryOperator {
+  And = "AND",
+  Exists = "EXISTS",
+  In = "IN",
+  NotExists = "NOT_EXISTS",
+  NotIn = "NOT_IN",
+}
 
 /** A taxonomy object */
 export type Taxonomy = Node & {
@@ -15581,12 +16668,15 @@ export type TaxonomyConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Allowed taxonomies */
 export enum TaxonomyEnum {
   /** Taxonomy enum category */
   Category = "CATEGORY",
+  /** Taxonomy enum font-category */
+  Fontcategory = "FONTCATEGORY",
   /** Taxonomy enum graphql_document_group */
   Graphqldocumentgroup = "GRAPHQLDOCUMENTGROUP",
   /** Taxonomy enum post_format */
@@ -15639,6 +16729,7 @@ export type TaxonomyToContentTypeConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the Taxonomy type and the TermNode type */
@@ -15676,6 +16767,7 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** The template assigned to the node */
@@ -15795,6 +16887,7 @@ export type TermNodeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is "ID". To be used along with the "id" field. */
@@ -15847,6 +16940,7 @@ export type TermNodeToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the TermNode type and the EnqueuedStylesheet type */
@@ -15885,6 +16979,7 @@ export type TermNodeToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Options for ordering the connection by */
@@ -15960,6 +17055,7 @@ export type ThemeConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Any node that has a URI */
@@ -16049,6 +17145,33 @@ export type UpdateCommentPayload = {
   success?: Maybe<Scalars["Boolean"]["output"]>;
 };
 
+/** Input for the updateFontCategory mutation. */
+export type UpdateFontCategoryInput = {
+  /** The slug that the font-category will be an alias of */
+  aliasOf?: InputMaybe<Scalars["String"]["input"]>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+  /** The description of the font-category object */
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  /** The ID of the fontCategory object to update */
+  id: Scalars["ID"]["input"];
+  /** The name of the font-category object to mutate */
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  /** The ID of the font-category that should be set as the parent */
+  parentId?: InputMaybe<Scalars["ID"]["input"]>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the updateFontCategory mutation. */
+export type UpdateFontCategoryPayload = {
+  __typename?: "UpdateFontCategoryPayload";
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars["String"]["output"]>;
+  /** The created font-category */
+  fontCategory?: Maybe<FontCategory>;
+};
+
 /** Input for the updateFontfamily mutation. */
 export type UpdateFontfamilyInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -16061,6 +17184,8 @@ export type UpdateFontfamilyInput = {
   date?: InputMaybe<Scalars["String"]["input"]>;
   /** The excerpt of the object */
   excerpt?: InputMaybe<Scalars["String"]["input"]>;
+  /** Set connections between the fontfamily and fontCategories */
+  fontCategories?: InputMaybe<FontfamilyFontCategoriesInput>;
   /** The ID of the fontfamily object */
   id: Scalars["ID"]["input"];
   /** Override the edit lock when another user is editing the post */
@@ -16638,6 +17763,7 @@ export type UserConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The Type of Identifier used to fetch a single User node. To be used along with the "id" field. Default is "ID". */
@@ -16699,6 +17825,7 @@ export type UserRoleConnectionPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** Names of available user roles */
@@ -16750,6 +17877,7 @@ export type UserToCommentConnectionPageInfo = CommentConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToCommentConnection connection */
@@ -16850,6 +17978,7 @@ export type UserToEnqueuedScriptConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the User type and the EnqueuedStylesheet type */
@@ -16888,6 +18017,7 @@ export type UserToEnqueuedStylesheetConnectionPageInfo =
       hasPreviousPage: Scalars["Boolean"]["output"];
       /** When paginating backwards, the cursor to continue. */
       startCursor?: Maybe<Scalars["String"]["output"]>;
+      total?: Maybe<Scalars["Int"]["output"]>;
     };
 
 /** Connection between the User type and the mediaItem type */
@@ -16925,6 +18055,7 @@ export type UserToMediaItemConnectionPageInfo = MediaItemConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToMediaItemConnection connection */
@@ -16969,6 +18100,7 @@ export type UserToMediaItemConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -17008,6 +18140,7 @@ export type UserToPageConnectionPageInfo = PageConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToPageConnection connection */
@@ -17052,6 +18185,7 @@ export type UserToPageConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -17091,6 +18225,7 @@ export type UserToPostConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToPostConnection connection */
@@ -17155,6 +18290,7 @@ export type UserToPostConnectionWhereArgs = {
   tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
   /** Array of tag slugs, used to include objects in ANY specified tags */
   tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -17194,6 +18330,7 @@ export type UserToRevisionsConnectionPageInfo = ContentNodeConnectionPageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Arguments for filtering the UserToRevisionsConnection connection */
@@ -17232,6 +18369,7 @@ export type UserToRevisionsConnectionWhereArgs = {
   stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
   /** Show posts with a specific status. */
   status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
   /** Title of the object */
   title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -17271,6 +18409,7 @@ export type UserToUserRoleConnectionPageInfo = PageInfo &
     hasPreviousPage: Scalars["Boolean"]["output"];
     /** When paginating backwards, the cursor to continue. */
     startCursor?: Maybe<Scalars["String"]["output"]>;
+    total?: Maybe<Scalars["Int"]["output"]>;
   };
 
 /** Field to order the connection by */
@@ -17325,6 +18464,7 @@ export type WpPageInfo = {
   hasPreviousPage: Scalars["Boolean"]["output"];
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars["String"]["output"]>;
+  total?: Maybe<Scalars["Int"]["output"]>;
 };
 
 /** The writing setting type */
@@ -17346,34 +18486,163 @@ export type GetPageQuery = {
   __typename: "RootQuery";
   breadcrumbs?: {
     __typename: "Page";
+    id: string;
     ancestors?: {
       __typename: "HierarchicalContentNodeToContentNodeAncestorsConnection";
       nodes: Array<
         | {
             __typename: "Fontfamily";
             title?: string | null;
+            id: string;
             uri?: string | null;
           }
         | {
             __typename: "GraphqlDocument";
             title?: string | null;
+            id: string;
             uri?: string | null;
           }
         | {
             __typename: "MediaItem";
             title?: string | null;
+            id: string;
             uri?: string | null;
           }
-        | { __typename: "Page"; title?: string | null; uri?: string | null }
-        | { __typename: "Post"; title?: string | null; uri?: string | null }
+        | {
+            __typename: "Page";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "Post";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
       >;
     } | null;
   } | null;
   page?: {
     __typename: "Page";
+    id: string;
     title?: string | null;
     content?: string | null;
     date?: string | null;
+  } | null;
+};
+
+export type GetFontfamiliesClientQueryVariables = Exact<{
+  field: PostObjectsConnectionOrderbyEnum;
+  order: OrderEnum;
+  filters?: InputMaybe<Array<InputMaybe<TaxArray>> | InputMaybe<TaxArray>>;
+}>;
+
+export type GetFontfamiliesClientQuery = {
+  __typename: "RootQuery";
+  fontfamilies?: {
+    __typename: "RootQueryToFontfamilyConnection";
+    edges: Array<{
+      __typename: "RootQueryToFontfamilyConnectionEdge";
+      node: {
+        __typename: "Fontfamily";
+        id: string;
+        title?: string | null;
+        uri?: string | null;
+        content?: string | null;
+        modified?: string | null;
+        commentCount?: number | null;
+        featuredImage?: {
+          __typename: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+          node: { __typename: "MediaItem"; srcSet?: string | null };
+        } | null;
+      };
+    }>;
+    pageInfo: {
+      __typename: "RootQueryToFontfamilyConnectionPageInfo";
+      total?: number | null;
+      endCursor?: string | null;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+    };
+  } | null;
+  total?: {
+    __typename: "RootQueryToFontfamilyConnection";
+    pageInfo: {
+      __typename: "RootQueryToFontfamilyConnectionPageInfo";
+      total?: number | null;
+    };
+  } | null;
+  fontCategory?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+        }
+    >;
+  } | null;
+  fontVariants?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          slug?: string | null;
+        }
+    >;
   } | null;
 };
 
@@ -17385,14 +18654,17 @@ export type GetPostQuery = {
   __typename: "RootQuery";
   breadcrumbs?: {
     __typename: "Post";
+    id: string;
     categories?: {
       __typename: "PostToCategoryConnection";
       nodes: Array<{
         __typename: "Category";
+        id: string;
         ancestors?: {
           __typename: "CategoryToAncestorsCategoryConnection";
           nodes: Array<{
             __typename: "Category";
+            id: string;
             uri?: string | null;
             name?: string | null;
           }>;
@@ -17402,15 +18674,18 @@ export type GetPostQuery = {
   } | null;
   post?: {
     __typename: "Post";
+    id: string;
     title?: string | null;
     content?: string | null;
     date?: string | null;
   } | null;
 };
 
-export type GetPostsQueryVariables = Exact<{ [key: string]: never }>;
+export type GetPostsByCategoryQueryVariables = Exact<{
+  category: Scalars["String"]["input"];
+}>;
 
-export type GetPostsQuery = {
+export type GetPostsByCategoryQuery = {
   __typename: "RootQuery";
   posts?: {
     __typename: "RootQueryToPostConnection";
@@ -17428,19 +18703,54 @@ export type GetPostsQuery = {
   } | null;
 };
 
+export type GetPostsQueryVariables = Exact<{
+  first: Scalars["Int"]["input"];
+  after?: InputMaybe<Scalars["String"]["input"]>;
+}>;
+
+export type GetPostsQuery = {
+  __typename: "RootQuery";
+  posts?: {
+    __typename: "RootQueryToPostConnection";
+    edges: Array<{
+      __typename: "RootQueryToPostConnectionEdge";
+      node: {
+        __typename: "Post";
+        id: string;
+        title?: string | null;
+        uri?: string | null;
+        slug?: string | null;
+        author?: {
+          __typename: "NodeWithAuthorToUserConnectionEdge";
+          node: { __typename: "User"; id: string; name?: string | null };
+        } | null;
+      };
+    }>;
+    pageInfo: {
+      __typename: "RootQueryToPostConnectionPageInfo";
+      endCursor?: string | null;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+      startCursor?: string | null;
+    };
+  } | null;
+};
+
 export type GetFontFamilyQueryVariables = Exact<{
   id: Scalars["ID"]["input"];
 }>;
 
 export type GetFontFamilyQuery = {
   __typename: "RootQuery";
-  breadcrumbs?: { __typename: "Fontfamily" } | null;
+  breadcrumbs?: { __typename: "Fontfamily"; id: string } | null;
   fontfamily?: {
     __typename: "Fontfamily";
     id: string;
     title?: string | null;
     uri?: string | null;
     content?: string | null;
+    date?: string | null;
+    modified?: string | null;
   } | null;
 };
 
@@ -17449,9 +18759,10 @@ export type GetRootLayoutQueryVariables = Exact<{ [key: string]: never }>;
 export type GetRootLayoutQuery = {
   __typename: "RootQuery";
   generalSettings?: {
-    __typename: "GeneralSettings";
+    __typename?: "GeneralSettings";
     title?: string | null;
     description?: string | null;
+    id: "GeneralSettings";
   } | null;
   primaryMenus?: {
     __typename: "RootQueryToMenuItemConnection";
@@ -17474,24 +18785,8 @@ export type GetRootLayoutQuery = {
   } | null;
 };
 
-export type GetFontfamiliesQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetFontfamiliesQuery = {
-  __typename: "RootQuery";
-  fontfamilies?: {
-    __typename: "RootQueryToFontfamilyConnection";
-    nodes: Array<{
-      __typename: "Fontfamily";
-      id: string;
-      title?: string | null;
-      uri?: string | null;
-      slug?: string | null;
-    }>;
-  } | null;
-};
-
 export const GetPageDocument = {
-  __meta__: { hash: "1d59ad375fa1411ddcdc013a84be98ff8252df1d" },
+  __meta__: { hash: "e5f5e689cdeaba63d3e20c3237b458f5b84907c6" },
   kind: "Document",
   definitions: [
     {
@@ -17535,6 +18830,7 @@ export const GetPageDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "ancestors" },
@@ -17554,6 +18850,10 @@ export const GetPageDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
                             },
                             {
                               kind: "Field",
@@ -17610,6 +18910,7 @@ export const GetPageDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "content" } },
                 { kind: "Field", name: { kind: "Name", value: "date" } },
@@ -17621,8 +18922,373 @@ export const GetPageDocument = {
     },
   ],
 } as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
+export const GetFontfamiliesClientDocument = {
+  __meta__: { hash: "ac9271cc3f5905f318cc738c82fc1e0423fb3ef1" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontfamiliesClient" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "field" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "PostObjectsConnectionOrderbyEnum" },
+            },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "order" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "OrderEnum" },
+            },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "filters" },
+          },
+          type: {
+            kind: "ListType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "TaxArray" },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontfamilies" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "1000" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "field" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "field" },
+                            },
+                          },
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "order" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "order" },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxQuery" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "taxArray" },
+                            value: {
+                              kind: "Variable",
+                              name: { kind: "Name", value: "filters" },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "edges" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "node" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "title" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "content" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "modified" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "commentCount" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "featuredImage" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "node" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "__typename",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "srcSet",
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "total" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "endCursor" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasNextPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasPreviousPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "startCursor" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "total" },
+            name: { kind: "Name", value: "fontfamilies" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "total" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontCategory" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTCATEGORY" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontVariants" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "CATEGORY" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontfamiliesClientQuery,
+  GetFontfamiliesClientQueryVariables
+>;
 export const GetPostDocument = {
-  __meta__: { hash: "12208a3325b0c632d20511c6768db8141f18e3a2" },
+  __meta__: { hash: "9894472d152d6f27696ab8efca1833d77e77b603" },
   kind: "Document",
   definitions: [
     {
@@ -17666,6 +19332,7 @@ export const GetPostDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 {
                   kind: "Field",
                   name: { kind: "Name", value: "categories" },
@@ -17685,6 +19352,10 @@ export const GetPostDocument = {
                             {
                               kind: "Field",
                               name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
                             },
                             {
                               kind: "Field",
@@ -17708,6 +19379,10 @@ export const GetPostDocument = {
                                             kind: "Name",
                                             value: "__typename",
                                           },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "id" },
                                         },
                                         {
                                           kind: "Field",
@@ -17754,6 +19429,7 @@ export const GetPostDocument = {
               kind: "SelectionSet",
               selections: [
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "content" } },
                 { kind: "Field", name: { kind: "Name", value: "date" } },
@@ -17765,14 +19441,30 @@ export const GetPostDocument = {
     },
   ],
 } as unknown as DocumentNode<GetPostQuery, GetPostQueryVariables>;
-export const GetPostsDocument = {
-  __meta__: { hash: "6c52af152c92c447fac7642d6edfe228a434a9f4" },
+export const GetPostsByCategoryDocument = {
+  __meta__: { hash: "872797bd66bc1e913e0ca6595577280e8d83cf04" },
   kind: "Document",
   definitions: [
     {
       kind: "OperationDefinition",
       operation: "query",
-      name: { kind: "Name", value: "GetPosts" },
+      name: { kind: "Name", value: "GetPostsByCategory" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "category" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "String" },
+            },
+          },
+        },
+      ],
       selectionSet: {
         kind: "SelectionSet",
         selections: [
@@ -17785,6 +19477,23 @@ export const GetPostsDocument = {
                 kind: "Argument",
                 name: { kind: "Name", value: "first" },
                 value: { kind: "IntValue", value: "100" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "categoryName" },
+                      value: {
+                        kind: "Variable",
+                        name: { kind: "Name", value: "category" },
+                      },
+                    },
+                  ],
+                },
               },
             ],
             selectionSet: {
@@ -17845,9 +19554,186 @@ export const GetPostsDocument = {
       },
     },
   ],
+} as unknown as DocumentNode<
+  GetPostsByCategoryQuery,
+  GetPostsByCategoryQueryVariables
+>;
+export const GetPostsDocument = {
+  __meta__: { hash: "1e251e2dfda455a0aea2b26c9ea4540ba781c809" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetPosts" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "first" },
+          },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "Int" } },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: {
+            kind: "Variable",
+            name: { kind: "Name", value: "after" },
+          },
+          type: { kind: "NamedType", name: { kind: "Name", value: "String" } },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "posts" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "first" },
+                },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "after" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "after" },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "edges" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "node" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "title" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "author" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "node" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "__typename",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "id" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "name" },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "slug" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "pageInfo" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "endCursor" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasNextPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "hasPreviousPage" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "startCursor" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
 } as unknown as DocumentNode<GetPostsQuery, GetPostsQueryVariables>;
 export const GetFontFamilyDocument = {
-  __meta__: { hash: "8f707be654cee0785f9454301d4cf2514f1bd93a" },
+  __meta__: { hash: "81600d4a88f0ece6681e052eeecc81515bf24301" },
   kind: "Document",
   definitions: [
     {
@@ -17890,6 +19776,7 @@ export const GetFontFamilyDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
+                { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
               ],
             },
@@ -17920,6 +19807,8 @@ export const GetFontFamilyDocument = {
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "uri" } },
                 { kind: "Field", name: { kind: "Name", value: "content" } },
+                { kind: "Field", name: { kind: "Name", value: "date" } },
+                { kind: "Field", name: { kind: "Name", value: "modified" } },
               ],
             },
           },
@@ -17929,7 +19818,7 @@ export const GetFontFamilyDocument = {
   ],
 } as unknown as DocumentNode<GetFontFamilyQuery, GetFontFamilyQueryVariables>;
 export const GetRootLayoutDocument = {
-  __meta__: { hash: "53706b9cb15be8fac616402cae6a3864a74afc2a" },
+  __meta__: { hash: "505077356e5e16f6e0f437b53c0755d458605740" },
   kind: "Document",
   definitions: [
     {
@@ -17946,7 +19835,11 @@ export const GetRootLayoutDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
-                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  alias: { kind: "Name", value: "id" },
+                  name: { kind: "Name", value: "__typename" },
+                },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "description" } },
               ],
@@ -18044,57 +19937,3 @@ export const GetRootLayoutDocument = {
     },
   ],
 } as unknown as DocumentNode<GetRootLayoutQuery, GetRootLayoutQueryVariables>;
-export const GetFontfamiliesDocument = {
-  __meta__: { hash: "2782c68e6c871d872c0e7a551ddca6c7db83e12e" },
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: { kind: "Name", value: "GetFontfamilies" },
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          { kind: "Field", name: { kind: "Name", value: "__typename" } },
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "fontfamilies" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "first" },
-                value: { kind: "IntValue", value: "100" },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "__typename" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "nodes" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "__typename" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      { kind: "Field", name: { kind: "Name", value: "title" } },
-                      { kind: "Field", name: { kind: "Name", value: "uri" } },
-                      { kind: "Field", name: { kind: "Name", value: "slug" } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<
-  GetFontfamiliesQuery,
-  GetFontfamiliesQueryVariables
->;

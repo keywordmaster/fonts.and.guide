@@ -3,11 +3,11 @@ export const runtime = "edge";
 import { gql } from "@urql/core";
 import Link from "next/link";
 
-import { GetPostsQuery } from "@/gql/graphql";
+import { GetPostsByCategoryQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 
 export default async function Page({ params: { uri } }) {
-  const { data, error } = await getClient().query<GetPostsQuery>(
+  const { data, error } = await getClient().query<GetPostsByCategoryQuery>(
     gql`
       query GetPostsByCategory($category: String!) {
         posts(first: 100, where: { categoryName: $category }) {

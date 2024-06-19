@@ -17,10 +17,13 @@ export default async function Page({
     gql`
       query GetPost($id: ID!) {
         breadcrumbs: post(id: $id, idType: URI) {
+          id
           categories {
             nodes {
+              id
               ancestors {
                 nodes {
+                  id
                   uri
                   name
                 }
@@ -30,6 +33,7 @@ export default async function Page({
         }
         post(id: $id, idType: URI) {
           __typename
+          id
           title
           content
           date
