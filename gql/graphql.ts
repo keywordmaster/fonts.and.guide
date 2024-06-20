@@ -18532,6 +18532,21 @@ export type GetPageQuery = {
   } | null;
 };
 
+export type GetPagesSitemapQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPagesSitemapQuery = {
+  __typename: "RootQuery";
+  pages?: {
+    __typename: "RootQueryToPageConnection";
+    nodes: Array<{
+      __typename: "Page";
+      id: string;
+      uri?: string | null;
+      modified?: string | null;
+    }>;
+  } | null;
+};
+
 export type GetFontfamiliesClientQueryVariables = Exact<{
   field: PostObjectsConnectionOrderbyEnum;
   order: OrderEnum;
@@ -18736,6 +18751,21 @@ export type GetPostsQuery = {
   } | null;
 };
 
+export type GetPostsSitemapQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPostsSitemapQuery = {
+  __typename: "RootQuery";
+  posts?: {
+    __typename: "RootQueryToPostConnection";
+    nodes: Array<{
+      __typename: "Post";
+      id: string;
+      uri?: string | null;
+      modified?: string | null;
+    }>;
+  } | null;
+};
+
 export type GetFontFamilyQueryVariables = Exact<{
   id: Scalars["ID"]["input"];
 }>;
@@ -18751,6 +18781,23 @@ export type GetFontFamilyQuery = {
     content?: string | null;
     date?: string | null;
     modified?: string | null;
+  } | null;
+};
+
+export type GetFontfamiliesSitemapQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetFontfamiliesSitemapQuery = {
+  __typename: "RootQuery";
+  fontfamilies?: {
+    __typename: "RootQueryToFontfamilyConnection";
+    nodes: Array<{
+      __typename: "Fontfamily";
+      id: string;
+      uri?: string | null;
+      modified?: string | null;
+    }>;
   } | null;
 };
 
@@ -18922,6 +18969,55 @@ export const GetPageDocument = {
     },
   ],
 } as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
+export const GetPagesSitemapDocument = {
+  __meta__: { hash: "cec6ad465d54a2ad828c7fc5d898eeb16c1c39f0" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetPagesSitemap" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "pages" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "modified" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetPagesSitemapQuery,
+  GetPagesSitemapQueryVariables
+>;
 export const GetFontfamiliesClientDocument = {
   __meta__: { hash: "ac9271cc3f5905f318cc738c82fc1e0423fb3ef1" },
   kind: "Document",
@@ -19732,6 +19828,55 @@ export const GetPostsDocument = {
     },
   ],
 } as unknown as DocumentNode<GetPostsQuery, GetPostsQueryVariables>;
+export const GetPostsSitemapDocument = {
+  __meta__: { hash: "413b74d852239517fbdbee8d13e5c418a8c6a996" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetPostsSitemap" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "posts" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "modified" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetPostsSitemapQuery,
+  GetPostsSitemapQueryVariables
+>;
 export const GetFontFamilyDocument = {
   __meta__: { hash: "81600d4a88f0ece6681e052eeecc81515bf24301" },
   kind: "Document",
@@ -19817,6 +19962,55 @@ export const GetFontFamilyDocument = {
     },
   ],
 } as unknown as DocumentNode<GetFontFamilyQuery, GetFontFamilyQueryVariables>;
+export const GetFontfamiliesSitemapDocument = {
+  __meta__: { hash: "24131d23cfaa80b3cc126d7b9d67b971b4561190" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontfamiliesSitemap" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontfamilies" },
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "modified" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontfamiliesSitemapQuery,
+  GetFontfamiliesSitemapQueryVariables
+>;
 export const GetRootLayoutDocument = {
   __meta__: { hash: "505077356e5e16f6e0f437b53c0755d458605740" },
   kind: "Document",
