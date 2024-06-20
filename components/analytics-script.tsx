@@ -5,6 +5,7 @@ const AnalyticsScripts: React.FC = () =>
     <>
       <Script
         async
+        strategy="lazyOnload"
         src="https://www.googletagmanager.com/gtag/js?id=G-K2NEKBNEHP"
       />
       <Script id="ga" strategy="lazyOnload">
