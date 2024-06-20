@@ -52,7 +52,6 @@ export default async function RootLayout({
         ></title>
         <meta name="description" content={data?.generalSettings?.description} />
         <meta name="robots" content="noindex, nofollow" />
-        <AnalyticsScripts />
       </head>
       <body className="">
         <ClientProvider>
@@ -73,6 +72,7 @@ export default async function RootLayout({
             </div>
           </div>
         </ClientProvider>
+        <AnalyticsScripts />
       </body>
     </html>
   );
