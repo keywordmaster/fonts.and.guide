@@ -2,16 +2,9 @@
 
 import { usePathname } from "next/navigation";
 
-import { Icon } from "@/components/icon";
 import Logo from "@/components/logo";
 import MenuItem from "@/components/menu-item";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { MenuItem as WpMenuItem } from "@/gql/graphql";
 
 interface Props {
@@ -32,37 +25,6 @@ const SideNav: React.FC<Props> = ({ menus }) => {
       </nav>
       <nav className="mt-auto grid gap-1 p-2">
         <ModeToggle />
-        {/* 
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button
-							variant="ghost"
-							size="icon"
-							className="mt-auto rounded-lg"
-							aria-label="Help"
-						>
-							<Icon.LifeBuoy className="size-6" />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent side="right" sideOffset={5}>
-						Help
-					</TooltipContent>
-				</Tooltip>
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Button
-							variant="ghost"
-							size="icon"
-							className="mt-auto rounded-lg"
-							aria-label="Account"
-						>
-							<Icon.SquareUser className="size-6" />
-						</Button>
-					</TooltipTrigger>
-					<TooltipContent side="right" sideOffset={5}>
-						Account
-					</TooltipContent>
-				</Tooltip> */}
       </nav>
     </aside>
   );

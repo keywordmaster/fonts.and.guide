@@ -1,10 +1,14 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "lucide-react";
+import {
+  ArrowDownNarrowWide,
+  ArrowUpNarrowWide,
+  Check,
+  ChevronsUpDown,
+} from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
-import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -84,9 +88,9 @@ const SortOrderSetter: React.FC = () => {
         {
           // TODO: 기본값 Asc로 반영 필요
           isAsc ? (
-            <Icon.SortAsc className="size-5" />
+            <ArrowUpNarrowWide className="size-5" />
           ) : (
-            <Icon.SortDesc className="size-5" />
+            <ArrowDownNarrowWide className="size-5" />
           )
         }
       </Button>

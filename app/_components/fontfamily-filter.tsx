@@ -1,8 +1,8 @@
 "use client";
 
+import { Filter } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Icon } from "@/components/icon";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -53,7 +53,7 @@ const FontfamilyFilter = ({ terms }: Props) => {
       <Drawer>
         <DrawerTrigger asChild className="max-sm:flex-grow">
           <Button variant="ghost" size="icon" className="">
-            <Icon.Filter className="size-5" />
+            <Filter className="size-5" />
             <span className="sr-only">Settings</span>
           </Button>
         </DrawerTrigger>
