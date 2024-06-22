@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 
 import { GetPostQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+import { convertPostCategoryQueryToPathMetaData } from "@/utils/breadcrumbs";
 
 export default async function Page({
   params: { uri },
@@ -52,11 +53,7 @@ export default async function Page({
   return (
     <>
       <BreadcrumbsWithSchema
-        pathMetaData={[
-          { path: "/", name: "Home" },
-          { path: "/부모페이지", name: "부모페이지" },
-          { path: "/child", name: "CHILD" },
-        ]}
+        pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
       />
       <h1>{data.post?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/50">

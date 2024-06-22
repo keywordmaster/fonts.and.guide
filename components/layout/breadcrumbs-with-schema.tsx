@@ -9,12 +9,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import GenerateBreadcrumbsSchema from "@/utils/generate-breadcrumbs-schema";
-
-type BreadcrumbMetaData = {
-  path: string;
-  name: string;
-};
+import {
+  BreadcrumbMetaData,
+  GenerateBreadcrumbsSchema,
+} from "@/utils/breadcrumbs";
 
 interface Props {
   pathMetaData: BreadcrumbMetaData[];
