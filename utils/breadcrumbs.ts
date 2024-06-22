@@ -2,7 +2,7 @@ import { BreadcrumbItem } from "react-breadcrumbs-jsonld";
 
 import { GetPageQuery, GetPostQuery } from "@/gql/graphql";
 
-type ConvertFnExtraParam<T> = T & {
+type BasePathParam = {
   basePathMetaData?: BreadcrumbMetaData[];
 };
 
@@ -24,7 +24,7 @@ export const GenerateBreadcrumbsSchema = (
 export const convertPostCategoryQueryToPathMetaData = ({
   breadcrumbs,
   basePathMetaData = [{ path: "/", name: "Home" }],
-}: ConvertFnExtraParam<GetPostQuery>): BreadcrumbMetaData[] => {
+}: GetPostQuery & BasePathParam): BreadcrumbMetaData[] => {
   const { ancestors } = breadcrumbs.categories.nodes[0];
   if (!ancestors) {
     // Uncategorized
@@ -43,7 +43,7 @@ export const convertPostCategoryQueryToPathMetaData = ({
 export const convertPageQueryToPathMetaData = ({
   breadcrumbs,
   basePathMetaData = [{ path: "/", name: "Home" }],
-}: ConvertFnExtraParam<GetPageQuery>): BreadcrumbMetaData[] => {
+}: GetPageQuery & BasePathParam): BreadcrumbMetaData[] => {
   const { ancestors, title, uri } = breadcrumbs;
   const lastBreadcrumb: BreadcrumbMetaData = { path: uri, name: title };
   if (!ancestors) {
