@@ -43,7 +43,6 @@ export default async function Page({
       id: decodeURI(uri.reduce((acc, cur) => `${acc}/${cur}`)),
     },
   );
-  console.log(data.breadcrumbs);
 
   if (!data.page) {
     notFound();
