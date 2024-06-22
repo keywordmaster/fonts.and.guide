@@ -11,7 +11,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import GenerateBreadcrumbsSchema from "@/utils/generate-breadcrumbs-schema";
 
-type BreadcrumbMetaData = [string, string];
+type BreadcrumbMetaData = {
+  path: string;
+  name: string;
+};
 
 interface Props {
   pathMetaData: BreadcrumbMetaData[];
@@ -24,13 +27,13 @@ const BreadcrumbsWithSchema = ({ pathMetaData }: Props) => {
     <Fragment>
       <Breadcrumb>
         <BreadcrumbList>
-          {pathMetaData.map(([href, name], index) => {
+          {pathMetaData.map(({ path, name }, index) => {
             const hasNextNode = pathMetaData.length - 1 !== index;
             return (
               <Fragment key={name}>
                 <BreadcrumbItem>
                   {hasNextNode ? (
-                    <BreadcrumbLink href={href}>{name}</BreadcrumbLink>
+                    <BreadcrumbLink href={path}>{name}</BreadcrumbLink>
                   ) : (
                     <BreadcrumbPage>{name}</BreadcrumbPage>
                   )}

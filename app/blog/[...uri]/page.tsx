@@ -53,9 +53,9 @@ export default async function Page({
     <>
       <BreadcrumbsWithSchema
         pathMetaData={[
-          ["/", "Home"],
-          ["/부모페이지", "부모페이지"],
-          ["/child", "CHILD"],
+          { path: "/", name: "Home" },
+          { path: "/부모페이지", name: "부모페이지" },
+          { path: "/child", name: "CHILD" },
         ]}
       />
       <h1>{data.post?.title}</h1>
