@@ -11,6 +11,10 @@ import { GetPostQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 import { convertPostCategoryQueryToPathMetaData } from "@/utils/breadcrumbs";
 
+import RedaingTime from "./_components/reading-time";
+import ScrollIndicator from "./_components/scroll-indicator";
+import ToC from "./_components/toc";
+
 export default async function Page({
   params: { uri },
 }: {
@@ -58,13 +62,17 @@ export default async function Page({
     notFound();
   }
 
+  // TODO: 새로 추가된 컴포넌트의 레이아웃 재배치 필요
   return (
     <>
+      <ScrollIndicator />
       <BreadcrumbsWithSchema
         pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
         lastNodeType={LAST_NODE_TYPE.link}
       />
       <h1>{data.post?.title}</h1>
+      <RedaingTime content={data.post?.content} />
+      <ToC content={data.post?.content} />
       <div className="overflow-x-scroll p-4 bg-muted/50">
         <pre>{JSON.stringify(data.breadcrumbs)}</pre>
       </div>
