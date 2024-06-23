@@ -63,9 +63,9 @@ const SortOrderSetter: React.FC = () => {
         >
           {searchParams.get("field")
             ? sortFields.find(
-                (field) => field.value === searchParams.get("field"),
-              )?.label // TODO: 기본값 가나다로 반영 필요
-            : "Select..."}
+              (field) => field.value === searchParams.get("field"),
+            )?.label // TODO: 기본값 가나다로 반영 필요
+            : "가나다"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>

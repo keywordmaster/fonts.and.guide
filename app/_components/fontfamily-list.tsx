@@ -46,18 +46,18 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
       "field",
     ) || PostObjectsConnectionOrderbyEnum.Title;
   const order =
-    sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Asc;
+    sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Desc;
   // TODO: 텀 종류만큼 어레이 채우기
   const filters = isFiltered
     ? [
-        {
-          field: TaxQueryField.Slug,
-          // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
-          terms: (searchParams["font-category"] as string)?.split(","),
-          includeChildren: true,
-          taxonomy: TaxonomyEnum.Fontcategory,
-        },
-      ]
+      {
+        field: TaxQueryField.Slug,
+        // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
+        terms: (searchParams["font-category"] as string)?.split(","),
+        includeChildren: true,
+        taxonomy: TaxonomyEnum.Fontcategory,
+      },
+    ]
     : [];
 
   const [{ data, error }] = useQuery<GetFontfamiliesClientQuery>({
@@ -145,12 +145,12 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
       <ul>
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
-              <li key={node.id}>
-                <Link key={node.id} href={node.uri} prefetch>
-                  {node.title}
-                </Link>
-              </li>
-            ))
+            <li key={node.id}>
+              <Link key={node.id} href={node.uri} prefetch>
+                {node.title}
+              </Link>
+            </li>
+          ))
           : JSON.stringify(error)}
       </ul>
 
