@@ -60,6 +60,7 @@ const SortOrderSetter: React.FC = () => {
           role="combobox"
           aria-expanded={open}
           className="w-[120px] justify-between"
+          aria-label="정렬 기준 변경"
         >
           {searchParams.get("field")
             ? sortFields.find(
@@ -84,6 +85,7 @@ const SortOrderSetter: React.FC = () => {
             pathname + "?" + createQueryString("order", OrderEnum.Asc),
           );
         }}
+        aria-label="정렬 순서 변경"
       >
         {
           // TODO: 기본값 Asc로 반영 필요
