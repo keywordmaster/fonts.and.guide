@@ -14,11 +14,22 @@ import {
   GenerateBreadcrumbsSchema,
 } from "@/utils/breadcrumbs";
 
+export const LAST_NODE_TYPE = {
+  link: "link",
+  page: "page",
+} as const;
+
+type BreadcrumbLastNodeType = keyof typeof LAST_NODE_TYPE;
+
 interface Props {
   pathMetaData: BreadcrumbMetaData[];
+  lastNodeType?: BreadcrumbLastNodeType;
 }
 
-const BreadcrumbsWithSchema = ({ pathMetaData }: Props) => {
+const BreadcrumbsWithSchema = ({
+  pathMetaData,
+  lastNodeType = LAST_NODE_TYPE.page,
+}: Props) => {
   const breadcrumbs = GenerateBreadcrumbsSchema(pathMetaData);
 
   return (
@@ -30,7 +41,7 @@ const BreadcrumbsWithSchema = ({ pathMetaData }: Props) => {
             return (
               <Fragment key={name}>
                 <BreadcrumbItem>
-                  {hasNextNode ? (
+                  {hasNextNode || lastNodeType === LAST_NODE_TYPE.link ? (
                     <BreadcrumbLink href={path}>{name}</BreadcrumbLink>
                   ) : (
                     <BreadcrumbPage>{name}</BreadcrumbPage>

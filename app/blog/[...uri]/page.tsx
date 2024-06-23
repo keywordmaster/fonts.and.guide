@@ -1,4 +1,6 @@
-import BreadcrumbsWithSchema from "@/components/layout/breadcrumbs-with-schema";
+import BreadcrumbsWithSchema, {
+  LAST_NODE_TYPE,
+} from "@/components/layout/breadcrumbs-with-schema";
 
 export const runtime = "edge";
 
@@ -54,6 +56,7 @@ export default async function Page({
     <>
       <BreadcrumbsWithSchema
         pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
+        lastNodeType={LAST_NODE_TYPE.link}
       />
       <h1>{data.post?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/50">
