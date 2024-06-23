@@ -1586,8 +1586,38 @@ export enum ContentTypesOfCategoryEnum {
   Post = 'POST'
 }
 
+/** Allowed Content Types of the FontAuthor taxonomy. */
+export enum ContentTypesOfFontAuthorEnum {
+  /** The Type of Content object */
+  Fontfamily = 'FONTFAMILY'
+}
+
 /** Allowed Content Types of the FontCategory taxonomy. */
 export enum ContentTypesOfFontCategoryEnum {
+  /** The Type of Content object */
+  Fontfamily = 'FONTFAMILY'
+}
+
+/** Allowed Content Types of the FontConcept taxonomy. */
+export enum ContentTypesOfFontConceptEnum {
+  /** The Type of Content object */
+  Fontfamily = 'FONTFAMILY'
+}
+
+/** Allowed Content Types of the FontSubset taxonomy. */
+export enum ContentTypesOfFontSubsetEnum {
+  /** The Type of Content object */
+  Fontfamily = 'FONTFAMILY'
+}
+
+/** Allowed Content Types of the FontUsage taxonomy. */
+export enum ContentTypesOfFontUsageEnum {
+  /** The Type of Content object */
+  Fontfamily = 'FONTFAMILY'
+}
+
+/** Allowed Content Types of the FontVariant taxonomy. */
+export enum ContentTypesOfFontVariantEnum {
   /** The Type of Content object */
   Fontfamily = 'FONTFAMILY'
 }
@@ -6918,6 +6948,29 @@ export type CreateCommentPayload = {
   success?: Maybe<Scalars['Boolean']['output']>;
 };
 
+/** Input for the createFontAuthor mutation. */
+export type CreateFontAuthorInput = {
+  /** The slug that the font-author will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-author object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the font-author object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createFontAuthor mutation. */
+export type CreateFontAuthorPayload = {
+  __typename?: 'CreateFontAuthorPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-author */
+  fontAuthor?: Maybe<FontAuthor>;
+};
+
 /** Input for the createFontCategory mutation. */
 export type CreateFontCategoryInput = {
   /** The slug that the font-category will be an alias of */
@@ -6943,6 +6996,102 @@ export type CreateFontCategoryPayload = {
   fontCategory?: Maybe<FontCategory>;
 };
 
+/** Input for the createFontConcept mutation. */
+export type CreateFontConceptInput = {
+  /** The slug that the font-concept will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-concept object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the font-concept object to mutate */
+  name: Scalars['String']['input'];
+  /** The ID of the font-concept that should be set as the parent */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createFontConcept mutation. */
+export type CreateFontConceptPayload = {
+  __typename?: 'CreateFontConceptPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-concept */
+  fontConcept?: Maybe<FontConcept>;
+};
+
+/** Input for the createFontSubset mutation. */
+export type CreateFontSubsetInput = {
+  /** The slug that the font-subset will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-subset object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the font-subset object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createFontSubset mutation. */
+export type CreateFontSubsetPayload = {
+  __typename?: 'CreateFontSubsetPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-subset */
+  fontSubset?: Maybe<FontSubset>;
+};
+
+/** Input for the createFontUsage mutation. */
+export type CreateFontUsageInput = {
+  /** The slug that the font-usage will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-usage object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the font-usage object to mutate */
+  name: Scalars['String']['input'];
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createFontUsage mutation. */
+export type CreateFontUsagePayload = {
+  __typename?: 'CreateFontUsagePayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-usage */
+  fontUsage?: Maybe<FontUsage>;
+};
+
+/** Input for the createFontVariant mutation. */
+export type CreateFontVariantInput = {
+  /** The slug that the font-variant will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-variant object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The name of the font-variant object to mutate */
+  name: Scalars['String']['input'];
+  /** The ID of the font-variant that should be set as the parent */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the createFontVariant mutation. */
+export type CreateFontVariantPayload = {
+  __typename?: 'CreateFontVariantPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-variant */
+  fontVariant?: Maybe<FontVariant>;
+};
+
 /** Input for the createFontfamily mutation. */
 export type CreateFontfamilyInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -6955,8 +7104,18 @@ export type CreateFontfamilyInput = {
   date?: InputMaybe<Scalars['String']['input']>;
   /** The excerpt of the object */
   excerpt?: InputMaybe<Scalars['String']['input']>;
+  /** Set connections between the fontfamily and fontAuthors */
+  fontAuthors?: InputMaybe<FontfamilyFontAuthorsInput>;
   /** Set connections between the fontfamily and fontCategories */
   fontCategories?: InputMaybe<FontfamilyFontCategoriesInput>;
+  /** Set connections between the fontfamily and fontConcepts */
+  fontConcepts?: InputMaybe<FontfamilyFontConceptsInput>;
+  /** Set connections between the fontfamily and fontSubsets */
+  fontSubsets?: InputMaybe<FontfamilyFontSubsetsInput>;
+  /** Set connections between the fontfamily and fontUsages */
+  fontUsages?: InputMaybe<FontfamilyFontUsagesInput>;
+  /** Set connections between the fontfamily and fontVariants */
+  fontVariants?: InputMaybe<FontfamilyFontVariantsInput>;
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
   menuOrder?: InputMaybe<Scalars['Int']['input']>;
   /** The password used to protect the content of the object */
@@ -7353,6 +7512,25 @@ export type DeleteCommentPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
 };
 
+/** Input for the deleteFontAuthor mutation. */
+export type DeleteFontAuthorInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontAuthor to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteFontAuthor mutation. */
+export type DeleteFontAuthorPayload = {
+  __typename?: 'DeleteFontAuthorPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  fontAuthor?: Maybe<FontAuthor>;
+};
+
 /** Input for the deleteFontCategory mutation. */
 export type DeleteFontCategoryInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -7370,6 +7548,82 @@ export type DeleteFontCategoryPayload = {
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The deleted term object */
   fontCategory?: Maybe<FontCategory>;
+};
+
+/** Input for the deleteFontConcept mutation. */
+export type DeleteFontConceptInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontConcept to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteFontConcept mutation. */
+export type DeleteFontConceptPayload = {
+  __typename?: 'DeleteFontConceptPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  fontConcept?: Maybe<FontConcept>;
+};
+
+/** Input for the deleteFontSubset mutation. */
+export type DeleteFontSubsetInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontSubset to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteFontSubset mutation. */
+export type DeleteFontSubsetPayload = {
+  __typename?: 'DeleteFontSubsetPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  fontSubset?: Maybe<FontSubset>;
+};
+
+/** Input for the deleteFontUsage mutation. */
+export type DeleteFontUsageInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontUsage to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteFontUsage mutation. */
+export type DeleteFontUsagePayload = {
+  __typename?: 'DeleteFontUsagePayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  fontUsage?: Maybe<FontUsage>;
+};
+
+/** Input for the deleteFontVariant mutation. */
+export type DeleteFontVariantInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontVariant to delete */
+  id: Scalars['ID']['input'];
+};
+
+/** The payload for the deleteFontVariant mutation. */
+export type DeleteFontVariantPayload = {
+  __typename?: 'DeleteFontVariantPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']['output']>;
+  /** The deleted term object */
+  fontVariant?: Maybe<FontVariant>;
 };
 
 /** Input for the deleteFontfamily mutation. */
@@ -7770,6 +8024,303 @@ export type EnqueuedStylesheetConnectionPageInfo = {
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']['output']>;
   total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The fontAuthor type */
+export type FontAuthor = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+  __typename?: 'FontAuthor';
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the FontAuthor type and the ContentNode type */
+  contentNodes?: Maybe<FontAuthorToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  fontAuthorId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the FontAuthor type and the fontfamily type */
+  fontfamilies?: Maybe<FontAuthorToFontfamilyConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FontAuthor type and the Taxonomy type */
+  taxonomy?: Maybe<FontAuthorToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The fontAuthor type */
+export type FontAuthorContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontAuthorToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The fontAuthor type */
+export type FontAuthorEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontAuthor type */
+export type FontAuthorEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontAuthor type */
+export type FontAuthorFontfamiliesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontAuthorToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontAuthor Nodes */
+export type FontAuthorConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontAuthor Nodes */
+  edges: Array<FontAuthorConnectionEdge>;
+  /** A list of connected fontAuthor Nodes */
+  nodes: Array<FontAuthor>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontAuthorConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontAuthor */
+export type FontAuthorConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected fontAuthor Node */
+  node: FontAuthor;
+};
+
+/** Page Info on the connected FontAuthorConnectionEdge */
+export type FontAuthorConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontAuthorIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the FontAuthor type and the ContentNode type */
+export type FontAuthorToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'FontAuthorToContentNodeConnection';
+  /** Edges for the FontAuthorToContentNodeConnection connection */
+  edges: Array<FontAuthorToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontAuthorToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontAuthorToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'FontAuthorToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;FontAuthorToContentNodeConnection&quot; */
+export type FontAuthorToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontAuthorToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontAuthorToContentNodeConnection connection */
+export type FontAuthorToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontAuthorEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontAuthor type and the fontfamily type */
+export type FontAuthorToFontfamilyConnection = Connection & FontfamilyConnection & {
+  __typename?: 'FontAuthorToFontfamilyConnection';
+  /** Edges for the FontAuthorToFontfamilyConnection connection */
+  edges: Array<FontAuthorToFontfamilyConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Fontfamily>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontAuthorToFontfamilyConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontAuthorToFontfamilyConnectionEdge = Edge & FontfamilyConnectionEdge & {
+  __typename?: 'FontAuthorToFontfamilyConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Fontfamily;
+};
+
+/** Page Info on the &quot;FontAuthorToFontfamilyConnection&quot; */
+export type FontAuthorToFontfamilyConnectionPageInfo = FontfamilyConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontAuthorToFontfamilyConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontAuthorToFontfamilyConnection connection */
+export type FontAuthorToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontAuthor type and the Taxonomy type */
+export type FontAuthorToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'FontAuthorToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
 };
 
 /** The fontCategory type */
@@ -8221,6 +8772,455 @@ export type FontCategoryToTaxonomyConnectionEdge = Edge & OneToOneConnection & T
   node: Taxonomy;
 };
 
+/** The fontConcept type */
+export type FontConcept = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+  __typename?: 'FontConcept';
+  /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+  ancestors?: Maybe<FontConceptToAncestorsFontConceptConnection>;
+  /** Connection between the fontConcept type and its children fontConcepts. */
+  children?: Maybe<FontConceptToFontConceptConnection>;
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the FontConcept type and the ContentNode type */
+  contentNodes?: Maybe<FontConceptToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  fontConceptId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the FontConcept type and the fontfamily type */
+  fontfamilies?: Maybe<FontConceptToFontfamilyConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Connection between the fontConcept type and its parent fontConcept. */
+  parent?: Maybe<FontConceptToParentFontConceptConnectionEdge>;
+  /** Database id of the parent node */
+  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** The globally unique identifier of the parent node. */
+  parentId?: Maybe<Scalars['ID']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FontConcept type and the Taxonomy type */
+  taxonomy?: Maybe<FontConceptToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontConceptToFontConceptConnectionWhereArgs>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontConceptToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontConcept type */
+export type FontConceptFontfamiliesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontConceptToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontConcept Nodes */
+export type FontConceptConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontConcept Nodes */
+  edges: Array<FontConceptConnectionEdge>;
+  /** A list of connected fontConcept Nodes */
+  nodes: Array<FontConcept>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontConceptConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontConcept */
+export type FontConceptConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected fontConcept Node */
+  node: FontConcept;
+};
+
+/** Page Info on the connected FontConceptConnectionEdge */
+export type FontConceptConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontConceptIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the FontConcept type and the fontConcept type */
+export type FontConceptToAncestorsFontConceptConnection = Connection & FontConceptConnection & {
+  __typename?: 'FontConceptToAncestorsFontConceptConnection';
+  /** Edges for the FontConceptToAncestorsFontConceptConnection connection */
+  edges: Array<FontConceptToAncestorsFontConceptConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontConcept>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontConceptToAncestorsFontConceptConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontConceptToAncestorsFontConceptConnectionEdge = Edge & FontConceptConnectionEdge & {
+  __typename?: 'FontConceptToAncestorsFontConceptConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontConcept;
+};
+
+/** Page Info on the &quot;FontConceptToAncestorsFontConceptConnection&quot; */
+export type FontConceptToAncestorsFontConceptConnectionPageInfo = FontConceptConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontConceptToAncestorsFontConceptConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Connection between the FontConcept type and the ContentNode type */
+export type FontConceptToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'FontConceptToContentNodeConnection';
+  /** Edges for the FontConceptToContentNodeConnection connection */
+  edges: Array<FontConceptToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontConceptToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontConceptToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'FontConceptToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;FontConceptToContentNodeConnection&quot; */
+export type FontConceptToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontConceptToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontConceptToContentNodeConnection connection */
+export type FontConceptToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontConceptEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontConcept type and the fontConcept type */
+export type FontConceptToFontConceptConnection = Connection & FontConceptConnection & {
+  __typename?: 'FontConceptToFontConceptConnection';
+  /** Edges for the FontConceptToFontConceptConnection connection */
+  edges: Array<FontConceptToFontConceptConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontConcept>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontConceptToFontConceptConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontConceptToFontConceptConnectionEdge = Edge & FontConceptConnectionEdge & {
+  __typename?: 'FontConceptToFontConceptConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontConcept;
+};
+
+/** Page Info on the &quot;FontConceptToFontConceptConnection&quot; */
+export type FontConceptToFontConceptConnectionPageInfo = FontConceptConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontConceptToFontConceptConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontConceptToFontConceptConnection connection */
+export type FontConceptToFontConceptConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the FontConcept type and the fontfamily type */
+export type FontConceptToFontfamilyConnection = Connection & FontfamilyConnection & {
+  __typename?: 'FontConceptToFontfamilyConnection';
+  /** Edges for the FontConceptToFontfamilyConnection connection */
+  edges: Array<FontConceptToFontfamilyConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Fontfamily>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontConceptToFontfamilyConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontConceptToFontfamilyConnectionEdge = Edge & FontfamilyConnectionEdge & {
+  __typename?: 'FontConceptToFontfamilyConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Fontfamily;
+};
+
+/** Page Info on the &quot;FontConceptToFontfamilyConnection&quot; */
+export type FontConceptToFontfamilyConnectionPageInfo = FontfamilyConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontConceptToFontfamilyConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontConceptToFontfamilyConnection connection */
+export type FontConceptToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontConcept type and the fontConcept type */
+export type FontConceptToParentFontConceptConnectionEdge = Edge & FontConceptConnectionEdge & OneToOneConnection & {
+  __typename?: 'FontConceptToParentFontConceptConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: FontConcept;
+};
+
+/** Connection between the FontConcept type and the Taxonomy type */
+export type FontConceptToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'FontConceptToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
 /** The &quot;FontSpecFields&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
 export type FontSpecFields = AcfFieldGroup & AcfFieldGroupFields & FontSpecFields_Fields & {
   __typename?: 'FontSpecFields';
@@ -8238,6 +9238,1049 @@ export type FontSpecFields_Fields = {
    * @deprecated Use __typename instead
    */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The fontSubset type */
+export type FontSubset = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+  __typename?: 'FontSubset';
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the FontSubset type and the ContentNode type */
+  contentNodes?: Maybe<FontSubsetToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  fontSubsetId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the FontSubset type and the fontfamily type */
+  fontfamilies?: Maybe<FontSubsetToFontfamilyConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FontSubset type and the Taxonomy type */
+  taxonomy?: Maybe<FontSubsetToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The fontSubset type */
+export type FontSubsetContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontSubsetToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The fontSubset type */
+export type FontSubsetEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontSubset type */
+export type FontSubsetEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontSubset type */
+export type FontSubsetFontfamiliesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontSubsetToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontSubset Nodes */
+export type FontSubsetConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontSubset Nodes */
+  edges: Array<FontSubsetConnectionEdge>;
+  /** A list of connected fontSubset Nodes */
+  nodes: Array<FontSubset>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontSubsetConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontSubset */
+export type FontSubsetConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected fontSubset Node */
+  node: FontSubset;
+};
+
+/** Page Info on the connected FontSubsetConnectionEdge */
+export type FontSubsetConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontSubsetIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the FontSubset type and the ContentNode type */
+export type FontSubsetToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'FontSubsetToContentNodeConnection';
+  /** Edges for the FontSubsetToContentNodeConnection connection */
+  edges: Array<FontSubsetToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontSubsetToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontSubsetToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'FontSubsetToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;FontSubsetToContentNodeConnection&quot; */
+export type FontSubsetToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontSubsetToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontSubsetToContentNodeConnection connection */
+export type FontSubsetToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontSubsetEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontSubset type and the fontfamily type */
+export type FontSubsetToFontfamilyConnection = Connection & FontfamilyConnection & {
+  __typename?: 'FontSubsetToFontfamilyConnection';
+  /** Edges for the FontSubsetToFontfamilyConnection connection */
+  edges: Array<FontSubsetToFontfamilyConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Fontfamily>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontSubsetToFontfamilyConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontSubsetToFontfamilyConnectionEdge = Edge & FontfamilyConnectionEdge & {
+  __typename?: 'FontSubsetToFontfamilyConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Fontfamily;
+};
+
+/** Page Info on the &quot;FontSubsetToFontfamilyConnection&quot; */
+export type FontSubsetToFontfamilyConnectionPageInfo = FontfamilyConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontSubsetToFontfamilyConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontSubsetToFontfamilyConnection connection */
+export type FontSubsetToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontSubset type and the Taxonomy type */
+export type FontSubsetToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'FontSubsetToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
+/** The fontUsage type */
+export type FontUsage = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+  __typename?: 'FontUsage';
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the FontUsage type and the ContentNode type */
+  contentNodes?: Maybe<FontUsageToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  fontUsageId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the FontUsage type and the fontfamily type */
+  fontfamilies?: Maybe<FontUsageToFontfamilyConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FontUsage type and the Taxonomy type */
+  taxonomy?: Maybe<FontUsageToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The fontUsage type */
+export type FontUsageContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontUsageToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The fontUsage type */
+export type FontUsageEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontUsage type */
+export type FontUsageEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontUsage type */
+export type FontUsageFontfamiliesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontUsageToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontUsage Nodes */
+export type FontUsageConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontUsage Nodes */
+  edges: Array<FontUsageConnectionEdge>;
+  /** A list of connected fontUsage Nodes */
+  nodes: Array<FontUsage>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontUsageConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontUsage */
+export type FontUsageConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected fontUsage Node */
+  node: FontUsage;
+};
+
+/** Page Info on the connected FontUsageConnectionEdge */
+export type FontUsageConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontUsageIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the FontUsage type and the ContentNode type */
+export type FontUsageToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'FontUsageToContentNodeConnection';
+  /** Edges for the FontUsageToContentNodeConnection connection */
+  edges: Array<FontUsageToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontUsageToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontUsageToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'FontUsageToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;FontUsageToContentNodeConnection&quot; */
+export type FontUsageToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontUsageToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontUsageToContentNodeConnection connection */
+export type FontUsageToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontUsageEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontUsage type and the fontfamily type */
+export type FontUsageToFontfamilyConnection = Connection & FontfamilyConnection & {
+  __typename?: 'FontUsageToFontfamilyConnection';
+  /** Edges for the FontUsageToFontfamilyConnection connection */
+  edges: Array<FontUsageToFontfamilyConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Fontfamily>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontUsageToFontfamilyConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontUsageToFontfamilyConnectionEdge = Edge & FontfamilyConnectionEdge & {
+  __typename?: 'FontUsageToFontfamilyConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Fontfamily;
+};
+
+/** Page Info on the &quot;FontUsageToFontfamilyConnection&quot; */
+export type FontUsageToFontfamilyConnectionPageInfo = FontfamilyConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontUsageToFontfamilyConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontUsageToFontfamilyConnection connection */
+export type FontUsageToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontUsage type and the Taxonomy type */
+export type FontUsageToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'FontUsageToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
+};
+
+/** The fontVariant type */
+export type FontVariant = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
+  __typename?: 'FontVariant';
+  /** The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
+  ancestors?: Maybe<FontVariantToAncestorsFontVariantConnection>;
+  /** Connection between the fontVariant type and its children fontVariants. */
+  children?: Maybe<FontVariantToFontVariantConnection>;
+  /** @deprecated Deprecated in favor of using Next.js pages */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /** Connection between the FontVariant type and the ContentNode type */
+  contentNodes?: Maybe<FontVariantToContentNodeConnection>;
+  /** The number of objects connected to the object */
+  count?: Maybe<Scalars['Int']['output']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int']['output'];
+  /** The description of the object */
+  description?: Maybe<Scalars['String']['output']>;
+  /** Connection between the TermNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<TermNodeToEnqueuedScriptConnection>;
+  /** Connection between the TermNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<TermNodeToEnqueuedStylesheetConnection>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of databaseId
+   */
+  fontVariantId?: Maybe<Scalars['Int']['output']>;
+  /** Connection between the FontVariant type and the fontfamily type */
+  fontfamilies?: Maybe<FontVariantToFontfamilyConnection>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID']['output'];
+  /** Whether the node is a Comment */
+  isComment: Scalars['Boolean']['output'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean']['output'];
+  /** Whether the node represents the front page. */
+  isFrontPage: Scalars['Boolean']['output'];
+  /** Whether  the node represents the blog page. */
+  isPostsPage: Scalars['Boolean']['output'];
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean']['output'];
+  /** The link to the term */
+  link?: Maybe<Scalars['String']['output']>;
+  /** The human friendly name of the object. */
+  name?: Maybe<Scalars['String']['output']>;
+  /** Connection between the fontVariant type and its parent fontVariant. */
+  parent?: Maybe<FontVariantToParentFontVariantConnectionEdge>;
+  /** Database id of the parent node */
+  parentDatabaseId?: Maybe<Scalars['Int']['output']>;
+  /** The globally unique identifier of the parent node. */
+  parentId?: Maybe<Scalars['ID']['output']>;
+  /** An alphanumeric identifier for the object unique to its type. */
+  slug?: Maybe<Scalars['String']['output']>;
+  /** Connection between the FontVariant type and the Taxonomy type */
+  taxonomy?: Maybe<FontVariantToTaxonomyConnectionEdge>;
+  /** The name of the taxonomy that the object is associated with */
+  taxonomyName?: Maybe<Scalars['String']['output']>;
+  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The ID of the term group that this term object belongs to */
+  termGroupId?: Maybe<Scalars['Int']['output']>;
+  /** The taxonomy ID that the object is associated with */
+  termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantAncestorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantChildrenArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontVariantToFontVariantConnectionWhereArgs>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantContentNodesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontVariantToContentNodeConnectionWhereArgs>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The fontVariant type */
+export type FontVariantFontfamiliesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontVariantToFontfamilyConnectionWhereArgs>;
+};
+
+/** Connection to fontVariant Nodes */
+export type FontVariantConnection = {
+  /** A list of edges (relational context) between RootQuery and connected fontVariant Nodes */
+  edges: Array<FontVariantConnectionEdge>;
+  /** A list of connected fontVariant Nodes */
+  nodes: Array<FontVariant>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontVariantConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected fontVariant */
+export type FontVariantConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The connected fontVariant Node */
+  node: FontVariant;
+};
+
+/** Page Info on the connected FontVariantConnectionEdge */
+export type FontVariantConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum FontVariantIdType {
+  /** The Database ID for the node */
+  DatabaseId = 'DATABASE_ID',
+  /** The hashed Global ID */
+  Id = 'ID',
+  /** The name of the node */
+  Name = 'NAME',
+  /** Url friendly name of the node */
+  Slug = 'SLUG',
+  /** The URI for the node */
+  Uri = 'URI'
+}
+
+/** Connection between the FontVariant type and the fontVariant type */
+export type FontVariantToAncestorsFontVariantConnection = Connection & FontVariantConnection & {
+  __typename?: 'FontVariantToAncestorsFontVariantConnection';
+  /** Edges for the FontVariantToAncestorsFontVariantConnection connection */
+  edges: Array<FontVariantToAncestorsFontVariantConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontVariant>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontVariantToAncestorsFontVariantConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontVariantToAncestorsFontVariantConnectionEdge = Edge & FontVariantConnectionEdge & {
+  __typename?: 'FontVariantToAncestorsFontVariantConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontVariant;
+};
+
+/** Page Info on the &quot;FontVariantToAncestorsFontVariantConnection&quot; */
+export type FontVariantToAncestorsFontVariantConnectionPageInfo = FontVariantConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontVariantToAncestorsFontVariantConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Connection between the FontVariant type and the ContentNode type */
+export type FontVariantToContentNodeConnection = Connection & ContentNodeConnection & {
+  __typename?: 'FontVariantToContentNodeConnection';
+  /** Edges for the FontVariantToContentNodeConnection connection */
+  edges: Array<FontVariantToContentNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<ContentNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontVariantToContentNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontVariantToContentNodeConnectionEdge = ContentNodeConnectionEdge & Edge & {
+  __typename?: 'FontVariantToContentNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: ContentNode;
+};
+
+/** Page Info on the &quot;FontVariantToContentNodeConnection&quot; */
+export type FontVariantToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontVariantToContentNodeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontVariantToContentNodeConnection connection */
+export type FontVariantToContentNodeConnectionWhereArgs = {
+  /** The Types of content to filter */
+  contentTypes?: InputMaybe<Array<InputMaybe<ContentTypesOfFontVariantEnum>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontVariant type and the fontVariant type */
+export type FontVariantToFontVariantConnection = Connection & FontVariantConnection & {
+  __typename?: 'FontVariantToFontVariantConnection';
+  /** Edges for the FontVariantToFontVariantConnection connection */
+  edges: Array<FontVariantToFontVariantConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontVariant>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontVariantToFontVariantConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontVariantToFontVariantConnectionEdge = Edge & FontVariantConnectionEdge & {
+  __typename?: 'FontVariantToFontVariantConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontVariant;
+};
+
+/** Page Info on the &quot;FontVariantToFontVariantConnection&quot; */
+export type FontVariantToFontVariantConnectionPageInfo = FontVariantConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontVariantToFontVariantConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontVariantToFontVariantConnection connection */
+export type FontVariantToFontVariantConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the FontVariant type and the fontfamily type */
+export type FontVariantToFontfamilyConnection = Connection & FontfamilyConnection & {
+  __typename?: 'FontVariantToFontfamilyConnection';
+  /** Edges for the FontVariantToFontfamilyConnection connection */
+  edges: Array<FontVariantToFontfamilyConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Fontfamily>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontVariantToFontfamilyConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontVariantToFontfamilyConnectionEdge = Edge & FontfamilyConnectionEdge & {
+  __typename?: 'FontVariantToFontfamilyConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: Fontfamily;
+};
+
+/** Page Info on the &quot;FontVariantToFontfamilyConnection&quot; */
+export type FontVariantToFontfamilyConnectionPageInfo = FontfamilyConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontVariantToFontfamilyConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontVariantToFontfamilyConnection connection */
+export type FontVariantToFontfamilyConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']['input']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** What parameter to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']['input']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']['input']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  taxQuery?: InputMaybe<TaxQuery>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Connection between the FontVariant type and the fontVariant type */
+export type FontVariantToParentFontVariantConnectionEdge = Edge & FontVariantConnectionEdge & OneToOneConnection & {
+  __typename?: 'FontVariantToParentFontVariantConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: FontVariant;
+};
+
+/** Connection between the FontVariant type and the Taxonomy type */
+export type FontVariantToTaxonomyConnectionEdge = Edge & OneToOneConnection & TaxonomyConnectionEdge & {
+  __typename?: 'FontVariantToTaxonomyConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: Taxonomy;
 };
 
 /** The fontfamily type */
@@ -8283,8 +10326,18 @@ export type Fontfamily = ContentNode & DatabaseIdentifier & MenuItemLinkable & N
   featuredImageDatabaseId?: Maybe<Scalars['Int']['output']>;
   /** Globally unique ID of the featured image assigned to the node */
   featuredImageId?: Maybe<Scalars['ID']['output']>;
+  /** Connection between the Fontfamily type and the fontAuthor type */
+  fontAuthors?: Maybe<FontfamilyToFontAuthorConnection>;
   /** Connection between the Fontfamily type and the fontCategory type */
   fontCategories?: Maybe<FontfamilyToFontCategoryConnection>;
+  /** Connection between the Fontfamily type and the fontConcept type */
+  fontConcepts?: Maybe<FontfamilyToFontConceptConnection>;
+  /** Connection between the Fontfamily type and the fontSubset type */
+  fontSubsets?: Maybe<FontfamilyToFontSubsetConnection>;
+  /** Connection between the Fontfamily type and the fontUsage type */
+  fontUsages?: Maybe<FontfamilyToFontUsageConnection>;
+  /** Connection between the Fontfamily type and the fontVariant type */
+  fontVariants?: Maybe<FontfamilyToFontVariantConnection>;
   /**
    * The id field matches the WP_Post-&gt;ID field.
    * @deprecated Deprecated in favor of the databaseId field
@@ -8395,12 +10448,62 @@ export type FontfamilyExcerptArgs = {
 
 
 /** The fontfamily type */
+export type FontfamilyFontAuthorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontfamilyToFontAuthorConnectionWhereArgs>;
+};
+
+
+/** The fontfamily type */
 export type FontfamilyFontCategoriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<FontfamilyToFontCategoryConnectionWhereArgs>;
+};
+
+
+/** The fontfamily type */
+export type FontfamilyFontConceptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontfamilyToFontConceptConnectionWhereArgs>;
+};
+
+
+/** The fontfamily type */
+export type FontfamilyFontSubsetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontfamilyToFontSubsetConnectionWhereArgs>;
+};
+
+
+/** The fontfamily type */
+export type FontfamilyFontUsagesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontfamilyToFontUsageConnectionWhereArgs>;
+};
+
+
+/** The fontfamily type */
+export type FontfamilyFontVariantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<FontfamilyToFontVariantConnectionWhereArgs>;
 };
 
 
@@ -8482,6 +10585,26 @@ export type FontfamilyEditorBlock = {
   renderedHtml?: Maybe<Scalars['String']['output']>;
 };
 
+/** Set relationships between the fontfamily to fontAuthors */
+export type FontfamilyFontAuthorsInput = {
+  /** If true, this will append the fontAuthor to existing related fontAuthors. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontAuthorsNodeInput>>>;
+};
+
+/** List of fontAuthors to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontAuthorsNodeInput = {
+  /** The description of the fontAuthor. This field is used to set a description of the fontAuthor if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontAuthor. If present, this will be used to connect to the fontfamily. If no existing fontAuthor exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the fontAuthor. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the fontAuthor. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
 /** Set relationships between the fontfamily to fontCategories */
 export type FontfamilyFontCategoriesInput = {
   /** If true, this will append the fontCategory to existing related fontCategories. If false, this will replace existing relationships. Default true. */
@@ -8499,6 +10622,86 @@ export type FontfamilyFontCategoriesNodeInput = {
   /** The name of the fontCategory. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
   name?: InputMaybe<Scalars['String']['input']>;
   /** The slug of the fontCategory. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the fontfamily to fontConcepts */
+export type FontfamilyFontConceptsInput = {
+  /** If true, this will append the fontConcept to existing related fontConcepts. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontConceptsNodeInput>>>;
+};
+
+/** List of fontConcepts to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontConceptsNodeInput = {
+  /** The description of the fontConcept. This field is used to set a description of the fontConcept if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontConcept. If present, this will be used to connect to the fontfamily. If no existing fontConcept exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the fontConcept. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the fontConcept. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the fontfamily to fontSubsets */
+export type FontfamilyFontSubsetsInput = {
+  /** If true, this will append the fontSubset to existing related fontSubsets. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontSubsetsNodeInput>>>;
+};
+
+/** List of fontSubsets to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontSubsetsNodeInput = {
+  /** The description of the fontSubset. This field is used to set a description of the fontSubset if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontSubset. If present, this will be used to connect to the fontfamily. If no existing fontSubset exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the fontSubset. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the fontSubset. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the fontfamily to fontUsages */
+export type FontfamilyFontUsagesInput = {
+  /** If true, this will append the fontUsage to existing related fontUsages. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontUsagesNodeInput>>>;
+};
+
+/** List of fontUsages to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontUsagesNodeInput = {
+  /** The description of the fontUsage. This field is used to set a description of the fontUsage if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontUsage. If present, this will be used to connect to the fontfamily. If no existing fontUsage exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the fontUsage. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the fontUsage. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Set relationships between the fontfamily to fontVariants */
+export type FontfamilyFontVariantsInput = {
+  /** If true, this will append the fontVariant to existing related fontVariants. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']['input']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<FontfamilyFontVariantsNodeInput>>>;
+};
+
+/** List of fontVariants to connect the fontfamily to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type FontfamilyFontVariantsNodeInput = {
+  /** The description of the fontVariant. This field is used to set a description of the fontVariant if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontVariant. If present, this will be used to connect to the fontfamily. If no existing fontVariant exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** The name of the fontVariant. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The slug of the fontVariant. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
   slug?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -8610,6 +10813,86 @@ export type FontfamilyToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
 
+/** Connection between the Fontfamily type and the fontAuthor type */
+export type FontfamilyToFontAuthorConnection = Connection & FontAuthorConnection & {
+  __typename?: 'FontfamilyToFontAuthorConnection';
+  /** Edges for the FontfamilyToFontAuthorConnection connection */
+  edges: Array<FontfamilyToFontAuthorConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontAuthor>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontfamilyToFontAuthorConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontfamilyToFontAuthorConnectionEdge = Edge & FontAuthorConnectionEdge & {
+  __typename?: 'FontfamilyToFontAuthorConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontAuthor;
+};
+
+/** Page Info on the &quot;FontfamilyToFontAuthorConnection&quot; */
+export type FontfamilyToFontAuthorConnectionPageInfo = FontAuthorConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontfamilyToFontAuthorConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontfamilyToFontAuthorConnection connection */
+export type FontfamilyToFontAuthorConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** Connection between the Fontfamily type and the fontCategory type */
 export type FontfamilyToFontCategoryConnection = Connection & FontCategoryConnection & {
   __typename?: 'FontfamilyToFontCategoryConnection';
@@ -8646,6 +10929,326 @@ export type FontfamilyToFontCategoryConnectionPageInfo = FontCategoryConnectionP
 
 /** Arguments for filtering the FontfamilyToFontCategoryConnection connection */
 export type FontfamilyToFontCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Fontfamily type and the fontConcept type */
+export type FontfamilyToFontConceptConnection = Connection & FontConceptConnection & {
+  __typename?: 'FontfamilyToFontConceptConnection';
+  /** Edges for the FontfamilyToFontConceptConnection connection */
+  edges: Array<FontfamilyToFontConceptConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontConcept>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontfamilyToFontConceptConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontfamilyToFontConceptConnectionEdge = Edge & FontConceptConnectionEdge & {
+  __typename?: 'FontfamilyToFontConceptConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontConcept;
+};
+
+/** Page Info on the &quot;FontfamilyToFontConceptConnection&quot; */
+export type FontfamilyToFontConceptConnectionPageInfo = FontConceptConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontfamilyToFontConceptConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontfamilyToFontConceptConnection connection */
+export type FontfamilyToFontConceptConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Fontfamily type and the fontSubset type */
+export type FontfamilyToFontSubsetConnection = Connection & FontSubsetConnection & {
+  __typename?: 'FontfamilyToFontSubsetConnection';
+  /** Edges for the FontfamilyToFontSubsetConnection connection */
+  edges: Array<FontfamilyToFontSubsetConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontSubset>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontfamilyToFontSubsetConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontfamilyToFontSubsetConnectionEdge = Edge & FontSubsetConnectionEdge & {
+  __typename?: 'FontfamilyToFontSubsetConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontSubset;
+};
+
+/** Page Info on the &quot;FontfamilyToFontSubsetConnection&quot; */
+export type FontfamilyToFontSubsetConnectionPageInfo = FontSubsetConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontfamilyToFontSubsetConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontfamilyToFontSubsetConnection connection */
+export type FontfamilyToFontSubsetConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Fontfamily type and the fontUsage type */
+export type FontfamilyToFontUsageConnection = Connection & FontUsageConnection & {
+  __typename?: 'FontfamilyToFontUsageConnection';
+  /** Edges for the FontfamilyToFontUsageConnection connection */
+  edges: Array<FontfamilyToFontUsageConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontUsage>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontfamilyToFontUsageConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontfamilyToFontUsageConnectionEdge = Edge & FontUsageConnectionEdge & {
+  __typename?: 'FontfamilyToFontUsageConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontUsage;
+};
+
+/** Page Info on the &quot;FontfamilyToFontUsageConnection&quot; */
+export type FontfamilyToFontUsageConnectionPageInfo = FontUsageConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontfamilyToFontUsageConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontfamilyToFontUsageConnection connection */
+export type FontfamilyToFontUsageConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the Fontfamily type and the fontVariant type */
+export type FontfamilyToFontVariantConnection = Connection & FontVariantConnection & {
+  __typename?: 'FontfamilyToFontVariantConnection';
+  /** Edges for the FontfamilyToFontVariantConnection connection */
+  edges: Array<FontfamilyToFontVariantConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontVariant>;
+  /** Information about pagination in a connection. */
+  pageInfo: FontfamilyToFontVariantConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type FontfamilyToFontVariantConnectionEdge = Edge & FontVariantConnectionEdge & {
+  __typename?: 'FontfamilyToFontVariantConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontVariant;
+};
+
+/** Page Info on the &quot;FontfamilyToFontVariantConnection&quot; */
+export type FontfamilyToFontVariantConnectionPageInfo = FontVariantConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'FontfamilyToFontVariantConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the FontfamilyToFontVariantConnection connection */
+export type FontfamilyToFontVariantConnectionWhereArgs = {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
   cacheDomain?: InputMaybe<Scalars['String']['input']>;
   /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
@@ -10590,7 +13193,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | FontCategory | Fontfamily | Page | Post | Tag;
+export type MenuItemObjectUnion = Category | FontAuthor | FontCategory | FontConcept | FontSubset | FontUsage | FontVariant | Fontfamily | Page | Post | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -13116,8 +15719,18 @@ export type RootMutation = {
   createCategory?: Maybe<CreateCategoryPayload>;
   /** The createComment mutation */
   createComment?: Maybe<CreateCommentPayload>;
+  /** The createFontAuthor mutation */
+  createFontAuthor?: Maybe<CreateFontAuthorPayload>;
   /** The createFontCategory mutation */
   createFontCategory?: Maybe<CreateFontCategoryPayload>;
+  /** The createFontConcept mutation */
+  createFontConcept?: Maybe<CreateFontConceptPayload>;
+  /** The createFontSubset mutation */
+  createFontSubset?: Maybe<CreateFontSubsetPayload>;
+  /** The createFontUsage mutation */
+  createFontUsage?: Maybe<CreateFontUsagePayload>;
+  /** The createFontVariant mutation */
+  createFontVariant?: Maybe<CreateFontVariantPayload>;
   /** The createFontfamily mutation */
   createFontfamily?: Maybe<CreateFontfamilyPayload>;
   /** The createGraphqlDocument mutation */
@@ -13140,8 +15753,18 @@ export type RootMutation = {
   deleteCategory?: Maybe<DeleteCategoryPayload>;
   /** The deleteComment mutation */
   deleteComment?: Maybe<DeleteCommentPayload>;
+  /** The deleteFontAuthor mutation */
+  deleteFontAuthor?: Maybe<DeleteFontAuthorPayload>;
   /** The deleteFontCategory mutation */
   deleteFontCategory?: Maybe<DeleteFontCategoryPayload>;
+  /** The deleteFontConcept mutation */
+  deleteFontConcept?: Maybe<DeleteFontConceptPayload>;
+  /** The deleteFontSubset mutation */
+  deleteFontSubset?: Maybe<DeleteFontSubsetPayload>;
+  /** The deleteFontUsage mutation */
+  deleteFontUsage?: Maybe<DeleteFontUsagePayload>;
+  /** The deleteFontVariant mutation */
+  deleteFontVariant?: Maybe<DeleteFontVariantPayload>;
   /** The deleteFontfamily mutation */
   deleteFontfamily?: Maybe<DeleteFontfamilyPayload>;
   /** The deleteGraphqlDocument mutation */
@@ -13176,8 +15799,18 @@ export type RootMutation = {
   updateCategory?: Maybe<UpdateCategoryPayload>;
   /** The updateComment mutation */
   updateComment?: Maybe<UpdateCommentPayload>;
+  /** The updateFontAuthor mutation */
+  updateFontAuthor?: Maybe<UpdateFontAuthorPayload>;
   /** The updateFontCategory mutation */
   updateFontCategory?: Maybe<UpdateFontCategoryPayload>;
+  /** The updateFontConcept mutation */
+  updateFontConcept?: Maybe<UpdateFontConceptPayload>;
+  /** The updateFontSubset mutation */
+  updateFontSubset?: Maybe<UpdateFontSubsetPayload>;
+  /** The updateFontUsage mutation */
+  updateFontUsage?: Maybe<UpdateFontUsagePayload>;
+  /** The updateFontVariant mutation */
+  updateFontVariant?: Maybe<UpdateFontVariantPayload>;
   /** The updateFontfamily mutation */
   updateFontfamily?: Maybe<UpdateFontfamilyPayload>;
   /** The updateGraphqlDocument mutation */
@@ -13214,8 +15847,38 @@ export type RootMutationCreateCommentArgs = {
 
 
 /** The root mutation */
+export type RootMutationCreateFontAuthorArgs = {
+  input: CreateFontAuthorInput;
+};
+
+
+/** The root mutation */
 export type RootMutationCreateFontCategoryArgs = {
   input: CreateFontCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFontConceptArgs = {
+  input: CreateFontConceptInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFontSubsetArgs = {
+  input: CreateFontSubsetInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFontUsageArgs = {
+  input: CreateFontUsageInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateFontVariantArgs = {
+  input: CreateFontVariantInput;
 };
 
 
@@ -13286,8 +15949,38 @@ export type RootMutationDeleteCommentArgs = {
 
 
 /** The root mutation */
+export type RootMutationDeleteFontAuthorArgs = {
+  input: DeleteFontAuthorInput;
+};
+
+
+/** The root mutation */
 export type RootMutationDeleteFontCategoryArgs = {
   input: DeleteFontCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteFontConceptArgs = {
+  input: DeleteFontConceptInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteFontSubsetArgs = {
+  input: DeleteFontSubsetInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteFontUsageArgs = {
+  input: DeleteFontUsageInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteFontVariantArgs = {
+  input: DeleteFontVariantInput;
 };
 
 
@@ -13394,8 +16087,38 @@ export type RootMutationUpdateCommentArgs = {
 
 
 /** The root mutation */
+export type RootMutationUpdateFontAuthorArgs = {
+  input: UpdateFontAuthorInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateFontCategoryArgs = {
   input: UpdateFontCategoryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateFontConceptArgs = {
+  input: UpdateFontConceptInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateFontSubsetArgs = {
+  input: UpdateFontSubsetInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateFontUsageArgs = {
+  input: UpdateFontUsageInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateFontVariantArgs = {
+  input: UpdateFontVariantInput;
 };
 
 
@@ -13481,10 +16204,30 @@ export type RootQuery = {
   contentTypes?: Maybe<RootQueryToContentTypeConnection>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
+  /** A 0bject */
+  fontAuthor?: Maybe<FontAuthor>;
+  /** Connection between the RootQuery type and the fontAuthor type */
+  fontAuthors?: Maybe<RootQueryToFontAuthorConnection>;
   /** Connection between the RootQuery type and the fontCategory type */
   fontCategories?: Maybe<RootQueryToFontCategoryConnection>;
   /** A 0bject */
   fontCategory?: Maybe<FontCategory>;
+  /** A 0bject */
+  fontConcept?: Maybe<FontConcept>;
+  /** Connection between the RootQuery type and the fontConcept type */
+  fontConcepts?: Maybe<RootQueryToFontConceptConnection>;
+  /** A 0bject */
+  fontSubset?: Maybe<FontSubset>;
+  /** Connection between the RootQuery type and the fontSubset type */
+  fontSubsets?: Maybe<RootQueryToFontSubsetConnection>;
+  /** A 0bject */
+  fontUsage?: Maybe<FontUsage>;
+  /** Connection between the RootQuery type and the fontUsage type */
+  fontUsages?: Maybe<RootQueryToFontUsageConnection>;
+  /** A 0bject */
+  fontVariant?: Maybe<FontVariant>;
+  /** Connection between the RootQuery type and the fontVariant type */
+  fontVariants?: Maybe<RootQueryToFontVariantConnection>;
   /** Connection between the RootQuery type and the fontfamily type */
   fontfamilies?: Maybe<RootQueryToFontfamilyConnection>;
   /** An object of the fontfamily Type. List of fonts */
@@ -13667,6 +16410,23 @@ export type RootQueryContentTypesArgs = {
 
 
 /** The root entry point into the Graph */
+export type RootQueryFontAuthorArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FontAuthorIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontAuthorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFontAuthorConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
 export type RootQueryFontCategoriesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
@@ -13680,6 +16440,74 @@ export type RootQueryFontCategoriesArgs = {
 export type RootQueryFontCategoryArgs = {
   id: Scalars['ID']['input'];
   idType?: InputMaybe<FontCategoryIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontConceptArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FontConceptIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontConceptsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFontConceptConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontSubsetArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FontSubsetIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontSubsetsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFontSubsetConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontUsageArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FontUsageIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontUsagesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFontUsageConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontVariantArgs = {
+  id: Scalars['ID']['input'];
+  idType?: InputMaybe<FontVariantIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryFontVariantsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<RootQueryToFontVariantConnectionWhereArgs>;
 };
 
 
@@ -14397,6 +17225,86 @@ export type RootQueryToEnqueuedStylesheetConnectionPageInfo = EnqueuedStylesheet
   total?: Maybe<Scalars['Int']['output']>;
 };
 
+/** Connection between the RootQuery type and the fontAuthor type */
+export type RootQueryToFontAuthorConnection = Connection & FontAuthorConnection & {
+  __typename?: 'RootQueryToFontAuthorConnection';
+  /** Edges for the RootQueryToFontAuthorConnection connection */
+  edges: Array<RootQueryToFontAuthorConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontAuthor>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFontAuthorConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFontAuthorConnectionEdge = Edge & FontAuthorConnectionEdge & {
+  __typename?: 'RootQueryToFontAuthorConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontAuthor;
+};
+
+/** Page Info on the &quot;RootQueryToFontAuthorConnection&quot; */
+export type RootQueryToFontAuthorConnectionPageInfo = FontAuthorConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFontAuthorConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFontAuthorConnection connection */
+export type RootQueryToFontAuthorConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** Connection between the RootQuery type and the fontCategory type */
 export type RootQueryToFontCategoryConnection = Connection & FontCategoryConnection & {
   __typename?: 'RootQueryToFontCategoryConnection';
@@ -14433,6 +17341,326 @@ export type RootQueryToFontCategoryConnectionPageInfo = FontCategoryConnectionPa
 
 /** Arguments for filtering the RootQueryToFontCategoryConnection connection */
 export type RootQueryToFontCategoryConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the RootQuery type and the fontConcept type */
+export type RootQueryToFontConceptConnection = Connection & FontConceptConnection & {
+  __typename?: 'RootQueryToFontConceptConnection';
+  /** Edges for the RootQueryToFontConceptConnection connection */
+  edges: Array<RootQueryToFontConceptConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontConcept>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFontConceptConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFontConceptConnectionEdge = Edge & FontConceptConnectionEdge & {
+  __typename?: 'RootQueryToFontConceptConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontConcept;
+};
+
+/** Page Info on the &quot;RootQueryToFontConceptConnection&quot; */
+export type RootQueryToFontConceptConnectionPageInfo = FontConceptConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFontConceptConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFontConceptConnection connection */
+export type RootQueryToFontConceptConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the RootQuery type and the fontSubset type */
+export type RootQueryToFontSubsetConnection = Connection & FontSubsetConnection & {
+  __typename?: 'RootQueryToFontSubsetConnection';
+  /** Edges for the RootQueryToFontSubsetConnection connection */
+  edges: Array<RootQueryToFontSubsetConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontSubset>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFontSubsetConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFontSubsetConnectionEdge = Edge & FontSubsetConnectionEdge & {
+  __typename?: 'RootQueryToFontSubsetConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontSubset;
+};
+
+/** Page Info on the &quot;RootQueryToFontSubsetConnection&quot; */
+export type RootQueryToFontSubsetConnectionPageInfo = FontSubsetConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFontSubsetConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFontSubsetConnection connection */
+export type RootQueryToFontSubsetConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the RootQuery type and the fontUsage type */
+export type RootQueryToFontUsageConnection = Connection & FontUsageConnection & {
+  __typename?: 'RootQueryToFontUsageConnection';
+  /** Edges for the RootQueryToFontUsageConnection connection */
+  edges: Array<RootQueryToFontUsageConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontUsage>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFontUsageConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFontUsageConnectionEdge = Edge & FontUsageConnectionEdge & {
+  __typename?: 'RootQueryToFontUsageConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontUsage;
+};
+
+/** Page Info on the &quot;RootQueryToFontUsageConnection&quot; */
+export type RootQueryToFontUsageConnectionPageInfo = FontUsageConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFontUsageConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFontUsageConnection connection */
+export type RootQueryToFontUsageConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']['input']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']['input']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']['input']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']['input']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']['input']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Connection between the RootQuery type and the fontVariant type */
+export type RootQueryToFontVariantConnection = Connection & FontVariantConnection & {
+  __typename?: 'RootQueryToFontVariantConnection';
+  /** Edges for the RootQueryToFontVariantConnection connection */
+  edges: Array<RootQueryToFontVariantConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FontVariant>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToFontVariantConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToFontVariantConnectionEdge = Edge & FontVariantConnectionEdge & {
+  __typename?: 'RootQueryToFontVariantConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The item at the end of the edge */
+  node: FontVariant;
+};
+
+/** Page Info on the &quot;RootQueryToFontVariantConnection&quot; */
+export type RootQueryToFontVariantConnectionPageInfo = FontVariantConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToFontVariantConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean']['output'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Int']['output']>;
+};
+
+/** Arguments for filtering the RootQueryToFontVariantConnection connection */
+export type RootQueryToFontVariantConnectionWhereArgs = {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
   cacheDomain?: InputMaybe<Scalars['String']['input']>;
   /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
@@ -16115,8 +19343,18 @@ export type TaxonomyConnectionPageInfo = {
 export enum TaxonomyEnum {
   /** Taxonomy enum category */
   Category = 'CATEGORY',
+  /** Taxonomy enum font-author */
+  Fontauthor = 'FONTAUTHOR',
   /** Taxonomy enum font-category */
   Fontcategory = 'FONTCATEGORY',
+  /** Taxonomy enum font-concept */
+  Fontconcept = 'FONTCONCEPT',
+  /** Taxonomy enum font-subset */
+  Fontsubset = 'FONTSUBSET',
+  /** Taxonomy enum font-usage */
+  Fontusage = 'FONTUSAGE',
+  /** Taxonomy enum font-variant */
+  Fontvariant = 'FONTVARIANT',
   /** Taxonomy enum graphql_document_group */
   Graphqldocumentgroup = 'GRAPHQLDOCUMENTGROUP',
   /** Taxonomy enum post_format */
@@ -16568,6 +19806,31 @@ export type UpdateCommentPayload = {
   success?: Maybe<Scalars['Boolean']['output']>;
 };
 
+/** Input for the updateFontAuthor mutation. */
+export type UpdateFontAuthorInput = {
+  /** The slug that the font-author will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-author object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontAuthor object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the font-author object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFontAuthor mutation. */
+export type UpdateFontAuthorPayload = {
+  __typename?: 'UpdateFontAuthorPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-author */
+  fontAuthor?: Maybe<FontAuthor>;
+};
+
 /** Input for the updateFontCategory mutation. */
 export type UpdateFontCategoryInput = {
   /** The slug that the font-category will be an alias of */
@@ -16595,6 +19858,110 @@ export type UpdateFontCategoryPayload = {
   fontCategory?: Maybe<FontCategory>;
 };
 
+/** Input for the updateFontConcept mutation. */
+export type UpdateFontConceptInput = {
+  /** The slug that the font-concept will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-concept object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontConcept object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the font-concept object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the font-concept that should be set as the parent */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFontConcept mutation. */
+export type UpdateFontConceptPayload = {
+  __typename?: 'UpdateFontConceptPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-concept */
+  fontConcept?: Maybe<FontConcept>;
+};
+
+/** Input for the updateFontSubset mutation. */
+export type UpdateFontSubsetInput = {
+  /** The slug that the font-subset will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-subset object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontSubset object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the font-subset object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFontSubset mutation. */
+export type UpdateFontSubsetPayload = {
+  __typename?: 'UpdateFontSubsetPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-subset */
+  fontSubset?: Maybe<FontSubset>;
+};
+
+/** Input for the updateFontUsage mutation. */
+export type UpdateFontUsageInput = {
+  /** The slug that the font-usage will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-usage object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontUsage object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the font-usage object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFontUsage mutation. */
+export type UpdateFontUsagePayload = {
+  __typename?: 'UpdateFontUsagePayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-usage */
+  fontUsage?: Maybe<FontUsage>;
+};
+
+/** Input for the updateFontVariant mutation. */
+export type UpdateFontVariantInput = {
+  /** The slug that the font-variant will be an alias of */
+  aliasOf?: InputMaybe<Scalars['String']['input']>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The description of the font-variant object */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the fontVariant object to update */
+  id: Scalars['ID']['input'];
+  /** The name of the font-variant object to mutate */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** The ID of the font-variant that should be set as the parent */
+  parentId?: InputMaybe<Scalars['ID']['input']>;
+  /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The payload for the updateFontVariant mutation. */
+export type UpdateFontVariantPayload = {
+  __typename?: 'UpdateFontVariantPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** The created font-variant */
+  fontVariant?: Maybe<FontVariant>;
+};
+
 /** Input for the updateFontfamily mutation. */
 export type UpdateFontfamilyInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -16607,8 +19974,18 @@ export type UpdateFontfamilyInput = {
   date?: InputMaybe<Scalars['String']['input']>;
   /** The excerpt of the object */
   excerpt?: InputMaybe<Scalars['String']['input']>;
+  /** Set connections between the fontfamily and fontAuthors */
+  fontAuthors?: InputMaybe<FontfamilyFontAuthorsInput>;
   /** Set connections between the fontfamily and fontCategories */
   fontCategories?: InputMaybe<FontfamilyFontCategoriesInput>;
+  /** Set connections between the fontfamily and fontConcepts */
+  fontConcepts?: InputMaybe<FontfamilyFontConceptsInput>;
+  /** Set connections between the fontfamily and fontSubsets */
+  fontSubsets?: InputMaybe<FontfamilyFontSubsetsInput>;
+  /** Set connections between the fontfamily and fontUsages */
+  fontUsages?: InputMaybe<FontfamilyFontUsagesInput>;
+  /** Set connections between the fontfamily and fontVariants */
+  fontVariants?: InputMaybe<FontfamilyFontVariantsInput>;
   /** The ID of the fontfamily object */
   id: Scalars['ID']['input'];
   /** Override the edit lock when another user is editing the post */
@@ -17890,14 +21267,14 @@ export type GetFontfamiliesClientQueryVariables = Exact<{
 }>;
 
 
-export type GetFontfamiliesClientQuery = { __typename: 'RootQuery', fontfamilies?: { __typename: 'RootQueryToFontfamilyConnection', edges: Array<{ __typename: 'RootQueryToFontfamilyConnectionEdge', node: { __typename: 'Fontfamily', id: string, title?: string | null, uri?: string | null, content?: string | null, modified?: string | null, commentCount?: number | null, featuredImage?: { __typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename: 'MediaItem', srcSet?: string | null } } | null } }>, pageInfo: { __typename: 'RootQueryToFontfamilyConnectionPageInfo', total?: number | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null } } | null, total?: { __typename: 'RootQueryToFontfamilyConnection', pageInfo: { __typename: 'RootQueryToFontfamilyConnectionPageInfo', total?: number | null } } | null, fontCategory?: { __typename: 'RootQueryToTermNodeConnection', nodes: Array<{ __typename: 'Category', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontCategory', id: string, name?: string | null, uri?: string | null } | { __typename: 'GraphqlDocumentGroup', id: string, name?: string | null, uri?: string | null } | { __typename: 'PostFormat', id: string, name?: string | null, uri?: string | null } | { __typename: 'Tag', id: string, name?: string | null, uri?: string | null }> } | null, fontVariants?: { __typename: 'RootQueryToTermNodeConnection', nodes: Array<{ __typename: 'Category', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontCategory', id: string, name?: string | null, slug?: string | null } | { __typename: 'GraphqlDocumentGroup', id: string, name?: string | null, slug?: string | null } | { __typename: 'PostFormat', id: string, name?: string | null, slug?: string | null } | { __typename: 'Tag', id: string, name?: string | null, slug?: string | null }> } | null };
+export type GetFontfamiliesClientQuery = { __typename: 'RootQuery', fontfamilies?: { __typename: 'RootQueryToFontfamilyConnection', edges: Array<{ __typename: 'RootQueryToFontfamilyConnectionEdge', node: { __typename: 'Fontfamily', id: string, title?: string | null, uri?: string | null, content?: string | null, modified?: string | null, commentCount?: number | null, featuredImage?: { __typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename: 'MediaItem', srcSet?: string | null } } | null } }>, pageInfo: { __typename: 'RootQueryToFontfamilyConnectionPageInfo', total?: number | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean, startCursor?: string | null } } | null, total?: { __typename: 'RootQueryToFontfamilyConnection', pageInfo: { __typename: 'RootQueryToFontfamilyConnectionPageInfo', total?: number | null } } | null, fontCategory?: { __typename: 'RootQueryToTermNodeConnection', nodes: Array<{ __typename: 'Category', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontAuthor', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontCategory', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontConcept', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontSubset', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontUsage', id: string, name?: string | null, uri?: string | null } | { __typename: 'FontVariant', id: string, name?: string | null, uri?: string | null } | { __typename: 'GraphqlDocumentGroup', id: string, name?: string | null, uri?: string | null } | { __typename: 'PostFormat', id: string, name?: string | null, uri?: string | null } | { __typename: 'Tag', id: string, name?: string | null, uri?: string | null }> } | null, fontVariants?: { __typename: 'RootQueryToTermNodeConnection', nodes: Array<{ __typename: 'Category', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontAuthor', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontCategory', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontConcept', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontSubset', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontUsage', id: string, name?: string | null, slug?: string | null } | { __typename: 'FontVariant', id: string, name?: string | null, slug?: string | null } | { __typename: 'GraphqlDocumentGroup', id: string, name?: string | null, slug?: string | null } | { __typename: 'PostFormat', id: string, name?: string | null, slug?: string | null } | { __typename: 'Tag', id: string, name?: string | null, slug?: string | null }> } | null };
 
 export type GetPostQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type GetPostQuery = { __typename: 'RootQuery', breadcrumbs?: { __typename: 'Post', id: string, categories?: { __typename: 'PostToCategoryConnection', nodes: Array<{ __typename: 'Category', id: string, ancestors?: { __typename: 'CategoryToAncestorsCategoryConnection', nodes: Array<{ __typename: 'Category', id: string, uri?: string | null, name?: string | null }> } | null }> } | null } | null, post?: { __typename: 'Post', id: string, title?: string | null, content?: string | null, date?: string | null } | null };
+export type GetPostQuery = { __typename: 'RootQuery', breadcrumbs?: { __typename: 'Post', id: string, categories?: { __typename: 'PostToCategoryConnection', edges: Array<{ __typename: 'PostToCategoryConnectionEdge', node: { __typename: 'Category', uri?: string | null, name?: string | null } }>, nodes: Array<{ __typename: 'Category', id: string, ancestors?: { __typename: 'CategoryToAncestorsCategoryConnection', nodes: Array<{ __typename: 'Category', id: string, uri?: string | null, name?: string | null }> } | null }> } | null } | null, post?: { __typename: 'Post', id: string, title?: string | null, content?: string | null, date?: string | null } | null };
 
 export type GetPostsByCategoryQueryVariables = Exact<{
   category: Scalars['String']['input'];
@@ -17940,7 +21317,7 @@ export type GetRootLayoutQuery = { __typename: 'RootQuery', generalSettings?: { 
 export const GetPageDocument = {"__meta__":{"hash":"c71974f77d561ec9f1fb9aceea8eead2ffc3092d"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","alias":{"kind":"Name","value":"breadcrumbs"},"name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"ancestors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"NodeWithTitle"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]} as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
 export const GetPagesSitemapDocument = {"__meta__":{"hash":"cec6ad465d54a2ad828c7fc5d898eeb16c1c39f0"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPagesSitemap"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"pages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"modified"}}]}}]}}]}}]} as unknown as DocumentNode<GetPagesSitemapQuery, GetPagesSitemapQueryVariables>;
 export const GetFontfamiliesClientDocument = {"__meta__":{"hash":"ac9271cc3f5905f318cc738c82fc1e0423fb3ef1"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetFontfamiliesClient"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"field"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PostObjectsConnectionOrderbyEnum"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"order"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"OrderEnum"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TaxArray"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"fontfamilies"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"1000"}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"orderby"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"field"},"value":{"kind":"Variable","name":{"kind":"Name","value":"field"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"order"},"value":{"kind":"Variable","name":{"kind":"Name","value":"order"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"taxQuery"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxArray"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"modified"}},{"kind":"Field","name":{"kind":"Name","value":"commentCount"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}},{"kind":"Field","name":{"kind":"Name","value":"hasPreviousPage"}},{"kind":"Field","name":{"kind":"Name","value":"startCursor"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"total"},"name":{"kind":"Name","value":"fontfamilies"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"fontCategory"},"name":{"kind":"Name","value":"terms"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxonomies"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"FONTCATEGORY"}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}}]}}]}},{"kind":"Field","alias":{"kind":"Name","value":"fontVariants"},"name":{"kind":"Name","value":"terms"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"taxonomies"},"value":{"kind":"ListValue","values":[{"kind":"EnumValue","value":"CATEGORY"}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<GetFontfamiliesClientQuery, GetFontfamiliesClientQueryVariables>;
-export const GetPostDocument = {"__meta__":{"hash":"9894472d152d6f27696ab8efca1833d77e77b603"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPost"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","alias":{"kind":"Name","value":"breadcrumbs"},"name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"ancestors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]} as unknown as DocumentNode<GetPostQuery, GetPostQueryVariables>;
+export const GetPostDocument = {"__meta__":{"hash":"2d1c3022c813ad83fa4317dadc0057c8f2853136"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPost"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","alias":{"kind":"Name","value":"breadcrumbs"},"name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"ancestors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"URI"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]} as unknown as DocumentNode<GetPostQuery, GetPostQueryVariables>;
 export const GetPostsByCategoryDocument = {"__meta__":{"hash":"872797bd66bc1e913e0ca6595577280e8d83cf04"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPostsByCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"category"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"categoryName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"category"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<GetPostsByCategoryQuery, GetPostsByCategoryQueryVariables>;
 export const GetPostsDocument = {"__meta__":{"hash":"1e251e2dfda455a0aea2b26c9ea4540ba781c809"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPosts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"after"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"after"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"endCursor"}},{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}},{"kind":"Field","name":{"kind":"Name","value":"hasPreviousPage"}},{"kind":"Field","name":{"kind":"Name","value":"startCursor"}}]}}]}}]}}]} as unknown as DocumentNode<GetPostsQuery, GetPostsQueryVariables>;
 export const GetPostsSitemapDocument = {"__meta__":{"hash":"413b74d852239517fbdbee8d13e5c418a8c6a996"},"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPostsSitemap"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"modified"}}]}}]}}]}}]} as unknown as DocumentNode<GetPostsSitemapQuery, GetPostsSitemapQueryVariables>;

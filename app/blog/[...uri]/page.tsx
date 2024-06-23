@@ -6,6 +6,7 @@ export const runtime = "edge";
 
 import { gql } from "@urql/core";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 
 import { GetPostQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
@@ -22,6 +23,12 @@ export default async function Page({
         breadcrumbs: post(id: $id, idType: URI) {
           id
           categories {
+            edges {
+              node {
+                uri
+                name
+              }
+            }
             nodes {
               id
               ancestors {
@@ -53,7 +60,7 @@ export default async function Page({
   }
 
   return (
-    <>
+    <Fragment>
       <BreadcrumbsWithSchema
         pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
         lastNodeType={LAST_NODE_TYPE.link}
@@ -63,6 +70,6 @@ export default async function Page({
         <pre>{JSON.stringify(data.breadcrumbs)}</pre>
       </div>
       <article dangerouslySetInnerHTML={{ __html: data.post?.content }} />
-    </>
+    </Fragment>
   );
 }
