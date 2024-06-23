@@ -33,7 +33,7 @@ export const convertPostCategoryQueryToPathMetaData = ({
 
   return [
     ...basePathMetaData,
-    ...ancestors.nodes.map(({ name, uri }) => ({
+    ...ancestors.nodes.reverse().map(({ name, uri }) => ({
       path: uri,
       name,
     })),
@@ -52,7 +52,7 @@ export const convertPageQueryToPathMetaData = ({
 
   return [
     ...basePathMetaData,
-    ...ancestors.nodes.map(({ title, uri }) => ({
+    ...ancestors.nodes.reverse().map(({ title, uri }) => ({
       path: uri,
       name: title,
     })),
