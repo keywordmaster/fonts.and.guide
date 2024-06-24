@@ -23,7 +23,8 @@ export const GenerateBreadcrumbsSchema = (
 
 export const convertPostCategoryQueryToPathMetaData = ({
   breadcrumbs,
-}: GetPostQuery): BreadcrumbMetaData[] => {
+  basePathMetaData = [{ path: "/", name: "Home" }],
+}: GetPostQuery & BasePathParam): BreadcrumbMetaData[] => {
   const { ancestors } = breadcrumbs.categories.nodes[0];
   const { uri, name } = breadcrumbs.categories.edges[0].node;
 
@@ -31,10 +32,11 @@ export const convertPostCategoryQueryToPathMetaData = ({
 
   if (!ancestors) {
     // Uncategorized
-    return [lastBreadcrumb];
+    return [...basePathMetaData, lastBreadcrumb];
   }
 
   return [
+    ...basePathMetaData,
     ...ancestors.nodes.reverse().map(({ name, uri }) => ({
       path: uri,
       name,
@@ -49,6 +51,7 @@ export const convertPageQueryToPathMetaData = ({
 }: GetPageQuery & BasePathParam): BreadcrumbMetaData[] => {
   const { ancestors, title, uri } = breadcrumbs;
   const lastBreadcrumb: BreadcrumbMetaData = { path: uri, name: title };
+
   if (!ancestors) {
     return [...basePathMetaData, lastBreadcrumb];
   }
