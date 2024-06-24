@@ -15,6 +15,7 @@ import {
 } from "@/gql/graphql";
 
 import FontfamilyFilter from "./fontfamily-filter";
+import FontfamilyListItem from "./fontfamily-list-item";
 import SortOrderSetter from "./sort-order";
 
 interface Props {
@@ -50,14 +51,14 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
   // TODO: 텀 종류만큼 어레이 채우기
   const filters = isFiltered
     ? [
-      {
-        field: TaxQueryField.Slug,
-        // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
-        terms: (searchParams["font-category"] as string)?.split(","),
-        includeChildren: true,
-        taxonomy: TaxonomyEnum.Fontcategory,
-      },
-    ]
+        {
+          field: TaxQueryField.Slug,
+          // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
+          terms: (searchParams["font-category"] as string)?.split(","),
+          includeChildren: true,
+          taxonomy: TaxonomyEnum.Fontcategory,
+        },
+      ]
     : [];
 
   const [{ data, error }] = useQuery<GetFontfamiliesClientQuery>({
@@ -84,8 +85,20 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
               commentCount
               featuredImage {
                 node {
+                  id
                   srcSet
+                  sourceUrl
+                  altText
                 }
+              }
+              fontSpecFields {
+                id: menuUrl
+                downloadLink
+                fontName
+                isGoogleFonts
+                license
+                menuUrl
+                version
               }
             }
           }
@@ -130,6 +143,19 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
 
   return (
     <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: data.fontfamilies.edges
+            .map(({ node }) => {
+              return `
+            @font-face {
+              font-family: ${node.title};
+              src: url(${node.fontSpecFields.menuUrl});
+            }`;
+            })
+            .join("\n"),
+        }}
+      />
       <div className="flex items-center justify-between gap-4">
         <FontfamilyFilter
           terms={{
@@ -145,12 +171,8 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
       <ul>
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
-            <li key={node.id}>
-              <Link key={node.id} href={node.uri} prefetch>
-                {node.title}
-              </Link>
-            </li>
-          ))
+              <FontfamilyListItem key={node.id} fontfamily={node} />
+            ))
           : JSON.stringify(error)}
       </ul>
 

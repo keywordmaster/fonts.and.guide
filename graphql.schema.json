@@ -85326,6 +85326,12 @@
             "deprecationReason": null
           },
           {
+            "name": "IMAGE_JXL",
+            "description": "image/jxl mime type.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "IMAGE_PNG",
             "description": "image/png mime type.",
             "isDeprecated": false,
