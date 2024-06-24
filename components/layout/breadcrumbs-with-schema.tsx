@@ -9,28 +9,40 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import GenerateBreadcrumbsSchema from "@/utils/generate-breadcrumbs-schema";
+import {
+  BreadcrumbMetaData,
+  GenerateBreadcrumbsSchema,
+} from "@/utils/breadcrumbs";
 
-type BreadcrumbMetaData = [string, string];
+export const LAST_NODE_TYPE = {
+  link: "link",
+  page: "page",
+} as const;
+
+type BreadcrumbLastNodeType = keyof typeof LAST_NODE_TYPE;
 
 interface Props {
   pathMetaData: BreadcrumbMetaData[];
+  lastNodeType?: BreadcrumbLastNodeType;
 }
 
-const BreadcrumbsWithSchema = ({ pathMetaData }: Props) => {
+const BreadcrumbsWithSchema = ({
+  pathMetaData,
+  lastNodeType = LAST_NODE_TYPE.page,
+}: Props) => {
   const breadcrumbs = GenerateBreadcrumbsSchema(pathMetaData);
 
   return (
     <Fragment>
       <Breadcrumb>
         <BreadcrumbList>
-          {pathMetaData.map(([href, name], index) => {
+          {pathMetaData.map(({ path, name }, index) => {
             const hasNextNode = pathMetaData.length - 1 !== index;
             return (
               <Fragment key={name}>
                 <BreadcrumbItem>
-                  {hasNextNode ? (
-                    <BreadcrumbLink href={href}>{name}</BreadcrumbLink>
+                  {hasNextNode || lastNodeType === LAST_NODE_TYPE.link ? (
+                    <BreadcrumbLink href={path}>{name}</BreadcrumbLink>
                   ) : (
                     <BreadcrumbPage>{name}</BreadcrumbPage>
                   )}

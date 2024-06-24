@@ -1,3 +1,5 @@
+import { convertPageQueryToPathMetaData } from "@/utils/breadcrumbs";
+
 export const runtime = "edge";
 
 import { gql } from "@urql/core";
@@ -17,6 +19,8 @@ export default async function Page({
       query GetPage($id: ID!) {
         breadcrumbs: page(id: $id, idType: URI) {
           id
+          title
+          uri
           ancestors {
             nodes {
               id
@@ -39,7 +43,6 @@ export default async function Page({
       id: decodeURI(uri.reduce((acc, cur) => `${acc}/${cur}`)),
     },
   );
-  // console.log(data);
 
   if (!data.page) {
     notFound();
@@ -48,11 +51,7 @@ export default async function Page({
   return (
     <>
       <BreadcrumbsWithSchema
-        pathMetaData={[
-          ["/", "Home"],
-          ["/부모페이지", "부모페이지"],
-          ["/child", "CHILD"],
-        ]}
+        pathMetaData={convertPageQueryToPathMetaData(data)}
       />
       <h1>{data.page?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/50">

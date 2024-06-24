@@ -1,12 +1,16 @@
-import BreadcrumbsWithSchema from "@/components/layout/breadcrumbs-with-schema";
+import BreadcrumbsWithSchema, {
+  LAST_NODE_TYPE,
+} from "@/components/layout/breadcrumbs-with-schema";
 
 export const runtime = "edge";
 
 import { gql } from "@urql/core";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 
 import { GetPostQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+import { convertPostCategoryQueryToPathMetaData } from "@/utils/breadcrumbs";
 
 export default async function Page({
   params: { uri },
@@ -19,6 +23,12 @@ export default async function Page({
         breadcrumbs: post(id: $id, idType: URI) {
           id
           categories {
+            edges {
+              node {
+                uri
+                name
+              }
+            }
             nodes {
               id
               ancestors {
@@ -50,19 +60,16 @@ export default async function Page({
   }
 
   return (
-    <>
+    <Fragment>
       <BreadcrumbsWithSchema
-        pathMetaData={[
-          ["/", "Home"],
-          ["/부모페이지", "부모페이지"],
-          ["/child", "CHILD"],
-        ]}
+        pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
+        lastNodeType={LAST_NODE_TYPE.link}
       />
       <h1>{data.post?.title}</h1>
       <div className="overflow-x-scroll p-4 bg-muted/50">
         <pre>{JSON.stringify(data.breadcrumbs)}</pre>
       </div>
       <article dangerouslySetInnerHTML={{ __html: data.post?.content }} />
-    </>
+    </Fragment>
   );
 }
