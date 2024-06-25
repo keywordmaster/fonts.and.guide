@@ -7,44 +7,47 @@ import { GetFontfamiliesClientQuery } from "@/gql/graphql";
 interface Props {
   fontfamily: GetFontfamiliesClientQuery["fontfamilies"]["edges"][0]["node"];
 }
-const FontfamilyListItem = ({ fontfamily }: Props) => {
-  console.log(fontfamily);
+const FontfamilyListItem = ({
+  fontfamily: {
+    id,
+    modified,
+    featuredImage,
+    fontSpecFields,
+    commentCount,
+    title,
+    uri,
+  },
+}: Props) => {
+  console.log({ featuredImage, fontSpecFields });
 
   return (
     <Link
-      key={fontfamily.id}
-      href={fontfamily.uri}
+      key={id}
+      href={uri}
       prefetch
       role="listitem"
-      className="flex justify-between"
+      className="flex justify-between aspect-[21/9] bg-background border border-border rounded-lg overflow-hidden gap-2 p-2 hover:shadow-lg transition-shadow duration-300 ease-in-out"
     >
-      <span
-        style={{
-          fontFamily: fontfamily.title,
-        }}
-      >
-        {fontfamily.title}
-      </span>
-      {fontfamily.featuredImage && (
+      {featuredImage ? (
         <Image
-          src={fontfamily.featuredImage.node.sourceUrl}
-          // srcSet={fontfamily.featuredImage?.node.srcSet}
-          alt={fontfamily.featuredImage?.node.altText}
-          width={100}
+          src={featuredImage.node.sourceUrl}
+          // srcSet={featuredImage?.node.srcSet}
+          alt={featuredImage?.node.altText}
+          width={300}
           height={100}
+          className="flex-1 object-cover w-1/2 h-full rounded-lg"
         />
+      ) : (
+        <div className="flex items-center flex-1 pl-3 pr-2 text-3xl">
+          <span
+            style={{
+              fontFamily: title,
+            }}
+          >
+            {title}
+          </span>
+        </div>
       )}
-
-      <span
-        className={cx(`text-lg`)}
-        style={
-          {
-            // fontFamily: fontfamily.fontSpecFields,
-          }
-        }
-      >
-        {fontfamily.modified}
-      </span>
     </Link>
   );
 };

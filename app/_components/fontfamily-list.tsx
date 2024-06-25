@@ -151,24 +151,26 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
             @font-face {
               font-family: ${node.title};
               src: url(${node.fontSpecFields.menuUrl});
+              font-display: swap;
             }`;
             })
             .join("\n"),
         }}
       />
-      <div className="flex items-center justify-between gap-4">
-        <FontfamilyFilter
-          terms={{
-            [`${data.fontCategory.nodes[0].__typename}`]: data.fontCategory,
-          }}
-        />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p className="text-sm text-zinc-700 border-y p-2 flex-1">
-          결과: {data.fontfamilies?.pageInfo.total} / 전체:{" "}
-          {data.total?.pageInfo.total}
+          {`총 ${data.total?.pageInfo.total}개 중 ${data.fontfamilies?.pageInfo.total}개 표시`}
         </p>
-        <SortOrderSetter />
+        <div className="flex items-center gap-2">
+          <FontfamilyFilter
+            terms={{
+              [`${data.fontCategory.nodes[0].__typename}`]: data.fontCategory,
+            }}
+          />
+          <SortOrderSetter />
+        </div>
       </div>
-      <ul>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
               <FontfamilyListItem key={node.id} fontfamily={node} />
