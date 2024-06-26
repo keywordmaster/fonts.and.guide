@@ -1,11 +1,9 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   GetFontfamiliesClientQuery,
   OrderEnum,
@@ -23,7 +21,6 @@ interface Props {
 }
 
 const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
-  const router = useRouter();
   const [after, setAfter] = useState<string>();
 
   // TODO: 텀 종류 추가될 때마다 추가
@@ -91,14 +88,27 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
                   altText
                 }
               }
-              fontSpecFields {
-                id: menuUrl
-                downloadLink
+              specs {
+                id: fontName
                 fontName
+                fontNameEn
+                downloadLink
                 isGoogleFonts
                 license
                 menuUrl
                 version
+              }
+              fontAuthors {
+                nodes {
+                  id
+                  name
+                }
+              }
+              fontCategories {
+                nodes {
+                  id
+                  name
+                }
               }
             }
           }
@@ -141,24 +151,28 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
     context: useMemo(() => ({ suspense: !after }), [after]),
   });
 
+  const fontStyles = useMemo(
+    () =>
+      data.fontfamilies.edges
+        .map(
+          ({ node }) =>
+            node.specs.menuUrl &&
+            `
+    @font-face {
+      font-family: ${node.specs.fontNameEn};
+      src: url(${node.specs.menuUrl});
+      font-display: swap;
+    }`,
+        )
+        .join("\n"),
+    [data.fontfamilies.edges],
+  );
+
   return (
     <>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: data.fontfamilies.edges
-            .map(({ node }) => {
-              return `
-            @font-face {
-              font-family: ${node.title};
-              src: url(${node.fontSpecFields.menuUrl});
-              font-display: swap;
-            }`;
-            })
-            .join("\n"),
-        }}
-      />
+      <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <p className="text-sm text-zinc-700 border-y p-2 flex-1">
+        <p className="text-sm text-zinc-500 border-y p-2 flex-1">
           {`총 ${data.total?.pageInfo.total}개 중 ${data.fontfamilies?.pageInfo.total}개 표시`}
         </p>
         <div className="flex items-center gap-2">
@@ -170,25 +184,13 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
           <SortOrderSetter />
         </div>
       </div>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-4">
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
               <FontfamilyListItem key={node.id} fontfamily={node} />
             ))
           : JSON.stringify(error)}
       </ul>
-
-      <div className="overflow-scroll">
-        <pre>{JSON.stringify(data.fontCategory, null, 2)}</pre>
-      </div>
-
-      <Button
-        onClick={() => {
-          router.push("?font-category=serif,sans-serif");
-        }}
-      >
-        TEST Filter
-      </Button>
     </>
   );
 };

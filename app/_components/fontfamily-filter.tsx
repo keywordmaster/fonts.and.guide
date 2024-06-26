@@ -54,7 +54,7 @@ const FontfamilyFilter = ({ terms }: Props) => {
         <DrawerTrigger asChild className="flex-grow">
           <Button variant="outline" className="">
             <Filter className="size-5" />
-            <span className="px-6">필터</span>
+            <span className="px-4 sm:px-6">필터</span>
           </Button>
         </DrawerTrigger>
         <DrawerContent className="max-h-[80vh]">

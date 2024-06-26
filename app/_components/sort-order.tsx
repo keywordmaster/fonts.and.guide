@@ -110,7 +110,7 @@ const SortOrderSetter: React.FC = () => {
             variant="outline"
             className={cn(
               "flex items-center justify-between w-full px-4 py-2",
-              value === field.value && "bg-gray-100",
+              value === field.value && "bg-gray-300",
             )}
           >
             {field.label}
