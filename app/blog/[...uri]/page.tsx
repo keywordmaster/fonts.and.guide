@@ -69,7 +69,7 @@ export default async function Page({
       <div className="overflow-x-scroll p-4 bg-muted/50">
         <pre>{JSON.stringify(data.breadcrumbs)}</pre>
       </div>
-      <article dangerouslySetInnerHTML={{ __html: data.post?.content }} />
-    </Fragment>
+      <article className="font-sans" dangerouslySetInnerHTML={{ __html: data.post?.content }} />
+    </>
   );
 }

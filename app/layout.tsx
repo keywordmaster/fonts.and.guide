@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import localFont from 'next/font/local'
 import { gql } from "urql/core";
 
 import AnalyticsScripts from "@/components/analytics-script";
@@ -8,6 +9,12 @@ import SideNav from "@/components/layout/side-nav";
 import { ClientProvider } from "@/components/provider";
 import { GetRootLayoutQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+
+const suite = localFont({
+  src: './SUITE-Variable.woff2',
+  display: 'swap',
+  variable: '--font-suite'
+})
 
 export default async function RootLayout({
   children,
@@ -45,7 +52,7 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning className={`${suite.variable} font-suite`}>
       <head>
         <title
           dangerouslySetInnerHTML={{ __html: data?.generalSettings?.title }}
