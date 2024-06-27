@@ -17,6 +17,7 @@
     "@urql/next": "^1.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
     "graphql": "^16.8.1",
     "lucide-react": "^0.379.0",
