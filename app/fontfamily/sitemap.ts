@@ -3,6 +3,7 @@ import { gql } from "urql/core";
 
 import { GetFontfamiliesSitemapQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+import { convertModifiedDateFormat } from "@/utils/sitemap";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Google's limit is 50,000 URLs per sitemap
@@ -27,6 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return fontfamilies.map((fontfamily) => ({
     url: `${process.env.NEXT_PUBLIC_URL}${fontfamily.uri}`,
-    lastModified: fontfamily.modified,
+    lastModified: convertModifiedDateFormat(fontfamily.modified),
   }));
 }
