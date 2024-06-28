@@ -1,7 +1,7 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import { ArchiveRestore, Filter } from "lucide-react";
+import { Filter, RotateCcw } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -143,6 +143,16 @@ const FontfamilyFilter = () => {
     let buildParams = [];
     let params = "";
 
+    if (Object.values(filters).every(e => e.length === 0)) {
+      params = searchParams.toString();
+      Object.keys(terms).forEach((key) => {
+        params = deleteQueryString(camelToKebab(key), params);
+      })
+      router.push(params ? "?" + params : '');
+      setOpen(false);
+      return;
+    }
+
     Object.keys(terms).forEach((key) => {
       const kebabKey = camelToKebab(key);
 
@@ -157,12 +167,12 @@ const FontfamilyFilter = () => {
 
     params = buildParams.pop();
     Object.keys(terms).forEach((key) => {
-      if (filters[camelToKebab(key)].length === 0) {
+      if (filters[camelToKebab(key)]?.length === 0) {
         params = deleteQueryString(camelToKebab(key), params);
       }
     })
 
-    router.push("?" + params);
+    router.push(params ? "?" + params : '');
     setOpen(false);
   };
 
@@ -187,12 +197,12 @@ const FontfamilyFilter = () => {
                 원하시는 조건을 선택 후 적용하기 버튼을 눌러주세요.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="p-4 top-0 sticky flex items-center gap-4 justify-between">
+            <div className="p-4 top-0 sticky flex items-center gap-4 justify-between bg-background">
               <Button className="w-48" onClick={handleFilterApply}>
                 적용하기
               </Button>
               <Button className="w-32 gap-4" onClick={handleFilterReset}>
-                <ArchiveRestore />
+                <RotateCcw className="size-5" />
                 초기화
               </Button>
             </div>
