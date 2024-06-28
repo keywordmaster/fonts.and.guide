@@ -15,7 +15,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { GetFontfamilyFiltersQuery } from "@/gql/graphql";
-import { camelToKebab, createQueryString } from "@/lib/utils";
+import { camelToKebab, createQueryString, deleteQueryString } from "@/lib/utils";
 
 import FilterSection from "./fontfamily-filter-section";
 
@@ -140,23 +140,29 @@ const FontfamilyFilter = () => {
   };
 
   const handleFilterApply = () => {
-    let newFilter = [];
+    let buildParams = [];
+    let params = "";
 
-    // TODO: 중복 제거 필요
     Object.keys(terms).forEach((key) => {
       const kebabKey = camelToKebab(key);
+
       if (filters[kebabKey]?.length > 0) {
-        newFilter.push(
-          appendQueryString(
-            kebabKey,
-            filters[kebabKey]?.join(","),
-            searchParams,
-          ),
-        );
+        buildParams.push(appendQueryString(
+          kebabKey,
+          filters[kebabKey]?.join(","),
+          searchParams,
+        ))
       }
     });
 
-    router.push(pathname + "?" + newFilter.join("&"));
+    params = buildParams.pop();
+    Object.keys(terms).forEach((key) => {
+      if (filters[camelToKebab(key)].length === 0) {
+        params = deleteQueryString(camelToKebab(key), params);
+      }
+    })
+
+    router.push("?" + params);
     setOpen(false);
   };
 

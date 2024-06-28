@@ -21,6 +21,13 @@ export const createQueryString = (
 
   return params.toString();
 };
+
+export const deleteQueryString = (name: string, searchParams) => {
+  const params = new URLSearchParams(searchParams.toString());
+  params.delete(name);
+
+  return params.toString();
+}
 // export const getContentByContentNode = (data: GetContentNodeQuery) => {
 //   if (data.contentNode.__typename === "MediaItem") {
 //     return null;
