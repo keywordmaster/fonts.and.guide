@@ -27,7 +27,7 @@ const FilterSection: React.FC<Props> = ({
   return (
     <div>
       <Label className="text-lg">{filterName}</Label>
-      <div className="flex gap-4 mt-2">
+      <div className="gap-2 mt-2 w-full flex flex-wrap">
         {nodes.map((node) => (
           <Button
             key={node.id}

@@ -1,7 +1,7 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import { ArchiveRestore, Filter } from "lucide-react";
+import { Filter, RotateCcw } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -15,7 +15,11 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { GetFontfamilyFiltersQuery } from "@/gql/graphql";
-import { camelToKebab, createQueryString } from "@/lib/utils";
+import {
+  camelToKebab,
+  createQueryString,
+  deleteQueryString,
+} from "@/lib/utils";
 
 import FilterSection from "./fontfamily-filter-section";
 
@@ -66,7 +70,10 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontConcept: terms(where: { taxonomies: [FONTCONCEPT], parent: 0 }) {
+        fontConcept: terms(
+          first: 20
+          where: { taxonomies: [FONTCONCEPT], parent: 0 }
+        ) {
           nodes {
             id
             name
@@ -84,7 +91,7 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontUsage: terms(where: { taxonomies: [FONTUSAGE] }) {
+        fontUsage: terms(where: { taxonomies: [FONTUSAGE], parent: 0 }) {
           nodes {
             id
             name
@@ -140,13 +147,24 @@ const FontfamilyFilter = () => {
   };
 
   const handleFilterApply = () => {
-    let newFilter = [];
+    let buildParams = [];
+    let params = "";
 
-    // TODO: 중복 제거 필요
+    if (Object.values(filters).every((e) => e.length === 0)) {
+      params = searchParams.toString();
+      Object.keys(terms).forEach((key) => {
+        params = deleteQueryString(camelToKebab(key), params);
+      });
+      router.push(params ? "?" + params : "");
+      setOpen(false);
+      return;
+    }
+
     Object.keys(terms).forEach((key) => {
       const kebabKey = camelToKebab(key);
+
       if (filters[kebabKey]?.length > 0) {
-        newFilter.push(
+        buildParams.push(
           appendQueryString(
             kebabKey,
             filters[kebabKey]?.join(","),
@@ -156,7 +174,14 @@ const FontfamilyFilter = () => {
       }
     });
 
-    router.push(pathname + "?" + newFilter.join("&"));
+    params = buildParams.pop();
+    Object.keys(terms).forEach((key) => {
+      if (filters[camelToKebab(key)]?.length === 0) {
+        params = deleteQueryString(camelToKebab(key), params);
+      }
+    });
+
+    router.push(params ? "?" + params : "");
     setOpen(false);
   };
 
@@ -181,12 +206,12 @@ const FontfamilyFilter = () => {
                 원하시는 조건을 선택 후 적용하기 버튼을 눌러주세요.
               </DrawerDescription>
             </DrawerHeader>
-            <div className="p-4 top-0 sticky flex items-center gap-4 justify-between">
+            <div className="p-4 top-0 sticky flex items-center gap-4 justify-between bg-background">
               <Button className="w-48" onClick={handleFilterApply}>
                 적용하기
               </Button>
               <Button className="w-32 gap-4" onClick={handleFilterReset}>
-                <ArchiveRestore />
+                <RotateCcw className="size-5" />
                 초기화
               </Button>
             </div>
