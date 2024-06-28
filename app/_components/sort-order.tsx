@@ -16,7 +16,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { OrderEnum, PostObjectsConnectionOrderbyEnum } from "@/gql/graphql";
-import { cn } from "@/lib/utils";
+import { cn, createQueryString } from "@/lib/utils";
 
 const sortFields = [
   {
@@ -39,15 +39,7 @@ const SortOrderSetter: React.FC = () => {
   const searchParams = useSearchParams();
   const isAsc = searchParams.get("order") === OrderEnum.Asc;
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams],
-  );
+  const appendQueryString = useCallback(createQueryString, [searchParams]);
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(PostObjectsConnectionOrderbyEnum.Title);
@@ -75,26 +67,27 @@ const SortOrderSetter: React.FC = () => {
         onClick={() => {
           if (isAsc) {
             router.push(
-              pathname + "?" + createQueryString("order", OrderEnum.Desc),
+              pathname +
+                "?" +
+                appendQueryString("order", OrderEnum.Desc, searchParams),
             );
 
             return;
           }
 
           router.push(
-            pathname + "?" + createQueryString("order", OrderEnum.Asc),
+            pathname +
+              "?" +
+              appendQueryString("order", OrderEnum.Asc, searchParams),
           );
         }}
         aria-label="정렬 순서 변경"
       >
-        {
-          // TODO: 기본값 Asc로 반영 필요
-          isAsc ? (
-            <ArrowUpNarrowWide className="size-5" />
-          ) : (
-            <ArrowDownNarrowWide className="size-5" />
-          )
-        }
+        {isAsc ? (
+          <ArrowUpNarrowWide className="size-5" />
+        ) : (
+          <ArrowDownNarrowWide className="size-5" />
+        )}
       </Button>
       <PopoverContent className="w-[120px] p-0">
         {sortFields.map((field) => (
@@ -103,7 +96,9 @@ const SortOrderSetter: React.FC = () => {
             onClick={() => {
               setValue(field.value);
               router.push(
-                pathname + "?" + createQueryString("field", field.value),
+                pathname +
+                  "?" +
+                  appendQueryString("field", field.value, searchParams),
               );
               setOpen(false);
             }}

@@ -46,10 +46,8 @@ const FontfamilyListItem = ({
               </span>
             </div>
             <div className="flex gap-4 absolute left-0 right-0 text-xs bottom-0 border-t px-5 items-center min-h-8">
-              <span>
-                제조사: {fontAuthors.nodes.map((e) => e.name).join(", ")}
-              </span>
-              <span>라이센스: {specs.license}</span>
+              <p>제조사: {fontAuthors.nodes.map((e) => e.name).join(", ")}</p>
+              <p>라이센스: {specs.license}</p>
             </div>
           </div>
         )}

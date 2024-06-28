@@ -21773,6 +21773,524 @@ export type GetPagesSitemapQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetPagesSitemapQuery = { __typename: 'RootQuery', pages?: { __typename: 'RootQueryToPageConnection', nodes: Array<{ __typename: 'Page', id: string, uri?: string | null, modified?: string | null }> } | null };
 
+export type GetFontfamilyFiltersQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetFontfamilyFiltersQuery = {
+  __typename: "RootQuery";
+  fontAuthor?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+  fontCategory?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+  fontConcept?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+  fontSubset?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+  fontUsage?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+  fontVariant?: {
+    __typename: "RootQueryToTermNodeConnection";
+    nodes: Array<
+      | {
+          __typename: "Category";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontAuthor";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontCategory";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontConcept";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontSubset";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontUsage";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "FontVariant";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "GraphqlDocumentGroup";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "PostFormat";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+      | {
+          __typename: "Tag";
+          id: string;
+          name?: string | null;
+          uri?: string | null;
+          slug?: string | null;
+          taxonomyName?: string | null;
+        }
+    >;
+  } | null;
+};
+
 export type GetFontfamiliesClientQueryVariables = Exact<{
   field: PostObjectsConnectionOrderbyEnum;
   order: OrderEnum;
@@ -21852,6 +22370,7 @@ export type GetFontfamiliesClientQuery = {
       total?: number | null;
     };
   } | null;
+<<<<<<< HEAD
   fontCategory?: {
     __typename: "RootQueryToTermNodeConnection";
     nodes: Array<
@@ -21922,6 +22441,8 @@ export type GetFontfamiliesClientQuery = {
         }
     >;
   } | null;
+=======
+>>>>>>> 1400273 (feat: 필터 기능 추가)
 };
 
 export type GetPostQueryVariables = Exact<{
@@ -22181,12 +22702,352 @@ export const GetPagesSitemapDocument = {
   GetPagesSitemapQuery,
   GetPagesSitemapQueryVariables
 >;
+export const GetFontfamilyFiltersDocument = {
+  __meta__: { hash: "63f4b93fd088edb87481900b4041814ed0383ba6" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontfamilyFilters" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontAuthor" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTAUTHOR" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontCategory" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTCATEGORY" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontConcept" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTCONCEPT" }],
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "parent" },
+                      value: { kind: "IntValue", value: "0" },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontSubset" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTSUBSET" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontUsage" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTUSAGE" }],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "fontVariant" },
+            name: { kind: "Name", value: "terms" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxonomies" },
+                      value: {
+                        kind: "ListValue",
+                        values: [{ kind: "EnumValue", value: "FONTVARIANT" }],
+                      },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "parent" },
+                      value: { kind: "IntValue", value: "117" },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "taxonomyName" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontfamilyFiltersQuery,
+  GetFontfamilyFiltersQueryVariables
+>;
 export const GetFontfamiliesClientDocument = {
+<<<<<<< HEAD
 <<<<<<< HEAD
   __meta__: { hash: "ac9271cc3f5905f318cc738c82fc1e0423fb3ef1" },
 =======
   __meta__: { hash: "0aad4e599e367521bdaa7fe62c775110a898fb8f" },
 >>>>>>> 79900c2 (chore)
+=======
+  __meta__: { hash: "178d98299b981ef23bd4cc309cc2fb295f987311" },
+>>>>>>> 1400273 (feat: 필터 기능 추가)
   kind: "Document",
   definitions: [
     {
@@ -22573,98 +23434,6 @@ export const GetFontfamiliesClientDocument = {
                         name: { kind: "Name", value: "__typename" },
                       },
                       { kind: "Field", name: { kind: "Name", value: "total" } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            kind: "Field",
-            alias: { kind: "Name", value: "fontCategory" },
-            name: { kind: "Name", value: "terms" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "where" },
-                value: {
-                  kind: "ObjectValue",
-                  fields: [
-                    {
-                      kind: "ObjectField",
-                      name: { kind: "Name", value: "taxonomies" },
-                      value: {
-                        kind: "ListValue",
-                        values: [{ kind: "EnumValue", value: "FONTCATEGORY" }],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "__typename" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "nodes" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "__typename" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      { kind: "Field", name: { kind: "Name", value: "name" } },
-                      { kind: "Field", name: { kind: "Name", value: "uri" } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            kind: "Field",
-            alias: { kind: "Name", value: "fontVariants" },
-            name: { kind: "Name", value: "terms" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "where" },
-                value: {
-                  kind: "ObjectValue",
-                  fields: [
-                    {
-                      kind: "ObjectField",
-                      name: { kind: "Name", value: "taxonomies" },
-                      value: {
-                        kind: "ListValue",
-                        values: [{ kind: "EnumValue", value: "CATEGORY" }],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "__typename" } },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "nodes" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "__typename" },
-                      },
-                      { kind: "Field", name: { kind: "Name", value: "id" } },
-                      { kind: "Field", name: { kind: "Name", value: "name" } },
-                      { kind: "Field", name: { kind: "Name", value: "slug" } },
                     ],
                   },
                 },

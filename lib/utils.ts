@@ -7,6 +7,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const camelToKebab = (str: string) => {
+  return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
+};
+
+export const createQueryString = (
+  name: string,
+  value: string,
+  searchParams,
+) => {
+  const params = new URLSearchParams(searchParams.toString());
+  params.set(name, value);
+
+  console.log(params, name, value);
+  return params.toString();
+};
 // export const getContentByContentNode = (data: GetContentNodeQuery) => {
 //   if (data.contentNode.__typename === "MediaItem") {
 //     return null;

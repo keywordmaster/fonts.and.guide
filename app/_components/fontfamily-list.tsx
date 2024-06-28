@@ -1,7 +1,6 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import {
@@ -23,10 +22,14 @@ interface Props {
 const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
   const [after, setAfter] = useState<string>();
 
-  // TODO: 텀 종류 추가될 때마다 추가
-  const isFiltered = ["font-category"].some((key) =>
-    Object.keys(searchParams).includes(key),
-  );
+  const isFiltered = [
+    "font-category",
+    "font-author",
+    "font-usage",
+    "font-concept",
+    "font-subset",
+    "font-variant",
+  ].some((key) => Object.keys(searchParams).includes(key));
 
   const sanitizeSearchParams = (validator, searchParams, key: string) => {
     if (Object.values(validator).includes(searchParams[key])) {
@@ -45,17 +48,37 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
     ) || PostObjectsConnectionOrderbyEnum.Title;
   const order =
     sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Desc;
-  // TODO: 텀 종류만큼 어레이 채우기
+
   const filters = isFiltered
     ? [
-        {
-          field: TaxQueryField.Slug,
-          // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
-          terms: (searchParams["font-category"] as string)?.split(","),
-          includeChildren: true,
-          taxonomy: TaxonomyEnum.Fontcategory,
-        },
-      ]
+        "font-category",
+        "font-author",
+        "font-usage",
+        "font-concept",
+        "font-subset",
+        "font-variant",
+      ].reduce((acc, key) => {
+        const taxEnum = key.replace("font-", "Font");
+
+        if (searchParams[key]) {
+          // TODO: ...dk
+          const nomalizedSearchParams = Array.isArray(searchParams[key])
+            ? Array.from(new Set((searchParams[key][0] as string).split(",")))
+            : (searchParams[key] as string).split(",");
+
+          return [
+            ...acc,
+            {
+              field: TaxQueryField.Slug,
+              terms: nomalizedSearchParams,
+              includeChildren: true,
+              taxonomy: TaxonomyEnum[taxEnum],
+            },
+          ];
+        }
+
+        return acc;
+      }, [])
     : [];
 
   const [{ data, error }] = useQuery<GetFontfamiliesClientQuery>({
@@ -125,21 +148,6 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
             total
           }
         }
-        fontCategory: terms(where: { taxonomies: [FONTCATEGORY] }) {
-          nodes {
-            __typename
-            id
-            name
-            uri
-          }
-        }
-        fontVariants: terms(where: { taxonomies: [CATEGORY] }) {
-          nodes {
-            id
-            name
-            slug
-          }
-        }
       }
     `,
     variables: {
@@ -176,11 +184,7 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
           {`총 ${data.total?.pageInfo.total}개 중 ${data.fontfamilies?.pageInfo.total}개 표시`}
         </p>
         <div className="flex items-center gap-2">
-          <FontfamilyFilter
-            terms={{
-              [`${data.fontCategory.nodes[0].__typename}`]: data.fontCategory,
-            }}
-          />
+          <FontfamilyFilter />
           <SortOrderSetter />
         </div>
       </div>
