@@ -3,6 +3,7 @@ import { gql } from "urql/core";
 
 import { GetPostsSitemapQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+import { convertModifiedDateFormat } from "@/utils/sitemap";
 
 export default async function sitemap(
   {
@@ -33,6 +34,6 @@ export default async function sitemap(
 
   return posts.map((post) => ({
     url: `${process.env.NEXT_PUBLIC_URL}/blog${post.uri}`,
-    lastModified: post.modified,
+    lastModified: convertModifiedDateFormat(post.modified),
   }));
 }

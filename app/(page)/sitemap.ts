@@ -3,6 +3,7 @@ import { gql } from "urql/core";
 
 import { GetPagesSitemapQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+import { convertModifiedDateFormat } from "@/utils/sitemap";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Google's limit is 50,000 URLs per sitemap
@@ -27,6 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return pages.map((page) => ({
     url: `${process.env.NEXT_PUBLIC_URL}${page.uri}`,
-    lastModified: page.modified,
+    lastModified: convertModifiedDateFormat(page.modified),
   }));
 }
