@@ -147,7 +147,7 @@ const FontfamilyFilter = () => {
   };
 
   const handleFilterApply = () => {
-    let buildParams = [];
+    const buildParams = [];
     let params = "";
 
     if (Object.values(filters).every((e) => e.length === 0)) {
@@ -155,8 +155,10 @@ const FontfamilyFilter = () => {
       Object.keys(terms).forEach((key) => {
         params = deleteQueryString(camelToKebab(key), params);
       });
-      router.push(params ? "?" + params : "");
+
+      router.push(params ? "?" + params : "/");
       setOpen(false);
+
       return;
     }
 
