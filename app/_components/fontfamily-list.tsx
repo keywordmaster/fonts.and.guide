@@ -189,11 +189,20 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
         </div>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-4">
-        {data
-          ? data.fontfamilies.edges.map(({ node }) => (
+        {data ? (
+          <>
+            {data.fontfamilies.edges.length === 0 && (
+              <div className="col-span-full items-center justify-center text-center text-lg text-zinc-500">
+                결과가 없습니다.
+              </div>
+            )}
+            {data.fontfamilies.edges.map(({ node }) => (
               <FontfamilyListItem key={node.id} fontfamily={node} />
-            ))
-          : JSON.stringify(error)}
+            ))}
+          </>
+        ) : (
+          JSON.stringify(error)
+        )}
       </ul>
     </>
   );

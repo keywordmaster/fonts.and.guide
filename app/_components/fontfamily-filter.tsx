@@ -15,7 +15,11 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { GetFontfamilyFiltersQuery } from "@/gql/graphql";
-import { camelToKebab, createQueryString, deleteQueryString } from "@/lib/utils";
+import {
+  camelToKebab,
+  createQueryString,
+  deleteQueryString,
+} from "@/lib/utils";
 
 import FilterSection from "./fontfamily-filter-section";
 
@@ -66,7 +70,10 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontConcept: terms(first: 20, where: { taxonomies: [FONTCONCEPT], parent: 0 }) {
+        fontConcept: terms(
+          first: 20
+          where: { taxonomies: [FONTCONCEPT], parent: 0 }
+        ) {
           nodes {
             id
             name
@@ -143,12 +150,12 @@ const FontfamilyFilter = () => {
     let buildParams = [];
     let params = "";
 
-    if (Object.values(filters).every(e => e.length === 0)) {
+    if (Object.values(filters).every((e) => e.length === 0)) {
       params = searchParams.toString();
       Object.keys(terms).forEach((key) => {
         params = deleteQueryString(camelToKebab(key), params);
-      })
-      router.push(params ? "?" + params : '');
+      });
+      router.push(params ? "?" + params : "");
       setOpen(false);
       return;
     }
@@ -157,11 +164,13 @@ const FontfamilyFilter = () => {
       const kebabKey = camelToKebab(key);
 
       if (filters[kebabKey]?.length > 0) {
-        buildParams.push(appendQueryString(
-          kebabKey,
-          filters[kebabKey]?.join(","),
-          searchParams,
-        ))
+        buildParams.push(
+          appendQueryString(
+            kebabKey,
+            filters[kebabKey]?.join(","),
+            searchParams,
+          ),
+        );
       }
     });
 
@@ -170,9 +179,9 @@ const FontfamilyFilter = () => {
       if (filters[camelToKebab(key)]?.length === 0) {
         params = deleteQueryString(camelToKebab(key), params);
       }
-    })
+    });
 
-    router.push(params ? "?" + params : '');
+    router.push(params ? "?" + params : "");
     setOpen(false);
   };
 

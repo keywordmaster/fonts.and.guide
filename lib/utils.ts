@@ -27,7 +27,7 @@ export const deleteQueryString = (name: string, searchParams) => {
   params.delete(name);
 
   return params.toString();
-}
+};
 // export const getContentByContentNode = (data: GetContentNodeQuery) => {
 //   if (data.contentNode.__typename === "MediaItem") {
 //     return null;
