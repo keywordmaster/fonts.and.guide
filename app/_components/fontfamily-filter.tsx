@@ -66,7 +66,7 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontConcept: terms(where: { taxonomies: [FONTCONCEPT], parent: 0 }) {
+        fontConcept: terms(first: 20, where: { taxonomies: [FONTCONCEPT], parent: 0 }) {
           nodes {
             id
             name
@@ -84,7 +84,7 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontUsage: terms(where: { taxonomies: [FONTUSAGE] }) {
+        fontUsage: terms(where: { taxonomies: [FONTUSAGE], parent: 0 }) {
           nodes {
             id
             name
