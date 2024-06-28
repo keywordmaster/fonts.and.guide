@@ -1,11 +1,8 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   GetFontfamiliesClientQuery,
   OrderEnum,
@@ -15,6 +12,7 @@ import {
 } from "@/gql/graphql";
 
 import FontfamilyFilter from "./fontfamily-filter";
+import FontfamilyListItem from "./fontfamily-list-item";
 import SortOrderSetter from "./sort-order";
 
 interface Props {
@@ -22,13 +20,16 @@ interface Props {
 }
 
 const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
-  const router = useRouter();
   const [after, setAfter] = useState<string>();
 
-  // TODO: 텀 종류 추가될 때마다 추가
-  const isFiltered = ["font-category"].some((key) =>
-    Object.keys(searchParams).includes(key),
-  );
+  const isFiltered = [
+    "font-category",
+    "font-author",
+    "font-usage",
+    "font-concept",
+    "font-subset",
+    "font-variant",
+  ].some((key) => Object.keys(searchParams).includes(key));
 
   const sanitizeSearchParams = (validator, searchParams, key: string) => {
     if (Object.values(validator).includes(searchParams[key])) {
@@ -46,18 +47,38 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
       "field",
     ) || PostObjectsConnectionOrderbyEnum.Title;
   const order =
-    sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Asc;
-  // TODO: 텀 종류만큼 어레이 채우기
+    sanitizeSearchParams(OrderEnum, searchParams, "order") || OrderEnum.Desc;
+
   const filters = isFiltered
     ? [
-        {
-          field: TaxQueryField.Slug,
-          // TODO: searchParams KV 값 형태로 어레이가 넘어오는지 확인하기
-          terms: (searchParams["font-category"] as string)?.split(","),
-          includeChildren: true,
-          taxonomy: TaxonomyEnum.Fontcategory,
-        },
-      ]
+        "font-category",
+        "font-author",
+        "font-usage",
+        "font-concept",
+        "font-subset",
+        "font-variant",
+      ].reduce((acc, key) => {
+        const taxEnum = key.replace("font-", "Font");
+
+        if (searchParams[key]) {
+          // TODO: ...dk
+          const nomalizedSearchParams = Array.isArray(searchParams[key])
+            ? Array.from(new Set((searchParams[key][0] as string).split(",")))
+            : (searchParams[key] as string).split(",");
+
+          return [
+            ...acc,
+            {
+              field: TaxQueryField.Slug,
+              terms: nomalizedSearchParams,
+              includeChildren: true,
+              taxonomy: TaxonomyEnum[taxEnum],
+            },
+          ];
+        }
+
+        return acc;
+      }, [])
     : [];
 
   const [{ data, error }] = useQuery<GetFontfamiliesClientQuery>({
@@ -84,7 +105,32 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
               commentCount
               featuredImage {
                 node {
+                  id
                   srcSet
+                  sourceUrl
+                  altText
+                }
+              }
+              specs {
+                id: fontName
+                fontName
+                fontNameEn
+                downloadLink
+                isGoogleFonts
+                license
+                menuUrl
+                version
+              }
+              fontAuthors {
+                nodes {
+                  id
+                  name
+                }
+              }
+              fontCategories {
+                nodes {
+                  id
+                  name
                 }
               }
             }
@@ -102,21 +148,6 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
             total
           }
         }
-        fontCategory: terms(where: { taxonomies: [FONTCATEGORY] }) {
-          nodes {
-            __typename
-            id
-            name
-            uri
-          }
-        }
-        fontVariants: terms(where: { taxonomies: [CATEGORY] }) {
-          nodes {
-            id
-            name
-            slug
-          }
-        }
       }
     `,
     variables: {
@@ -128,43 +159,42 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
     context: useMemo(() => ({ suspense: !after }), [after]),
   });
 
+  const fontStyles = useMemo(
+    () =>
+      data.fontfamilies.edges
+        .map(
+          ({ node }) =>
+            node.specs.menuUrl &&
+            `
+    @font-face {
+      font-family: ${node.specs.fontNameEn};
+      src: url(${node.specs.menuUrl});
+      font-display: swap;
+    }`,
+        )
+        .join("\n"),
+    [data.fontfamilies.edges],
+  );
+
   return (
     <>
-      <div className="flex items-center justify-between gap-4">
-        <FontfamilyFilter
-          terms={{
-            [`${data.fontCategory.nodes[0].__typename}`]: data.fontCategory,
-          }}
-        />
-        <p className="text-sm text-zinc-700 border-y p-2 flex-1">
-          결과: {data.fontfamilies?.pageInfo.total} / 전체:{" "}
-          {data.total?.pageInfo.total}
+      <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <p className="text-sm text-zinc-500 border-y p-2 flex-1">
+          {`총 ${data.total?.pageInfo.total}개 중 ${data.fontfamilies?.pageInfo.total}개 표시`}
         </p>
-        <SortOrderSetter />
+        <div className="flex items-center gap-2">
+          <FontfamilyFilter />
+          <SortOrderSetter />
+        </div>
       </div>
-      <ul>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 mt-4">
         {data
           ? data.fontfamilies.edges.map(({ node }) => (
-              <li key={node.id}>
-                <Link key={node.id} href={node.uri} prefetch>
-                  {node.title}
-                </Link>
-              </li>
+              <FontfamilyListItem key={node.id} fontfamily={node} />
             ))
           : JSON.stringify(error)}
       </ul>
-
-      <div className="overflow-scroll">
-        <pre>{JSON.stringify(data.fontCategory, null, 2)}</pre>
-      </div>
-
-      <Button
-        onClick={() => {
-          router.push("?font-category=serif,sans-serif");
-        }}
-      >
-        TEST Filter
-      </Button>
     </>
   );
 };
