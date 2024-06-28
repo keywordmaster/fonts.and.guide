@@ -19,7 +19,6 @@ export const createQueryString = (
   const params = new URLSearchParams(searchParams.toString());
   params.set(name, value);
 
-  console.log(params, name, value);
   return params.toString();
 };
 // export const getContentByContentNode = (data: GetContentNodeQuery) => {
