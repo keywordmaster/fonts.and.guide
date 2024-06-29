@@ -21,6 +21,7 @@ export const GenerateBreadcrumbsSchema = (
   }));
 };
 
+// TODO: Generic type for breadcrumbs
 export const convertPostCategoryQueryToPathMetaData = ({
   breadcrumbs,
   basePathMetaData = [{ path: "/", name: "Home" }],

@@ -7,10 +7,10 @@ import { getClient } from "@/lib/urql/client";
 import { convertPageQueryToPathMetaData } from "@/utils/breadcrumbs";
 
 export default async function Page() {
-	const { data } = await getClient().query<GetFontfamilyPageInfoQuery>(
-		gql`
+  const { data } = await getClient().query<GetFontfamilyPageInfoQuery>(
+    gql`
       query GetFontfamilyPageInfo {
-				breadcrumbs: page(id: "fontfamily", idType: URI) {
+        breadcrumbs: page(id: "fontfamily", idType: URI) {
           id
           title
           uri
@@ -23,29 +23,29 @@ export default async function Page() {
               }
             }
           }
-        }		
-				fontConcepts(
-					first: 20, where:  {
-					 parent: 0
-					 order: ASC
-					 orderby: TERM_ORDER
-				}) {
-					nodes {
-						id
-						name
-						uri
-						slug
-					}
-				}
-			}
-		`,
-		{}
-	);
+        }
+        fontConcepts(
+          first: 20
+          where: { parent: 0, order: ASC, orderby: TERM_ORDER }
+        ) {
+          nodes {
+            id
+            name
+            uri
+            slug
+          }
+        }
+      }
+    `,
+    {},
+  );
 
-	return <div className="grid gap-4">
-		<BreadcrumbsWithSchema
-			pathMetaData={convertPageQueryToPathMetaData(data)}
-		/>
-		<p>준비중입니다.</p>
-	</div>
+  return (
+    <div className="grid gap-4">
+      <BreadcrumbsWithSchema
+        pathMetaData={convertPageQueryToPathMetaData(data)}
+      />
+      <p>준비중입니다.</p>
+    </div>
+  );
 }

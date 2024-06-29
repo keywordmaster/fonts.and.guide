@@ -31,14 +31,20 @@ export default async function Page({
             }
           }
         }
-        fontfamilies(where: { taxQuery:  {
-           taxArray: [ {
-              field: SLUG
-              includeChildren: true
-              taxonomy: FONTCONCEPT
-              terms: [$term]
-           }]
-        }}) {
+        fontfamilies(
+          where: {
+            taxQuery: {
+              taxArray: [
+                {
+                  field: SLUG
+                  includeChildren: true
+                  taxonomy: FONTCONCEPT
+                  terms: [$term]
+                }
+              ]
+            }
+          }
+        ) {
           edges {
             cursor
             node {

@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             id
             uri
             fontfamilies(
-              first: 1,
+              first: 1
               where: { orderby: { field: MODIFIED, order: DESC } }
             ) {
               nodes {
@@ -37,6 +37,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return pages.map((page) => ({
     url: `${process.env.NEXT_PUBLIC_URL}${page.uri}`,
-    lastModified: convertModifiedDateFormat(page.fontfamilies.nodes.at(-1)?.modified),
+    lastModified: convertModifiedDateFormat(
+      page.fontfamilies.nodes.at(-1)?.modified,
+    ),
   }));
 }
