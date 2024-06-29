@@ -72,7 +72,7 @@ const FontfamilyFilter = () => {
         }
         fontConcept: terms(
           first: 20
-          where: { taxonomies: [FONTCONCEPT], parent: 0 }
+          where: { taxonomies: [FONTCONCEPT], parent: 0, order: ASC, orderby: TERM_ORDER }
         ) {
           nodes {
             id
@@ -100,7 +100,7 @@ const FontfamilyFilter = () => {
             taxonomyName
           }
         }
-        fontVariant: terms(where: { taxonomies: [FONTVARIANT], parent: 117 }) {
+        fontVariant: terms(where: { taxonomies: [FONTVARIANT], parent: 117, orderby: SLUG }) {
           nodes {
             id
             name
