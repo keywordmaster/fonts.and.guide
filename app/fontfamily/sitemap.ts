@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } = await getClient().query<GetFontfamiliesSitemapQuery>(
     gql`
       query GetFontfamiliesSitemap {
-        fontfamilies {
+        fontfamilies(first: 5000) { # TODO: Sitemap split
           nodes {
             id
             uri

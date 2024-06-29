@@ -20,7 +20,7 @@ export default async function sitemap(
   } = await getClient().query<GetPostsSitemapQuery>(
     gql`
       query GetPostsSitemap {
-        posts {
+        posts(first: 5000) {
           nodes {
             id
             uri

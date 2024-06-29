@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } = await getClient().query<GetPagesSitemapQuery>(
     gql`
       query GetPagesSitemap {
-        pages {
+        pages(first: 5000) {
           nodes {
             id
             uri
