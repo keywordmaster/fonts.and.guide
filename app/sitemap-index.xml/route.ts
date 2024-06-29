@@ -47,6 +47,7 @@ export async function GET() {
     { path: "/", modified: posts.nodes.at(-1)?.modified },
     { path: "/blog/", modified: pages.nodes.at(-1)?.modified },
     { path: "/fontfamily/", modified: fontfamilies.nodes.at(-1)?.modified },
+    { path: "/font-concept/", modified: fontfamilies.nodes.at(-1)?.modified },
   ];
 
   const sitemapIndexXML = `<?xml version="1.0" encoding="UTF-8"?>

@@ -22948,13 +22948,156 @@ export type GetPostsSitemapQuery = {
   } | null;
 };
 
+export type GetFontsByConceptQueryVariables = Exact<{
+  id: Scalars["ID"]["input"];
+  term: Scalars["String"]["input"];
+}>;
+
+export type GetFontsByConceptQuery = {
+  __typename: "RootQuery";
+  breadcrumbs?: {
+    __typename: "FontConcept";
+    id: string;
+    name?: string | null;
+    uri?: string | null;
+    description?: string | null;
+    ancestors?: {
+      __typename: "FontConceptToAncestorsFontConceptConnection";
+      nodes: Array<{
+        __typename: "FontConcept";
+        id: string;
+        uri?: string | null;
+        name?: string | null;
+      }>;
+    } | null;
+  } | null;
+  fontfamilies?: {
+    __typename: "RootQueryToFontfamilyConnection";
+    edges: Array<{
+      __typename: "RootQueryToFontfamilyConnectionEdge";
+      cursor?: string | null;
+      node: {
+        __typename: "Fontfamily";
+        id: string;
+        title?: string | null;
+        slug?: string | null;
+      };
+    }>;
+  } | null;
+};
+
+export type GetFontConceptsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetFontConceptsQuery = {
+  __typename: "RootQuery";
+  breadcrumbs?: {
+    __typename: "Page";
+    id: string;
+    title?: string | null;
+    uri?: string | null;
+    ancestors?: {
+      __typename: "HierarchicalContentNodeToContentNodeAncestorsConnection";
+      nodes: Array<
+        | {
+            __typename: "Fontfamily";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "GraphqlDocument";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "MediaItem";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "Page";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "Post";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+      >;
+    } | null;
+  } | null;
+  fontConcepts?: {
+    __typename: "RootQueryToFontConceptConnection";
+    nodes: Array<{
+      __typename: "FontConcept";
+      id: string;
+      name?: string | null;
+      uri?: string | null;
+      slug?: string | null;
+      description?: string | null;
+    }>;
+  } | null;
+};
+
+export type GetFontConceptSitemapQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetFontConceptSitemapQuery = {
+  __typename: "RootQuery";
+  fontConcepts?: {
+    __typename: "RootQueryToFontConceptConnection";
+    nodes: Array<{
+      __typename: "FontConcept";
+      id: string;
+      uri?: string | null;
+      fontfamilies?: {
+        __typename: "FontConceptToFontfamilyConnection";
+        nodes: Array<{
+          __typename: "Fontfamily";
+          id: string;
+          uri?: string | null;
+          modified?: string | null;
+        }>;
+      } | null;
+    }>;
+  } | null;
+};
+
 export type GetFontFamilyQueryVariables = Exact<{
   id: Scalars["ID"]["input"];
 }>;
 
 export type GetFontFamilyQuery = {
   __typename: "RootQuery";
-  breadcrumbs?: { __typename: "Fontfamily"; id: string } | null;
+  breadcrumbs?: {
+    __typename: "Fontfamily";
+    fontConcepts?: {
+      __typename: "FontfamilyToFontConceptConnection";
+      nodes: Array<{
+        __typename: "FontConcept";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+        slug?: string | null;
+        ancestors?: {
+          __typename: "FontConceptToAncestorsFontConceptConnection";
+          nodes: Array<{
+            __typename: "FontConcept";
+            id: string;
+            uri?: string | null;
+            slug?: string | null;
+            name?: string | null;
+          }>;
+        } | null;
+      }>;
+    } | null;
+  } | null;
   fontfamily?: {
     __typename: "Fontfamily";
     id: string;
@@ -22963,6 +23106,129 @@ export type GetFontFamilyQuery = {
     content?: string | null;
     date?: string | null;
     modified?: string | null;
+    fontAuthors?: {
+      __typename: "FontfamilyToFontAuthorConnection";
+      nodes: Array<{
+        __typename: "FontAuthor";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    fontCategories?: {
+      __typename: "FontfamilyToFontCategoryConnection";
+      nodes: Array<{
+        __typename: "FontCategory";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    fontConcepts?: {
+      __typename: "FontfamilyToFontConceptConnection";
+      nodes: Array<{
+        __typename: "FontConcept";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    fontSubsets?: {
+      __typename: "FontfamilyToFontSubsetConnection";
+      nodes: Array<{
+        __typename: "FontSubset";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    fontUsages?: {
+      __typename: "FontfamilyToFontUsageConnection";
+      nodes: Array<{
+        __typename: "FontUsage";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    fontVariants?: {
+      __typename: "FontfamilyToFontVariantConnection";
+      nodes: Array<{
+        __typename: "FontVariant";
+        id: string;
+        name?: string | null;
+        uri?: string | null;
+      }>;
+    } | null;
+    specs?: {
+      __typename: "Specs";
+      downloadLink?: string | null;
+      fontName?: string | null;
+      fontNameEn?: string | null;
+      isGoogleFonts?: boolean | null;
+      license?: string | null;
+      menuUrl?: string | null;
+      version?: string | null;
+    } | null;
+  } | null;
+};
+
+export type GetFontfamilyPageInfoQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetFontfamilyPageInfoQuery = {
+  __typename: "RootQuery";
+  breadcrumbs?: {
+    __typename: "Page";
+    id: string;
+    title?: string | null;
+    uri?: string | null;
+    ancestors?: {
+      __typename: "HierarchicalContentNodeToContentNodeAncestorsConnection";
+      nodes: Array<
+        | {
+            __typename: "Fontfamily";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "GraphqlDocument";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "MediaItem";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "Page";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+        | {
+            __typename: "Post";
+            title?: string | null;
+            id: string;
+            uri?: string | null;
+          }
+      >;
+    } | null;
+  } | null;
+  fontConcepts?: {
+    __typename: "RootQueryToFontConceptConnection";
+    nodes: Array<{
+      __typename: "FontConcept";
+      id: string;
+      name?: string | null;
+      uri?: string | null;
+      slug?: string | null;
+    }>;
   } | null;
 };
 
@@ -23187,7 +23453,7 @@ export const GetPageDocument = {
   ],
 } as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
 export const GetPagesSitemapDocument = {
-  __meta__: { hash: "cec6ad465d54a2ad828c7fc5d898eeb16c1c39f0" },
+  __meta__: { hash: "fb06be77da7cf4e2a337b1e9912dc1b16ee5de52" },
   kind: "Document",
   definitions: [
     {
@@ -23201,6 +23467,13 @@ export const GetPagesSitemapDocument = {
           {
             kind: "Field",
             name: { kind: "Name", value: "pages" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5000" },
+              },
+            ],
             selectionSet: {
               kind: "SelectionSet",
               selections: [
@@ -23236,7 +23509,7 @@ export const GetPagesSitemapDocument = {
   GetPagesSitemapQueryVariables
 >;
 export const GetFontfamilyFiltersDocument = {
-  __meta__: { hash: "67e2923bbea9e768daa84cafcda26355a21cc61c" },
+  __meta__: { hash: "5370fff5b0ab8ea4e80d57a05f6cd216da6d27b3" },
   kind: "Document",
   definitions: [
     {
@@ -23377,6 +23650,16 @@ export const GetFontfamilyFiltersDocument = {
                       kind: "ObjectField",
                       name: { kind: "Name", value: "parent" },
                       value: { kind: "IntValue", value: "0" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "order" },
+                      value: { kind: "EnumValue", value: "ASC" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: { kind: "EnumValue", value: "TERM_ORDER" },
                     },
                   ],
                 },
@@ -23540,6 +23823,11 @@ export const GetFontfamilyFiltersDocument = {
                       kind: "ObjectField",
                       name: { kind: "Name", value: "parent" },
                       value: { kind: "IntValue", value: "117" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: { kind: "EnumValue", value: "SLUG" },
                     },
                   ],
                 },
@@ -24478,7 +24766,7 @@ export const GetPostsDocument = {
   ],
 } as unknown as DocumentNode<GetPostsQuery, GetPostsQueryVariables>;
 export const GetPostsSitemapDocument = {
-  __meta__: { hash: "413b74d852239517fbdbee8d13e5c418a8c6a996" },
+  __meta__: { hash: "03f568047259787fc9d9274f92153157fb5b73a8" },
   kind: "Document",
   definitions: [
     {
@@ -24492,6 +24780,13 @@ export const GetPostsSitemapDocument = {
           {
             kind: "Field",
             name: { kind: "Name", value: "posts" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5000" },
+              },
+            ],
             selectionSet: {
               kind: "SelectionSet",
               selections: [
@@ -24526,8 +24821,543 @@ export const GetPostsSitemapDocument = {
   GetPostsSitemapQuery,
   GetPostsSitemapQueryVariables
 >;
+export const GetFontsByConceptDocument = {
+  __meta__: { hash: "a1f44527fbbabc0954f1333e9ec341fecea59d1d" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontsByConcept" },
+      variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: { kind: "Variable", name: { kind: "Name", value: "id" } },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+          },
+        },
+        {
+          kind: "VariableDefinition",
+          variable: { kind: "Variable", name: { kind: "Name", value: "term" } },
+          type: {
+            kind: "NonNullType",
+            type: {
+              kind: "NamedType",
+              name: { kind: "Name", value: "String" },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "breadcrumbs" },
+            name: { kind: "Name", value: "fontConcept" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "id" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "id" },
+                },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "idType" },
+                value: { kind: "EnumValue", value: "SLUG" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+                { kind: "Field", name: { kind: "Name", value: "uri" } },
+                { kind: "Field", name: { kind: "Name", value: "description" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "ancestors" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontfamilies" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "taxQuery" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "taxArray" },
+                            value: {
+                              kind: "ListValue",
+                              values: [
+                                {
+                                  kind: "ObjectValue",
+                                  fields: [
+                                    {
+                                      kind: "ObjectField",
+                                      name: { kind: "Name", value: "field" },
+                                      value: {
+                                        kind: "EnumValue",
+                                        value: "SLUG",
+                                      },
+                                    },
+                                    {
+                                      kind: "ObjectField",
+                                      name: {
+                                        kind: "Name",
+                                        value: "includeChildren",
+                                      },
+                                      value: {
+                                        kind: "BooleanValue",
+                                        value: true,
+                                      },
+                                    },
+                                    {
+                                      kind: "ObjectField",
+                                      name: { kind: "Name", value: "taxonomy" },
+                                      value: {
+                                        kind: "EnumValue",
+                                        value: "FONTCONCEPT",
+                                      },
+                                    },
+                                    {
+                                      kind: "ObjectField",
+                                      name: { kind: "Name", value: "terms" },
+                                      value: {
+                                        kind: "ListValue",
+                                        values: [
+                                          {
+                                            kind: "Variable",
+                                            name: {
+                                              kind: "Name",
+                                              value: "term",
+                                            },
+                                          },
+                                        ],
+                                      },
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "edges" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "cursor" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "node" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "title" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "slug" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontsByConceptQuery,
+  GetFontsByConceptQueryVariables
+>;
+export const GetFontConceptsDocument = {
+  __meta__: { hash: "117811efc838ad3a0a3f0b3dc9472c5fb995c86c" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontConcepts" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "breadcrumbs" },
+            name: { kind: "Name", value: "page" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "id" },
+                value: {
+                  kind: "StringValue",
+                  value: "font-concept",
+                  block: false,
+                },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "idType" },
+                value: { kind: "EnumValue", value: "URI" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "uri" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "ancestors" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "NodeWithTitle" },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "title" },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontConcepts" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "20" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "parent" },
+                      value: { kind: "IntValue", value: "0" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "order" },
+                      value: { kind: "EnumValue", value: "ASC" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: { kind: "EnumValue", value: "TERM_ORDER" },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "description" },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontConceptsQuery,
+  GetFontConceptsQueryVariables
+>;
+export const GetFontConceptSitemapDocument = {
+  __meta__: { hash: "33cf2c706634da9931cc97e9914491b59030d211" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontConceptSitemap" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontConcepts" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5000" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "fontfamilies" },
+                        arguments: [
+                          {
+                            kind: "Argument",
+                            name: { kind: "Name", value: "first" },
+                            value: { kind: "IntValue", value: "1" },
+                          },
+                          {
+                            kind: "Argument",
+                            name: { kind: "Name", value: "where" },
+                            value: {
+                              kind: "ObjectValue",
+                              fields: [
+                                {
+                                  kind: "ObjectField",
+                                  name: { kind: "Name", value: "orderby" },
+                                  value: {
+                                    kind: "ObjectValue",
+                                    fields: [
+                                      {
+                                        kind: "ObjectField",
+                                        name: { kind: "Name", value: "field" },
+                                        value: {
+                                          kind: "EnumValue",
+                                          value: "MODIFIED",
+                                        },
+                                      },
+                                      {
+                                        kind: "ObjectField",
+                                        name: { kind: "Name", value: "order" },
+                                        value: {
+                                          kind: "EnumValue",
+                                          value: "DESC",
+                                        },
+                                      },
+                                    ],
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "nodes" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "id" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "uri" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "modified" },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontConceptSitemapQuery,
+  GetFontConceptSitemapQueryVariables
+>;
 export const GetFontFamilyDocument = {
-  __meta__: { hash: "81600d4a88f0ece6681e052eeecc81515bf24301" },
+  __meta__: { hash: "aef3f4f2a2c5de2b0f05ddc8f2c47fa99f60ee5b" },
   kind: "Document",
   definitions: [
     {
@@ -24570,8 +25400,94 @@ export const GetFontFamilyDocument = {
             selectionSet: {
               kind: "SelectionSet",
               selections: [
-                { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontConcepts" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "slug" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "ancestors" },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "nodes" },
+                                    selectionSet: {
+                                      kind: "SelectionSet",
+                                      selections: [
+                                        {
+                                          kind: "Field",
+                                          name: {
+                                            kind: "Name",
+                                            value: "__typename",
+                                          },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "id" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "uri" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "slug" },
+                                        },
+                                        {
+                                          kind: "Field",
+                                          name: { kind: "Name", value: "name" },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
@@ -24603,6 +25519,275 @@ export const GetFontFamilyDocument = {
                 { kind: "Field", name: { kind: "Name", value: "content" } },
                 { kind: "Field", name: { kind: "Name", value: "date" } },
                 { kind: "Field", name: { kind: "Name", value: "modified" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontAuthors" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontCategories" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontConcepts" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontSubsets" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontUsages" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "fontVariants" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "name" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "specs" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "downloadLink" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "fontName" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "fontNameEn" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "isGoogleFonts" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "license" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "menuUrl" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "version" },
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
@@ -24611,8 +25796,170 @@ export const GetFontFamilyDocument = {
     },
   ],
 } as unknown as DocumentNode<GetFontFamilyQuery, GetFontFamilyQueryVariables>;
+export const GetFontfamilyPageInfoDocument = {
+  __meta__: { hash: "bc789e16185dc5479489d416dce652af1109d50f" },
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "GetFontfamilyPageInfo" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          { kind: "Field", name: { kind: "Name", value: "__typename" } },
+          {
+            kind: "Field",
+            alias: { kind: "Name", value: "breadcrumbs" },
+            name: { kind: "Name", value: "page" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "id" },
+                value: {
+                  kind: "StringValue",
+                  value: "fontfamily",
+                  block: false,
+                },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "idType" },
+                value: { kind: "EnumValue", value: "URI" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "title" } },
+                { kind: "Field", name: { kind: "Name", value: "uri" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "ancestors" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "__typename" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "id" },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "uri" },
+                            },
+                            {
+                              kind: "InlineFragment",
+                              typeCondition: {
+                                kind: "NamedType",
+                                name: { kind: "Name", value: "NodeWithTitle" },
+                              },
+                              selectionSet: {
+                                kind: "SelectionSet",
+                                selections: [
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "title" },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "fontConcepts" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "20" },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "where" },
+                value: {
+                  kind: "ObjectValue",
+                  fields: [
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "parent" },
+                      value: { kind: "IntValue", value: "0" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "order" },
+                      value: { kind: "EnumValue", value: "ASC" },
+                    },
+                    {
+                      kind: "ObjectField",
+                      name: { kind: "Name", value: "orderby" },
+                      value: { kind: "EnumValue", value: "TERM_ORDER" },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "nodes" },
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "__typename" },
+                      },
+                      { kind: "Field", name: { kind: "Name", value: "id" } },
+                      { kind: "Field", name: { kind: "Name", value: "name" } },
+                      { kind: "Field", name: { kind: "Name", value: "uri" } },
+                      { kind: "Field", name: { kind: "Name", value: "slug" } },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  GetFontfamilyPageInfoQuery,
+  GetFontfamilyPageInfoQueryVariables
+>;
 export const GetFontfamiliesSitemapDocument = {
-  __meta__: { hash: "24131d23cfaa80b3cc126d7b9d67b971b4561190" },
+  __meta__: { hash: "f7ab30724aa5e398a78159cc1fbedcc8a2968be8" },
   kind: "Document",
   definitions: [
     {
@@ -24626,6 +25973,13 @@ export const GetFontfamiliesSitemapDocument = {
           {
             kind: "Field",
             name: { kind: "Name", value: "fontfamilies" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "first" },
+                value: { kind: "IntValue", value: "5000" },
+              },
+            ],
             selectionSet: {
               kind: "SelectionSet",
               selections: [
