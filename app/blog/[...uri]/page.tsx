@@ -2,14 +2,22 @@ import BreadcrumbsWithSchema, {
   LAST_NODE_TYPE,
 } from "@/components/layout/breadcrumbs-with-schema";
 
+import styles from "./page.module.css";
+
 export const runtime = "edge";
 
 import { gql } from "@urql/core";
+import dayjs from "dayjs";
+import { Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { GetPostQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 import { convertPostCategoryQueryToPathMetaData } from "@/utils/breadcrumbs";
+
+import RedaingTime from "./_components/reading-time";
+import ScrollIndicator from "./_components/scroll-indicator";
+import ToC from "./_components/toc";
 
 export default async function Page({
   params: { uri },
@@ -24,6 +32,7 @@ export default async function Page({
           categories {
             edges {
               node {
+                id
                 uri
                 name
               }
@@ -45,7 +54,9 @@ export default async function Page({
           id
           title
           content
+          modified
           date
+          dateGmt
         }
       }
     `,
@@ -58,20 +69,34 @@ export default async function Page({
     notFound();
   }
 
+  // TODO: 새로 추가된 컴포넌트의 레이아웃 재배치 필요
   return (
-    <>
-      <BreadcrumbsWithSchema
-        pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
-        lastNodeType={LAST_NODE_TYPE.link}
-      />
-      <h1>{data.post?.title}</h1>
-      <div className="overflow-x-scroll p-4 bg-muted/50">
-        <pre>{JSON.stringify(data.breadcrumbs)}</pre>
+    <div className="relative">
+      <div className="md:mr-64">
+        <ScrollIndicator />
+        <BreadcrumbsWithSchema
+          pathMetaData={convertPostCategoryQueryToPathMetaData(data)}
+          lastNodeType={LAST_NODE_TYPE.link}
+        />
+        <h1 className="text-2xl md:text-3xl font-bold my-4">{data.post?.title}</h1>
+        <hr className="my-4" />
+        <div className="flex gap-6 my-4">
+          <div className="text-sm flex items-center gap-2">
+            <Calendar className="size-3" /> 작성일 {dayjs(data.post.date).format("YYYY년 M월 D일")}
+          </div>
+          <RedaingTime content={data.post?.content} />
+        </div>
+        <article className={`font-sans ${styles.blogContent}`}
+          dangerouslySetInnerHTML={{ __html: data.post?.content }} />
       </div>
-      <article
-        className="font-sans"
-        dangerouslySetInnerHTML={{ __html: data.post?.content }}
-      />
-    </>
+      <div className="hidden md:flex fixed top-0 right-0 w-64 h-screen flex-col pt-[4.5rem]">
+        <div className="flex-shrink-0">
+          <ScrollIndicator />
+        </div>
+        <div className="flex-grow overflow-y-auto">
+          <ToC />
+        </div>
+      </div>
+    </div >
   );
 }
