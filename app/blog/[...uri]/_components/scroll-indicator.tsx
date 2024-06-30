@@ -45,18 +45,25 @@ function ScrollIndicator() {
     };
   }, []);
 
+  //   <div
+  //   style={{
+  //     position: "fixed",
+  //     top: `${headerHeight}px`,
+  //     left: `${asideWidth}px`,
+  //     width: `calc(${scrollProgress * 100}% - ${asideWidth}px)`,
+  //     height: "4px",
+  //     backgroundColor: "#41ce98",
+  //     zIndex: 1000,
+  //   }}
+  // />
   return (
     <div
+      className="fixed bg-primary opacity-40 h-1 z-50"
       style={{
-        position: "fixed",
         top: `${headerHeight}px`,
         left: `${asideWidth}px`,
         width: `calc(${scrollProgress * 100}% - ${asideWidth}px)`,
-        height: "4px",
-        backgroundColor: "#41ce98",
-        zIndex: 1000,
-      }}
-    />
+      }} />
   );
 }
 

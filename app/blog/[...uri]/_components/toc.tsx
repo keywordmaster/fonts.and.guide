@@ -52,7 +52,7 @@ function ToC() {
 
   return (
     <nav className="toc">
-      <h2>목차</h2>
+      <h2 className="font-bold">목차</h2>
       <ul>
         {toc.map((item) => (
           <li
