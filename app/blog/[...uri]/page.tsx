@@ -71,7 +71,7 @@ export default async function Page({
 
   // TODO: 새로 추가된 컴포넌트의 레이아웃 재배치 필요
   return (
-    <div className="relative">
+    <div className="relative container p-0">
       <div className="md:mr-64">
         <ScrollIndicator />
         <BreadcrumbsWithSchema
