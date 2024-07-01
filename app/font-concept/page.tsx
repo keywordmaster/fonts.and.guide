@@ -1,11 +1,20 @@
 import { gql } from "@urql/core";
+import { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import BreadcrumbsWithSchema from "@/components/layout/breadcrumbs-with-schema";
 import { GetFontConceptsQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
 import { convertPageQueryToPathMetaData } from "@/utils/breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "추천 폰트 컨셉",
+  description: "폰트 & 가이드에서 제공하는 추천 폰트 컨셉의 목록입니다.",
+  openGraph: {
+    title: "추천 폰트 컨셉",
+    description: "폰트 & 가이드에서 제공하는 추천 폰트 컨셉의 목록입니다.",
+  },
+};
 
 export default async function Page(
   {

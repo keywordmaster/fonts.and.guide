@@ -63,7 +63,8 @@ function ScrollIndicator() {
         top: `${headerHeight}px`,
         left: `${asideWidth}px`,
         width: `calc(${scrollProgress * 100}% - ${asideWidth}px)`,
-      }} />
+      }}
+    />
   );
 }
 

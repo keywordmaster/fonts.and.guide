@@ -1,8 +1,14 @@
 import { gql } from "@urql/core";
+import { Metadata } from "next";
 import Link from "next/link";
 
 import { GetPostsQuery } from "@/gql/graphql";
 import { getClient } from "@/lib/urql/client";
+
+export const metadata: Metadata = {
+  title: "블로그",
+  description: "폰트 & 가이드의 블로그입니다.",
+};
 
 export default async function Home({
   params: { uri },
