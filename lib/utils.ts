@@ -28,6 +28,28 @@ export const deleteQueryString = (name: string, searchParams) => {
 
   return params.toString();
 };
+
+export const decodeHtmlEntities = (str) => {
+  var entityMap = {
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+    "&quot;": '"',
+    "&#39;": "'",
+    "&#x2F;": "/",
+    "&#x5C;": "\\",
+    "&#x60;": "`",
+    "&#x3D;": "=",
+    // TODO: Add more
+  };
+
+  return str.replace(/&[^;]+;/g, (entity) => entityMap[entity] || entity);
+};
+
+export const stripHtml = (html) => {
+  return html.replace(/<[^>]*>/g, "");
+};
+
 // export const getContentByContentNode = (data: GetContentNodeQuery) => {
 //   if (data.contentNode.__typename === "MediaItem") {
 //     return null;

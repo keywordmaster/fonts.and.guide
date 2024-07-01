@@ -22850,6 +22850,7 @@ export type GetPostQuery = {
         __typename: "PostToCategoryConnectionEdge";
         node: {
           __typename: "Category";
+          id: string;
           uri?: string | null;
           name?: string | null;
         };
@@ -22874,11 +22875,15 @@ export type GetPostQuery = {
     id: string;
     title?: string | null;
     content?: string | null;
+    excerpt?: string | null;
+    modified?: string | null;
     date?: string | null;
+    dateGmt?: string | null;
   } | null;
 };
 
 export type GetPostsByCategoryQueryVariables = Exact<{
+  id: Scalars["ID"]["input"];
   category: Scalars["String"]["input"];
 }>;
 
@@ -22892,11 +22897,13 @@ export type GetPostsByCategoryQuery = {
       title?: string | null;
       uri?: string | null;
       slug?: string | null;
-      author?: {
-        __typename: "NodeWithAuthorToUserConnectionEdge";
-        node: { __typename: "User"; name?: string | null };
-      } | null;
     }>;
+  } | null;
+  category?: {
+    __typename: "Category";
+    id: string;
+    name?: string | null;
+    description?: string | null;
   } | null;
 };
 
@@ -24287,7 +24294,7 @@ export const GetFontfamiliesClientDocument = {
   GetFontfamiliesClientQueryVariables
 >;
 export const GetPostDocument = {
-  __meta__: { hash: "2d1c3022c813ad83fa4317dadc0057c8f2853136" },
+  __meta__: { hash: "e9adf86fb50ed8c5eff0d86e63877af416477563" },
   kind: "Document",
   definitions: [
     {
@@ -24361,6 +24368,10 @@ export const GetPostDocument = {
                                   {
                                     kind: "Field",
                                     name: { kind: "Name", value: "__typename" },
+                                  },
+                                  {
+                                    kind: "Field",
+                                    name: { kind: "Name", value: "id" },
                                   },
                                   {
                                     kind: "Field",
@@ -24465,7 +24476,10 @@ export const GetPostDocument = {
                 { kind: "Field", name: { kind: "Name", value: "id" } },
                 { kind: "Field", name: { kind: "Name", value: "title" } },
                 { kind: "Field", name: { kind: "Name", value: "content" } },
+                { kind: "Field", name: { kind: "Name", value: "excerpt" } },
+                { kind: "Field", name: { kind: "Name", value: "modified" } },
                 { kind: "Field", name: { kind: "Name", value: "date" } },
+                { kind: "Field", name: { kind: "Name", value: "dateGmt" } },
               ],
             },
           },
@@ -24475,7 +24489,7 @@ export const GetPostDocument = {
   ],
 } as unknown as DocumentNode<GetPostQuery, GetPostQueryVariables>;
 export const GetPostsByCategoryDocument = {
-  __meta__: { hash: "872797bd66bc1e913e0ca6595577280e8d83cf04" },
+  __meta__: { hash: "cec294341536d329ed8a50bcf351989e25a4a510" },
   kind: "Document",
   definitions: [
     {
@@ -24483,6 +24497,14 @@ export const GetPostsByCategoryDocument = {
       operation: "query",
       name: { kind: "Name", value: "GetPostsByCategory" },
       variableDefinitions: [
+        {
+          kind: "VariableDefinition",
+          variable: { kind: "Variable", name: { kind: "Name", value: "id" } },
+          type: {
+            kind: "NonNullType",
+            type: { kind: "NamedType", name: { kind: "Name", value: "ID" } },
+          },
+        },
         {
           kind: "VariableDefinition",
           variable: {
@@ -24546,40 +24568,38 @@ export const GetPostsByCategoryDocument = {
                       { kind: "Field", name: { kind: "Name", value: "id" } },
                       { kind: "Field", name: { kind: "Name", value: "title" } },
                       { kind: "Field", name: { kind: "Name", value: "uri" } },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "author" },
-                        selectionSet: {
-                          kind: "SelectionSet",
-                          selections: [
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "__typename" },
-                            },
-                            {
-                              kind: "Field",
-                              name: { kind: "Name", value: "node" },
-                              selectionSet: {
-                                kind: "SelectionSet",
-                                selections: [
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "__typename" },
-                                  },
-                                  {
-                                    kind: "Field",
-                                    name: { kind: "Name", value: "name" },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
                       { kind: "Field", name: { kind: "Name", value: "slug" } },
                     ],
                   },
                 },
+              ],
+            },
+          },
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "category" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "id" },
+                value: {
+                  kind: "Variable",
+                  name: { kind: "Name", value: "id" },
+                },
+              },
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "idType" },
+                value: { kind: "EnumValue", value: "SLUG" },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                { kind: "Field", name: { kind: "Name", value: "__typename" } },
+                { kind: "Field", name: { kind: "Name", value: "id" } },
+                { kind: "Field", name: { kind: "Name", value: "name" } },
+                { kind: "Field", name: { kind: "Name", value: "description" } },
               ],
             },
           },

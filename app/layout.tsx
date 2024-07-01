@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Metadata } from "next";
 import localFont from "next/font/local";
 import { gql } from "urql/core";
 
@@ -15,6 +16,39 @@ const suite = localFont({
   display: "swap",
   variable: "--font-suite",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL),
+  title: {
+    default: "폰트 & 가이드",
+    template: "%s | 폰트 & 가이드",
+  },
+  description:
+    "폰트 & 가이드는 웹 폰트, 폰트 디자인, 폰트 개발 등 폰트와 관련된 정보를 제공합니다.",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    title: {
+      default: "폰트 & 가이드",
+      template: "%s | 폰트 & 가이드",
+    },
+    description:
+      "폰트 & 가이드는 웹 폰트, 폰트 디자인, 폰트 개발 등 폰트와 관련된 정보를 제공합니다.",
+    locale: "ko_KR",
+    siteName: "폰트 & 가이드",
+    images: [],
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -57,13 +91,7 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${suite.variable} font-suite`}
     >
-      <head>
-        <title
-          dangerouslySetInnerHTML={{ __html: data?.generalSettings?.title }}
-        ></title>
-        <meta name="description" content={data?.generalSettings?.description} />
-        <meta name="robots" content="noindex, nofollow" />
-      </head>
+      <head></head>
       <body className="">
         <ClientProvider>
           <div className="grid h-screen w-full pl-[56px]">
