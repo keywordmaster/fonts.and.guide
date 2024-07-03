@@ -8,6 +8,15 @@ import { getClient } from "@/lib/urql/client";
 export const metadata: Metadata = {
   title: "블로그",
   description: "폰트 & 가이드의 블로그입니다.",
+  openGraph: {
+    title: "블로그",
+    description: "폰트 & 가이드의 블로그입니다.",
+    type: "website",
+    url: `${process.env.NEXT_PUBLIC_URL}/blog`,
+    images: ["./og.svg"],
+    siteName: "폰트 & 가이드",
+    locale: "ko_KR",
+  },
 };
 
 export default async function Home({
