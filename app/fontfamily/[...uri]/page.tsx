@@ -126,7 +126,7 @@ export async function generateMetadata(
       publishedTime: data.fontfamily.date,
       modifiedTime: data.fontfamily.modified,
       url: `${process.env.NEXT_PUBLIC_URL}/fontfamily/${uri.join("/")}`,
-      images: [],
+      // images: [],
     },
   };
 }
