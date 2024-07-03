@@ -1,7 +1,7 @@
 "use client";
 
 import { gql, useQuery } from "@urql/next";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 
 import {
   GetFontfamiliesClientQuery,
@@ -177,7 +177,7 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
   );
 
   return (
-    <>
+    <Suspense>
       <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <p className="text-sm text-zinc-500 border-y p-2 flex-1">
@@ -204,7 +204,7 @@ const FontfamilyList: React.FC<Props> = ({ searchParams }) => {
           JSON.stringify(error)
         )}
       </ul>
-    </>
+    </Suspense>
   );
 };
 

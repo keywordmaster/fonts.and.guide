@@ -87,8 +87,8 @@ export async function generateMetadata(
       type: "article",
       publishedTime: data.post.date,
       modifiedTime: data.post.modified,
-      url: `${process.env.NEXT_PUBLIC_URL}/${uri.join("/")}`,
-      images: [],
+      url: `${process.env.NEXT_PUBLIC_URL}/blog/${uri.join("/")}`,
+      // images: [],
     },
   };
 }

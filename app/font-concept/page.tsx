@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "추천 폰트 컨셉",
     description: "폰트 & 가이드에서 제공하는 추천 폰트 컨셉의 목록입니다.",
+    type: "website",
+    url: `${process.env.NEXT_PUBLIC_URL}/blog`,
+    images: ["./og.svg"],
+    siteName: "폰트 & 가이드",
+    locale: "ko_KR",
   },
 };
 
