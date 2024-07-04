@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "폰트 패밀리에 대한 정보를 제공합니다.",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_URL}/blog`,
-    images: ["./og.svg"],
+    images: ["./og.png"],
     siteName: "폰트 & 가이드",
     locale: "ko_KR",
   },

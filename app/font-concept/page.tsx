@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "폰트 & 가이드에서 제공하는 추천 폰트 컨셉의 목록입니다.",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_URL}/blog`,
-    images: ["./og.svg"],
+    images: ["./og.png"],
     siteName: "폰트 & 가이드",
     locale: "ko_KR",
   },
@@ -25,8 +25,8 @@ export default async function Page(
   {
     // params: { uri },
   }: {
-    // params: { uri: string[] };
-  },
+      // params: { uri: string[] };
+    },
 ) {
   const { data } = await getClient().query<GetFontConceptsQuery>(
     gql`

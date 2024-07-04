@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: "폰트 & 가이드의 블로그입니다.",
     type: "website",
     url: `${process.env.NEXT_PUBLIC_URL}/blog`,
-    images: ["./og.svg"],
+    images: ["./og.png"],
     siteName: "폰트 & 가이드",
     locale: "ko_KR",
   },
@@ -60,12 +60,12 @@ export default async function Home({
     <ul>
       {data
         ? data.posts.edges.map(({ node }) => (
-            <li key={node.id}>
-              <Link key={node.id} href={`/blog${node.uri}`} prefetch>
-                {node.title}
-              </Link>
-            </li>
-          ))
+          <li key={node.id}>
+            <Link key={node.id} href={`/blog${node.uri}`} prefetch>
+              {node.title}
+            </Link>
+          </li>
+        ))
         : JSON.stringify(error)}
     </ul>
   );

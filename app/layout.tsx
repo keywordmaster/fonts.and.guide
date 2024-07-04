@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "폰트 & 가이드는 웹 폰트, 폰트 디자인, 폰트 개발 등 폰트와 관련된 정보를 제공합니다.",
     locale: "ko_KR",
     siteName: "폰트 & 가이드",
-    images: ["./og.svg"],
+    images: ["./og.png"],
   },
 };
 
